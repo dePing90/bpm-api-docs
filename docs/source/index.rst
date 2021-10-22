@@ -1,19 +1,22 @@
-Контур CRM: описание моделей в API 
+Здесь будет описание API Контур CRM
 ===================================
 
+**Lumache** (/lu'make/) is a Python library for cooks and food lovers
+that creates recipes mixing random ingredients.
+It pulls data from the `Open Food Facts database <https://world.openfoodfacts.org/>`_
+and offers a *simple* and *intuitive* API.
 
-**Контур CRM** — система для автоматизаций бизнес процессов.
+Check out the :doc:`usage` section for further information, including
+how to :ref:`installation` the project.
 
-Автоматизации хранятся в (Workspace) рабочих пространствах. 
+.. note::
 
-User — пользователь Crm.Kontur (это тот, кто имеет какой-либо доступ к пространству). Это может быть менеджер по продажам, руководитель отдела продаж, маркетолог, it-специалист и т.д. 
+   This project is under active development.
 
-Deal — сделка. Сделка создается с Компанией (в интерфейсе называется «Клиент», в API — Company). Сделка может быть связанна только одной компанией (Company) и многими контактами (Contacts).
+Contents
+--------
 
-Компания («Клиент», Company) и Контакты (Contacts).
+.. toctree::
 
-У компании есть «Представители» — (директор, бухгалтер, начальник IT-отдела и т.д.) лица с которыми ведутся коммуникации. В Crm.Kontur им соответствуют — контакты компании (Contacts).
-
-У компании могут быть указаны контактные данные, непостредственно атрибуты компании — телефоны, e'mail'ы и т.д.
-
-У контактов указаны — ФИО, должность в компании, телефоны, e'mail'ы, месседжеры.
+   usage
+   api
