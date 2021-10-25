@@ -1,4 +1,4 @@
-Здесь будет описание API Контур CRM!
+Здесь будет описание API Контур CRM
 ===================================
 
 **Lumache** (/lu'make/) is a Python library for cooks and food lovers
