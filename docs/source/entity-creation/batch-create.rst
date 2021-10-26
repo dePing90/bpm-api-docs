@@ -13,7 +13,7 @@
 
 Формируем запрос:
 
-.. code-block:: c#
+.. code-block::
 
     curl -X 'POST' \
     'https://crm.kontur.ru/api/v1/testswaggerspace/contacts/create' \

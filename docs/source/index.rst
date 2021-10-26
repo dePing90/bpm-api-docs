@@ -11,7 +11,5 @@
 .. toctree::
 
    models/index
-
-.. toctree::
-
    entity-creation/index
+   entity-modification-info/index

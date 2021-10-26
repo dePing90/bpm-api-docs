@@ -44,7 +44,7 @@
 
 Запрос на модификацию:
 
-.. code-block:: c#
+.. code-block::
     
     curl -X 'PATCH' \
         'https://crm.kontur.ru/api/v1/testswaggerspace/contacts/529edc65-e929-4957-b7b4-924126547323' \

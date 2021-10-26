@@ -7,7 +7,7 @@
 
 В Body передается модель CompanyCreationArgs. Формируем запрос:
 
-.. code-block:: csharp
+.. code-block::
 
     curl -X 'POST' \
         'https://crm.kontur.ru/api/v1/testswaggerspace/companies' \
@@ -32,7 +32,7 @@
 
 В ответ на успешное создание получим 200 OK и модель Company только что созданной компании:
 
-.. code-block:: csharp
+.. code-block::
 
     {
         "updateInfo": {
