@@ -8,7 +8,10 @@ API Контур CRM
 Содержание
 ----------
 .. toctree::
+   :maxdepth: 1 
 
    models/index
    entity-creation/index
    entity-modification-info/index
+   custom-fields/index
+   phone-integration/index
