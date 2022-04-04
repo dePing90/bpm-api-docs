@@ -1,0 +1,162 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="ru" >
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Подписка на события об изменениях — WebHook &mdash; документация Контур CRM 1.1</title><link rel="stylesheet" href="../_static/css/theme.css" type="text/css" />
+    <link rel="stylesheet" href="../_static/pygments.css" type="text/css" /><link rel="shortcut icon" href="../_static/favicon.ico"/>
+  <!--[if lt IE 9]>
+    <script src="../_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  <script id="documentation_options" data-url_root="../" src="../_static/documentation_options.js"></script>
+        <script src="../_static/jquery.js"></script>
+        <script src="../_static/underscore.js"></script>
+        <script src="../_static/doctools.js"></script>
+        <script src="../_static/language_data.js"></script>
+        <script src="../_static/translations.js"></script>
+    <script src="../_static/js/theme.js"></script>
+    <link rel="index" title="Алфавитный указатель" href="../genindex.html" />
+    <link rel="search" title="Поиск" href="../search.html" />
+    <link rel="next" title="Работа с пользовательскими полями" href="../custom-fields/index.html" />
+    <link rel="prev" title="Чтение ленты событий" href="info-by-events.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+            <a href="../index.html" class="icon icon-home"> Контур CRM
+          </a>
+              <div class="version">
+                1.1
+              </div>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../models/index.html">Описание моделей</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../entity-creation/index.html">Создание и модификация сущностей</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="index.html">Получение информации об измененных сущностях</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="info-by-events.html">Чтение ленты событий</a></li>
+<li class="toctree-l2 current"><a class="current reference internal" href="#">Подписка на события об изменениях — WebHook</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../custom-fields/index.html">Работа с пользовательскими полями</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../phone-integration/index.html">Интеграция с телефонией</a></li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../index.html">Контур CRM</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="../index.html" class="icon icon-home"></a> &raquo;</li>
+          <li><a href="index.html">Получение информации об измененных сущностях</a> &raquo;</li>
+      <li>Подписка на события об изменениях — WebHook</li>
+      <li class="wy-breadcrumbs-aside">
+            <a href="../_sources/entity-modification-info/webhooks.rst.txt" rel="nofollow"> View page source</a>
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <div class="section" id="webhook">
+<h1>Подписка на события об изменениях — WebHook<a class="headerlink" href="#webhook" title="Ссылка на этот заголовок">¶</a></h1>
+<p>Crm.Kontur предоставляет возможность интеграции подписаться на уведомления о событиях через механику WebHook’s.</p>
+<ol class="arabic simple">
+<li><p>При настройке WebHook указываются фильтры на события, по которым нужно получать оповещения. Если в фильтре указаны Company, то события об изменении Deal не должно приходить.</p></li>
+<li><p>При оповещении в ответ Crm.Kontur ожидает получить 200 OK и заголовок X-XCOM-Integration-Echo из входящего запроса. Если подтверждение не будет получено, система отложит событие «в очередь отложенной отправки» и попытается отправить следующее событие.</p></li>
+<li><p>Модель события ObjectEvent — описана в Варианте 2. Чтением ленты событий. (предыдущий раздел).</p></li>
+</ol>
+<p>Событие из очереди отложенной отправки Crm.Kontur будет пытаться отправить
+повторно со следующими интервалами: 30сек, 1мин, 5мин, 15мин, 1ч, 1ч, 1ч.</p>
+<p>Если интеграция не корректно отвечает на достаточно большее кол-во запросов Контур CRM
+перестанет отправлять ей оповещения о событиях.</p>
+<p>Для того, чтобы зарегистрировать WebHook для интеграции необходимо отправить запрос.</p>
+<p>Для регистрации WebHook нужно добавить его в модель IntegrationInstance:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">curl</span> <span class="o">-</span><span class="n">X</span> <span class="s1">&#39;PATCH&#39;</span> \
+    <span class="s1">&#39;https://crm.kontur.ru/api/v1/testswaggerspace/integrations/instances/e01c765d-7c9b-491a-b5ea-d0e67eb017d9&#39;</span> \
+    <span class="o">-</span><span class="n">H</span> <span class="s1">&#39;accept: application/json&#39;</span> \
+    <span class="o">-</span><span class="n">H</span> <span class="s1">&#39;Authorization: Bearer xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx&#39;</span> \
+    <span class="o">-</span><span class="n">H</span> <span class="s1">&#39;Content-Type: application/json-patch+json&#39;</span> \
+    <span class="o">-</span><span class="n">d</span> <span class="s1">&#39;{</span>
+    <span class="s2">&quot;operations&quot;</span> <span class="p">:</span> <span class="p">[</span>
+    <span class="p">{</span> <span class="s2">&quot;op&quot;</span> <span class="p">:</span> <span class="s2">&quot;Add&quot;</span><span class="p">,</span> <span class="s2">&quot;path&quot;</span> <span class="p">:</span> <span class="s2">&quot;/IntegrationInstance&quot;</span><span class="p">,</span> <span class="s2">&quot;value&quot;</span> <span class="p">:</span> <span class="p">{</span><span class="s2">&quot;id&quot;</span><span class="p">:</span><span class="s2">&quot;a5aad3c1-777b-4ae5-8ca1-60b94c0423e5&quot;</span><span class="p">,</span><span class="s2">&quot;relativeUrl&quot;</span><span class="p">:</span><span class="s2">&quot;https://publicUrl.ru/crm-callbacks&quot;</span><span class="p">,</span><span class="s2">&quot;triggerType&quot;</span><span class="p">:</span><span class="s2">&quot;entityEvent&quot;</span><span class="p">,</span><span class="s2">&quot;filter&quot;</span><span class="p">:{</span><span class="s2">&quot;items&quot;</span><span class="p">:[{</span><span class="s2">&quot;eventType&quot;</span><span class="p">:</span><span class="s2">&quot;change&quot;</span><span class="p">,</span><span class="s2">&quot;entityType&quot;</span><span class="p">:</span><span class="s2">&quot;company&quot;</span><span class="p">,</span><span class="s2">&quot;changeType&quot;</span><span class="p">:</span><span class="s2">&quot;patch&quot;</span><span class="p">},{</span><span class="s2">&quot;entityType&quot;</span><span class="p">:</span><span class="s2">&quot;contact&quot;</span><span class="p">}]},</span><span class="s2">&quot;schedule&quot;</span><span class="p">:{},</span><span class="s2">&quot;disabled&quot;</span><span class="p">:</span><span class="n">false</span><span class="p">}</span>
+    <span class="p">}</span>
+<span class="p">]</span>
+<span class="p">}</span><span class="s1">&#39;</span>
+</pre></div>
+</div>
+<p>В IntegrationInstance есть массив зарегистрированных WebHook. Описание модели WebHook:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="p">{</span>
+    <span class="s2">&quot;id&quot;</span><span class="p">:</span><span class="s2">&quot;a5aad3c1-777b-4ae5-8ca1-60b94c0423e5&quot;</span><span class="p">,</span> <span class="o">//</span> <span class="n">идентификатор</span>
+    <span class="s2">&quot;relativeUrl&quot;</span><span class="p">:</span><span class="s2">&quot;/crm-callbacks&quot;</span><span class="p">,</span> <span class="o">//</span> <span class="n">url</span><span class="p">,</span> <span class="n">куда</span> <span class="n">будут</span> <span class="n">отправляться</span> <span class="n">оповещения</span> <span class="n">о</span> <span class="n">событиях</span>
+    <span class="s2">&quot;triggerType&quot;</span><span class="p">:</span><span class="s2">&quot;entityEvent&quot;</span><span class="p">,</span> <span class="o">//</span> <span class="n">triggerType</span> <span class="n">бывает</span><span class="p">:</span>
+                                <span class="o">//</span> <span class="n">entityEvent</span> <span class="o">-</span> <span class="n">заполняется</span> <span class="n">блок</span> <span class="nb">filter</span> <span class="o">-</span> <span class="n">для</span> <span class="n">фильтрации</span> <span class="n">событий</span>
+                                <span class="o">//</span> <span class="n">schedule</span> <span class="o">-</span> <span class="n">заполняется</span> <span class="n">блок</span> <span class="n">Schedule</span> <span class="o">-</span> <span class="n">где</span> <span class="n">можно</span> <span class="n">настроить</span> <span class="n">периодические</span> <span class="n">вызовы</span> <span class="s1">&#39;relativeUrl&#39;</span>
+    <span class="s2">&quot;filter&quot;</span><span class="p">:{</span> <span class="o">//</span> <span class="n">блок</span> <span class="n">настройки</span> <span class="n">фильтров</span> <span class="n">для</span> <span class="n">событий</span>
+    <span class="s2">&quot;items&quot;</span><span class="p">:[</span>
+        <span class="p">{</span>
+        <span class="s2">&quot;eventType&quot;</span> <span class="p">:</span> <span class="s2">&quot;change&quot;</span><span class="p">,</span> <span class="o">//</span> <span class="n">тип</span> <span class="n">события</span><span class="p">:</span> <span class="n">сhange</span> <span class="o">/</span> <span class="n">link</span> <span class="o">/</span> <span class="n">unlink</span>
+        <span class="s2">&quot;entityType&quot;</span> <span class="p">:</span> <span class="s2">&quot;company&quot;</span><span class="p">,</span> <span class="o">//</span> <span class="n">сущность</span><span class="p">,</span> <span class="n">по</span> <span class="n">которой</span> <span class="n">хочется</span> <span class="n">получать</span> <span class="n">уведомдения</span>
+        <span class="s2">&quot;changeType&quot;</span> <span class="p">:</span> <span class="s2">&quot;patch&quot;</span> <span class="o">//</span> <span class="n">тип</span> <span class="n">модификации</span><span class="p">:</span> <span class="n">create</span> <span class="o">/</span> <span class="n">patch</span> <span class="o">/</span> <span class="n">delete</span> <span class="o">/</span> <span class="n">restore</span>
+        <span class="p">},</span>
+        <span class="p">{</span> <span class="o">//</span> <span class="n">оповещать</span> <span class="n">о</span> <span class="n">всех</span> <span class="n">событиях</span> <span class="n">по</span> <span class="n">contact</span>
+        <span class="s2">&quot;entityType&quot;</span><span class="p">:</span><span class="s2">&quot;contact&quot;</span>
+        <span class="p">}</span>
+        <span class="p">]</span>
+        <span class="p">},</span>
+    <span class="s2">&quot;schedule&quot;</span><span class="p">:{</span>
+
+    <span class="p">},</span>
+    <span class="s2">&quot;disabled&quot;</span><span class="p">:</span><span class="n">false</span> <span class="o">//</span> <span class="n">активен</span> <span class="n">ли</span> <span class="n">WebHook</span> <span class="n">для</span> <span class="n">отправки</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+</div>
+
+
+           </div>
+          </div>
+          <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
+        <a href="info-by-events.html" class="btn btn-neutral float-left" title="Чтение ленты событий" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="../custom-fields/index.html" class="btn btn-neutral float-right" title="Работа с пользовательскими полями" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p></p>
+  </div>
+
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

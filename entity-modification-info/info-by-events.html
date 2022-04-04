@@ -1,0 +1,482 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="ru" >
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Чтение ленты событий &mdash; документация Контур CRM 1.1</title><link rel="stylesheet" href="../_static/css/theme.css" type="text/css" />
+    <link rel="stylesheet" href="../_static/pygments.css" type="text/css" /><link rel="shortcut icon" href="../_static/favicon.ico"/>
+  <!--[if lt IE 9]>
+    <script src="../_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  <script id="documentation_options" data-url_root="../" src="../_static/documentation_options.js"></script>
+        <script src="../_static/jquery.js"></script>
+        <script src="../_static/underscore.js"></script>
+        <script src="../_static/doctools.js"></script>
+        <script src="../_static/language_data.js"></script>
+        <script src="../_static/translations.js"></script>
+    <script src="../_static/js/theme.js"></script>
+    <link rel="index" title="Алфавитный указатель" href="../genindex.html" />
+    <link rel="search" title="Поиск" href="../search.html" />
+    <link rel="next" title="Подписка на события об изменениях — WebHook" href="webhooks.html" />
+    <link rel="prev" title="Получение информации об измененных сущностях" href="index.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+            <a href="../index.html" class="icon icon-home"> Контур CRM
+          </a>
+              <div class="version">
+                1.1
+              </div>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../models/index.html">Описание моделей</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../entity-creation/index.html">Создание и модификация сущностей</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="index.html">Получение информации об измененных сущностях</a><ul class="current">
+<li class="toctree-l2 current"><a class="current reference internal" href="#">Чтение ленты событий</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#id2">Получение событий</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#id3">Описание модели ответа</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#id4">Алгоритм синхронизации</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="webhooks.html">Подписка на события об изменениях — WebHook</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../custom-fields/index.html">Работа с пользовательскими полями</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../phone-integration/index.html">Интеграция с телефонией</a></li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../index.html">Контур CRM</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="../index.html" class="icon icon-home"></a> &raquo;</li>
+          <li><a href="index.html">Получение информации об измененных сущностях</a> &raquo;</li>
+      <li>Чтение ленты событий</li>
+      <li class="wy-breadcrumbs-aside">
+            <a href="../_sources/entity-modification-info/info-by-events.rst.txt" rel="nofollow"> View page source</a>
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <div class="section" id="id1">
+<h1>Чтение ленты событий<a class="headerlink" href="#id1" title="Ссылка на этот заголовок">¶</a></h1>
+<p><a class="reference external" href="https://developer.kontur.ru/doc/crm/method?type=get&amp;path=%2Fapi%2Fv1%2F%7Bws%7D%2Fevents">Метод API для получения ленты событий</a></p>
+<p>Необходимо передать обязательный параметр ws — имя Workspace или id Workspace.
+Также есть два необязательных параметра offset —
+смещение после, которого нужно вернуть события и limit — максимальное кол-во событий в ответе.</p>
+<div class="section" id="id2">
+<h2>Получение событий<a class="headerlink" href="#id2" title="Ссылка на этот заголовок">¶</a></h2>
+<p>Например:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">curl</span> <span class="o">-</span><span class="n">X</span> <span class="s1">&#39;GET&#39;</span> \
+<span class="s1">&#39;https://crm.kontur.ru/api/v1/testswaggerspace/events?limit=2&#39;</span> \
+<span class="o">-</span><span class="n">H</span> <span class="s1">&#39;accept: application/json&#39;</span> \
+<span class="o">-</span><span class="n">H</span> <span class="s1">&#39;Authorization: Bearer xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx&#39;</span>
+</pre></div>
+</div>
+<p>Ответ 200 Ok и модель ObjectEventsList:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="p">{</span>
+<span class="s2">&quot;count&quot;</span><span class="p">:</span><span class="mi">2</span><span class="p">,</span>
+<span class="s2">&quot;items&quot;</span><span class="p">:[</span>
+    <span class="p">{</span>
+        <span class="s2">&quot;id&quot;</span><span class="p">:</span><span class="s2">&quot;bf5bbe99-1d50-4247-86b7-5ee2b1021e44&quot;</span><span class="p">,</span>
+        <span class="s2">&quot;offset&quot;</span><span class="p">:</span><span class="s2">&quot;00000000-20ac-176a-0000-0000060f5e86&quot;</span><span class="p">,</span>
+        <span class="s2">&quot;type&quot;</span><span class="p">:</span><span class="s2">&quot;change&quot;</span><span class="p">,</span>
+        <span class="s2">&quot;changeData&quot;</span><span class="p">:{</span>
+            <span class="s2">&quot;type&quot;</span><span class="p">:</span><span class="s2">&quot;create&quot;</span><span class="p">,</span>
+            <span class="s2">&quot;new&quot;</span><span class="p">:{</span>
+            <span class="s2">&quot;id&quot;</span><span class="p">:</span><span class="s2">&quot;43c22e9b-6d35-4521-8f77-10eaf9ea8677&quot;</span><span class="p">,</span>
+            <span class="s2">&quot;name&quot;</span><span class="p">:</span><span class="s2">&quot;Продажи&quot;</span><span class="p">,</span>
+            <span class="s2">&quot;order&quot;</span><span class="p">:</span><span class="mi">0</span><span class="p">,</span>
+            <span class="s2">&quot;stages&quot;</span><span class="p">:[</span>
+                <span class="p">{</span>
+                    <span class="s2">&quot;id&quot;</span><span class="p">:</span><span class="mi">1</span><span class="p">,</span>
+                    <span class="s2">&quot;name&quot;</span><span class="p">:</span><span class="s2">&quot;В работе&quot;</span><span class="p">,</span>
+                    <span class="s2">&quot;order&quot;</span><span class="p">:</span><span class="mi">0</span><span class="p">,</span>
+                    <span class="s2">&quot;settings&quot;</span><span class="p">:{</span>
+                        <span class="s2">&quot;constraints&quot;</span><span class="p">:[</span>
+
+                        <span class="p">]</span>
+                    <span class="p">}</span>
+                <span class="p">},</span>
+                <span class="p">{</span>
+                    <span class="s2">&quot;id&quot;</span><span class="p">:</span><span class="mi">2</span><span class="p">,</span>
+                    <span class="s2">&quot;name&quot;</span><span class="p">:</span><span class="s2">&quot;Отправлено предложение&quot;</span><span class="p">,</span>
+                    <span class="s2">&quot;order&quot;</span><span class="p">:</span><span class="mi">0</span><span class="p">,</span>
+                    <span class="s2">&quot;settings&quot;</span><span class="p">:{</span>
+                        <span class="s2">&quot;constraints&quot;</span><span class="p">:[</span>
+
+                        <span class="p">]</span>
+                    <span class="p">}</span>
+                <span class="p">},</span>
+                <span class="p">{</span>
+                    <span class="s2">&quot;id&quot;</span><span class="p">:</span><span class="mi">3</span><span class="p">,</span>
+                    <span class="s2">&quot;name&quot;</span><span class="p">:</span><span class="s2">&quot;Оформление&quot;</span><span class="p">,</span>
+                    <span class="s2">&quot;order&quot;</span><span class="p">:</span><span class="mi">0</span><span class="p">,</span>
+                    <span class="s2">&quot;settings&quot;</span><span class="p">:{</span>
+                        <span class="s2">&quot;constraints&quot;</span><span class="p">:[</span>
+
+                        <span class="p">]</span>
+                    <span class="p">}</span>
+                <span class="p">},</span>
+                <span class="p">{</span>
+                    <span class="s2">&quot;id&quot;</span><span class="p">:</span><span class="o">-</span><span class="mi">1</span><span class="p">,</span>
+                    <span class="s2">&quot;order&quot;</span><span class="p">:</span><span class="mi">0</span><span class="p">,</span>
+                    <span class="s2">&quot;settings&quot;</span><span class="p">:{</span>
+                        <span class="s2">&quot;constraints&quot;</span><span class="p">:[</span>
+
+                        <span class="p">]</span>
+                    <span class="p">}</span>
+                <span class="p">},</span>
+                <span class="p">{</span>
+                    <span class="s2">&quot;id&quot;</span><span class="p">:</span><span class="o">-</span><span class="mi">2</span><span class="p">,</span>
+                    <span class="s2">&quot;order&quot;</span><span class="p">:</span><span class="mi">0</span><span class="p">,</span>
+                    <span class="s2">&quot;settings&quot;</span><span class="p">:{</span>
+                        <span class="s2">&quot;constraints&quot;</span><span class="p">:[</span>
+
+                        <span class="p">]</span>
+                    <span class="p">}</span>
+                <span class="p">},</span>
+                <span class="p">{</span>
+                    <span class="s2">&quot;id&quot;</span><span class="p">:</span><span class="mi">0</span><span class="p">,</span>
+                    <span class="s2">&quot;order&quot;</span><span class="p">:</span><span class="mi">0</span><span class="p">,</span>
+                    <span class="s2">&quot;settings&quot;</span><span class="p">:{</span>
+                        <span class="s2">&quot;constraints&quot;</span><span class="p">:[</span>
+
+                        <span class="p">]</span>
+                    <span class="p">}</span>
+                <span class="p">}</span>
+            <span class="p">]</span>
+            <span class="p">}</span>
+        <span class="p">},</span>
+        <span class="s2">&quot;entityIds&quot;</span><span class="p">:{</span>
+            <span class="s2">&quot;workflowId&quot;</span><span class="p">:</span><span class="s2">&quot;43c22e9b-6d35-4521-8f77-10eaf9ea8677&quot;</span>
+        <span class="p">},</span>
+        <span class="s2">&quot;createInfo&quot;</span><span class="p">:{</span>
+            <span class="s2">&quot;createdAt&quot;</span><span class="p">:</span><span class="s2">&quot;2021-09-28T11:08:26.903198+00:00&quot;</span><span class="p">,</span>
+            <span class="s2">&quot;createdWith&quot;</span><span class="p">:</span><span class="s2">&quot;xcom&quot;</span>
+        <span class="p">}</span>
+    <span class="p">},</span>
+    <span class="p">{</span>
+        <span class="s2">&quot;id&quot;</span><span class="p">:</span><span class="s2">&quot;3ef692f0-1c1a-4ad3-b364-90aac4daf501&quot;</span><span class="p">,</span>
+        <span class="s2">&quot;offset&quot;</span><span class="p">:</span><span class="s2">&quot;00000000-20ac-176a-0000-0000060f5e87&quot;</span><span class="p">,</span>
+        <span class="s2">&quot;type&quot;</span><span class="p">:</span><span class="s2">&quot;change&quot;</span><span class="p">,</span>
+        <span class="s2">&quot;changeData&quot;</span><span class="p">:{</span>
+            <span class="s2">&quot;type&quot;</span><span class="p">:</span><span class="s2">&quot;create&quot;</span><span class="p">,</span>
+            <span class="s2">&quot;new&quot;</span><span class="p">:{</span>
+            <span class="s2">&quot;id&quot;</span><span class="p">:</span><span class="s2">&quot;2261e2d7-5d2d-4190-89c2-7184fa9d341f&quot;</span><span class="p">,</span>
+            <span class="s2">&quot;name&quot;</span><span class="p">:</span><span class="s2">&quot;Менеджер&quot;</span><span class="p">,</span>
+            <span class="s2">&quot;accessRights&quot;</span><span class="p">:[</span>
+                <span class="p">{</span>
+                    <span class="s2">&quot;id&quot;</span><span class="p">:</span><span class="s2">&quot;system.deals.create&quot;</span><span class="p">,</span>
+                    <span class="s2">&quot;level&quot;</span><span class="p">:</span><span class="mi">1</span>
+                <span class="p">},</span>
+                <span class="p">{</span>
+                    <span class="s2">&quot;id&quot;</span><span class="p">:</span><span class="s2">&quot;system.tasks.create&quot;</span><span class="p">,</span>
+                    <span class="s2">&quot;level&quot;</span><span class="p">:</span><span class="mi">1</span>
+                <span class="p">}</span>
+            <span class="p">]</span>
+            <span class="p">}</span>
+        <span class="p">},</span>
+        <span class="s2">&quot;entityIds&quot;</span><span class="p">:{</span>
+            <span class="s2">&quot;roleId&quot;</span><span class="p">:</span><span class="s2">&quot;2261e2d7-5d2d-4190-89c2-7184fa9d341f&quot;</span>
+        <span class="p">},</span>
+        <span class="s2">&quot;createInfo&quot;</span><span class="p">:{</span>
+            <span class="s2">&quot;createdAt&quot;</span><span class="p">:</span><span class="s2">&quot;2021-09-28T11:08:26.903198+00:00&quot;</span><span class="p">,</span>
+            <span class="s2">&quot;createdWith&quot;</span><span class="p">:</span><span class="s2">&quot;xcom&quot;</span>
+        <span class="p">}</span>
+    <span class="p">}</span>
+<span class="p">],</span>
+<span class="s2">&quot;firstOffset&quot;</span><span class="p">:</span><span class="s2">&quot;00000000-20ac-176a-0000-0000060f5e86&quot;</span><span class="p">,</span>
+<span class="s2">&quot;lastOffset&quot;</span><span class="p">:</span><span class="s2">&quot;00000000-20ac-176a-0000-0000060f5e87&quot;</span><span class="p">,</span>
+<span class="s2">&quot;hasMore&quot;</span><span class="p">:</span><span class="n">true</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+<p>hasMore в ответе указывает, что существуют еще события после события по смещению lastOffset.
+Для их получения нужно сформировать запрос, в котором в качестве offset передать lastOffset:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">curl</span> <span class="o">-</span><span class="n">X</span> <span class="s1">&#39;GET&#39;</span> \
+    <span class="s1">&#39;https://crm.kontur.ru/api/v1/testswaggerspace/events?offset=00000000-20ac-176a-0000-0000060f5e87&amp;limit=2&#39;</span> \
+    <span class="o">-</span><span class="n">H</span> <span class="s1">&#39;accept: application/json&#39;</span> \
+    <span class="o">-</span><span class="n">H</span> <span class="s1">&#39;Authorization: Bearer xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx&#39;</span>
+</pre></div>
+</div>
+<p>Ответ 200 Ok и модель ObjectEventsList:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="p">{</span>
+<span class="s2">&quot;count&quot;</span><span class="p">:</span><span class="mi">2</span><span class="p">,</span>
+<span class="s2">&quot;items&quot;</span><span class="p">:[</span>
+    <span class="p">{</span>
+        <span class="s2">&quot;id&quot;</span><span class="p">:</span><span class="s2">&quot;3c75d291-09c3-4c3b-8f9b-65cd80ef8580&quot;</span><span class="p">,</span>
+        <span class="s2">&quot;offset&quot;</span><span class="p">:</span><span class="s2">&quot;00000000-20ac-176a-0000-0000060f5e88&quot;</span><span class="p">,</span>
+        <span class="s2">&quot;type&quot;</span><span class="p">:</span><span class="s2">&quot;change&quot;</span><span class="p">,</span>
+        <span class="s2">&quot;changeData&quot;</span><span class="p">:{</span>
+            <span class="s2">&quot;type&quot;</span><span class="p">:</span><span class="s2">&quot;create&quot;</span><span class="p">,</span>
+            <span class="s2">&quot;new&quot;</span><span class="p">:{</span>
+            <span class="s2">&quot;id&quot;</span><span class="p">:</span><span class="s2">&quot;a9a2f13c-218f-4f17-8176-8c96b273eb18&quot;</span><span class="p">,</span>
+            <span class="s2">&quot;name&quot;</span><span class="p">:</span><span class="s2">&quot;Руководитель группы&quot;</span><span class="p">,</span>
+            <span class="s2">&quot;accessRights&quot;</span><span class="p">:[</span>
+                <span class="p">{</span>
+                    <span class="s2">&quot;id&quot;</span><span class="p">:</span><span class="s2">&quot;system.deals.create&quot;</span><span class="p">,</span>
+                    <span class="s2">&quot;level&quot;</span><span class="p">:</span><span class="mi">1</span>
+                <span class="p">},</span>
+                <span class="p">{</span>
+                    <span class="s2">&quot;id&quot;</span><span class="p">:</span><span class="s2">&quot;system.deals.edit&quot;</span><span class="p">,</span>
+                    <span class="s2">&quot;level&quot;</span><span class="p">:</span><span class="mi">1</span>
+                <span class="p">},</span>
+                <span class="p">{</span>
+                    <span class="s2">&quot;id&quot;</span><span class="p">:</span><span class="s2">&quot;system.deals.delete&quot;</span><span class="p">,</span>
+                    <span class="s2">&quot;level&quot;</span><span class="p">:</span><span class="mi">1</span>
+                <span class="p">},</span>
+                <span class="p">{</span>
+                    <span class="s2">&quot;id&quot;</span><span class="p">:</span><span class="s2">&quot;system.tasks.create&quot;</span><span class="p">,</span>
+                    <span class="s2">&quot;level&quot;</span><span class="p">:</span><span class="mi">1</span>
+                <span class="p">},</span>
+                <span class="p">{</span>
+                    <span class="s2">&quot;id&quot;</span><span class="p">:</span><span class="s2">&quot;system.tasks.edit&quot;</span><span class="p">,</span>
+                    <span class="s2">&quot;level&quot;</span><span class="p">:</span><span class="mi">1</span>
+                <span class="p">},</span>
+                <span class="p">{</span>
+                    <span class="s2">&quot;id&quot;</span><span class="p">:</span><span class="s2">&quot;system.tasks.delete&quot;</span><span class="p">,</span>
+                    <span class="s2">&quot;level&quot;</span><span class="p">:</span><span class="mi">1</span>
+                <span class="p">},</span>
+                <span class="p">{</span>
+                    <span class="s2">&quot;id&quot;</span><span class="p">:</span><span class="s2">&quot;system.analytics.view&quot;</span><span class="p">,</span>
+                    <span class="s2">&quot;level&quot;</span><span class="p">:</span><span class="mi">1</span>
+                <span class="p">},</span>
+                <span class="p">{</span>
+                    <span class="s2">&quot;id&quot;</span><span class="p">:</span><span class="s2">&quot;system.plans.edit&quot;</span><span class="p">,</span>
+                    <span class="s2">&quot;level&quot;</span><span class="p">:</span><span class="mi">1</span>
+                <span class="p">},</span>
+                <span class="p">{</span>
+                    <span class="s2">&quot;id&quot;</span><span class="p">:</span><span class="s2">&quot;system.communications.canSendCorporateEmail&quot;</span><span class="p">,</span>
+                    <span class="s2">&quot;level&quot;</span><span class="p">:</span><span class="mi">1</span>
+                <span class="p">},</span>
+                <span class="p">{</span>
+                    <span class="s2">&quot;id&quot;</span><span class="p">:</span><span class="s2">&quot;system.canImport&quot;</span><span class="p">,</span>
+                    <span class="s2">&quot;level&quot;</span><span class="p">:</span><span class="mi">1</span>
+                <span class="p">},</span>
+                <span class="p">{</span>
+                    <span class="s2">&quot;id&quot;</span><span class="p">:</span><span class="s2">&quot;system.canExport&quot;</span><span class="p">,</span>
+                    <span class="s2">&quot;level&quot;</span><span class="p">:</span><span class="mi">1</span>
+                <span class="p">},</span>
+                <span class="p">{</span>
+                    <span class="s2">&quot;id&quot;</span><span class="p">:</span><span class="s2">&quot;system.settings.edit&quot;</span><span class="p">,</span>
+                    <span class="s2">&quot;level&quot;</span><span class="p">:</span><span class="mi">1</span>
+                <span class="p">},</span>
+                <span class="p">{</span>
+                    <span class="s2">&quot;id&quot;</span><span class="p">:</span><span class="s2">&quot;system.communications.view&quot;</span><span class="p">,</span>
+                    <span class="s2">&quot;level&quot;</span><span class="p">:</span><span class="mi">1</span>
+                <span class="p">}</span>
+            <span class="p">]</span>
+            <span class="p">}</span>
+        <span class="p">},</span>
+        <span class="s2">&quot;entityIds&quot;</span><span class="p">:{</span>
+            <span class="s2">&quot;roleId&quot;</span><span class="p">:</span><span class="s2">&quot;a9a2f13c-218f-4f17-8176-8c96b273eb18&quot;</span>
+        <span class="p">},</span>
+        <span class="s2">&quot;createInfo&quot;</span><span class="p">:{</span>
+            <span class="s2">&quot;createdAt&quot;</span><span class="p">:</span><span class="s2">&quot;2021-09-28T11:08:26.903198+00:00&quot;</span><span class="p">,</span>
+            <span class="s2">&quot;createdWith&quot;</span><span class="p">:</span><span class="s2">&quot;xcom&quot;</span>
+        <span class="p">}</span>
+    <span class="p">},</span>
+    <span class="p">{</span>
+        <span class="s2">&quot;id&quot;</span><span class="p">:</span><span class="s2">&quot;075b12d5-fba2-4248-b407-f3bcdac576d8&quot;</span><span class="p">,</span>
+        <span class="s2">&quot;offset&quot;</span><span class="p">:</span><span class="s2">&quot;00000000-20ac-176a-0000-0000060f5e89&quot;</span><span class="p">,</span>
+        <span class="s2">&quot;type&quot;</span><span class="p">:</span><span class="s2">&quot;change&quot;</span><span class="p">,</span>
+        <span class="s2">&quot;changeData&quot;</span><span class="p">:{</span>
+            <span class="s2">&quot;type&quot;</span><span class="p">:</span><span class="s2">&quot;create&quot;</span><span class="p">,</span>
+            <span class="s2">&quot;new&quot;</span><span class="p">:{</span>
+            <span class="s2">&quot;id&quot;</span><span class="p">:</span><span class="s2">&quot;d490af0f-d7d2-40e1-8654-955b863cacd7&quot;</span><span class="p">,</span>
+            <span class="s2">&quot;name&quot;</span><span class="p">:</span><span class="s2">&quot;Руководитель организации&quot;</span><span class="p">,</span>
+            <span class="s2">&quot;accessRights&quot;</span><span class="p">:[</span>
+                <span class="p">{</span>
+                    <span class="s2">&quot;id&quot;</span><span class="p">:</span><span class="s2">&quot;system.deals.create&quot;</span><span class="p">,</span>
+                    <span class="s2">&quot;level&quot;</span><span class="p">:</span><span class="mi">2</span>
+                <span class="p">},</span>
+                <span class="p">{</span>
+                    <span class="s2">&quot;id&quot;</span><span class="p">:</span><span class="s2">&quot;system.deals.edit&quot;</span><span class="p">,</span>
+                    <span class="s2">&quot;level&quot;</span><span class="p">:</span><span class="mi">2</span>
+                <span class="p">},</span>
+                <span class="p">{</span>
+                    <span class="s2">&quot;id&quot;</span><span class="p">:</span><span class="s2">&quot;system.deals.delete&quot;</span><span class="p">,</span>
+                    <span class="s2">&quot;level&quot;</span><span class="p">:</span><span class="mi">2</span>
+                <span class="p">},</span>
+                <span class="p">{</span>
+                    <span class="s2">&quot;id&quot;</span><span class="p">:</span><span class="s2">&quot;system.tasks.create&quot;</span><span class="p">,</span>
+                    <span class="s2">&quot;level&quot;</span><span class="p">:</span><span class="mi">2</span>
+                <span class="p">},</span>
+                <span class="p">{</span>
+                    <span class="s2">&quot;id&quot;</span><span class="p">:</span><span class="s2">&quot;system.tasks.edit&quot;</span><span class="p">,</span>
+                    <span class="s2">&quot;level&quot;</span><span class="p">:</span><span class="mi">2</span>
+                <span class="p">},</span>
+                <span class="p">{</span>
+                    <span class="s2">&quot;id&quot;</span><span class="p">:</span><span class="s2">&quot;system.tasks.delete&quot;</span><span class="p">,</span>
+                    <span class="s2">&quot;level&quot;</span><span class="p">:</span><span class="mi">2</span>
+                <span class="p">},</span>
+                <span class="p">{</span>
+                    <span class="s2">&quot;id&quot;</span><span class="p">:</span><span class="s2">&quot;system.analytics.view&quot;</span><span class="p">,</span>
+                    <span class="s2">&quot;level&quot;</span><span class="p">:</span><span class="mi">2</span>
+                <span class="p">},</span>
+                <span class="p">{</span>
+                    <span class="s2">&quot;id&quot;</span><span class="p">:</span><span class="s2">&quot;system.plans.edit&quot;</span><span class="p">,</span>
+                    <span class="s2">&quot;level&quot;</span><span class="p">:</span><span class="mi">2</span>
+                <span class="p">},</span>
+                <span class="p">{</span>
+                    <span class="s2">&quot;id&quot;</span><span class="p">:</span><span class="s2">&quot;system.communications.canSendCorporateEmail&quot;</span><span class="p">,</span>
+                    <span class="s2">&quot;level&quot;</span><span class="p">:</span><span class="mi">2</span>
+                <span class="p">},</span>
+                <span class="p">{</span>
+                    <span class="s2">&quot;id&quot;</span><span class="p">:</span><span class="s2">&quot;system.canImport&quot;</span><span class="p">,</span>
+                    <span class="s2">&quot;level&quot;</span><span class="p">:</span><span class="mi">2</span>
+                <span class="p">},</span>
+                <span class="p">{</span>
+                    <span class="s2">&quot;id&quot;</span><span class="p">:</span><span class="s2">&quot;system.canExport&quot;</span><span class="p">,</span>
+                    <span class="s2">&quot;level&quot;</span><span class="p">:</span><span class="mi">2</span>
+                <span class="p">},</span>
+                <span class="p">{</span>
+                    <span class="s2">&quot;id&quot;</span><span class="p">:</span><span class="s2">&quot;system.settings.edit&quot;</span><span class="p">,</span>
+                    <span class="s2">&quot;level&quot;</span><span class="p">:</span><span class="mi">2</span>
+                <span class="p">},</span>
+                <span class="p">{</span>
+                    <span class="s2">&quot;id&quot;</span><span class="p">:</span><span class="s2">&quot;system.communications.view&quot;</span><span class="p">,</span>
+                    <span class="s2">&quot;level&quot;</span><span class="p">:</span><span class="mi">2</span>
+                <span class="p">}</span>
+            <span class="p">]</span>
+            <span class="p">}</span>
+        <span class="p">},</span>
+        <span class="s2">&quot;entityIds&quot;</span><span class="p">:{</span>
+            <span class="s2">&quot;roleId&quot;</span><span class="p">:</span><span class="s2">&quot;d490af0f-d7d2-40e1-8654-955b863cacd7&quot;</span>
+        <span class="p">},</span>
+        <span class="s2">&quot;createInfo&quot;</span><span class="p">:{</span>
+            <span class="s2">&quot;createdAt&quot;</span><span class="p">:</span><span class="s2">&quot;2021-09-28T11:08:26.903198+00:00&quot;</span><span class="p">,</span>
+            <span class="s2">&quot;createdWith&quot;</span><span class="p">:</span><span class="s2">&quot;xcom&quot;</span>
+        <span class="p">}</span>
+    <span class="p">}</span>
+<span class="p">],</span>
+<span class="s2">&quot;firstOffset&quot;</span><span class="p">:</span><span class="s2">&quot;00000000-20ac-176a-0000-0000060f5e88&quot;</span><span class="p">,</span>
+<span class="s2">&quot;lastOffset&quot;</span><span class="p">:</span><span class="s2">&quot;00000000-20ac-176a-0000-0000060f5e89&quot;</span><span class="p">,</span>
+<span class="s2">&quot;hasMore&quot;</span><span class="p">:</span><span class="n">true</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+<p>Когда в ответе будет получен hasMore = false — все события на текущий момент были прочитаны.</p>
+</div>
+<div class="section" id="id3">
+<h2>Описание модели ответа<a class="headerlink" href="#id3" title="Ссылка на этот заголовок">¶</a></h2>
+<p>Модель ObjectEventsList имеет следующую структуру:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="p">{</span>
+    <span class="s2">&quot;count&quot;</span> <span class="p">:</span> <span class="mi">2</span><span class="p">,</span> <span class="o">//</span><span class="n">кол</span><span class="o">-</span><span class="n">во</span> <span class="n">событий</span> <span class="n">в</span> <span class="n">ответе</span>
+    <span class="s2">&quot;items&quot;</span> <span class="p">:</span> <span class="p">[</span><span class="o">...</span><span class="p">],</span> <span class="o">//</span><span class="n">массив</span> <span class="n">событий</span> <span class="n">каждое</span> <span class="n">событие</span> <span class="n">описывается</span> <span class="n">моделью</span> <span class="n">ObjectEvent</span>
+    <span class="s2">&quot;firstOffset&quot;</span> <span class="p">:</span> <span class="s2">&quot;00000000-20ac-176a-0000-0000060f5e88&quot;</span><span class="p">,</span> <span class="o">//</span><span class="n">смешение</span> <span class="n">первого</span> <span class="n">события</span> <span class="n">в</span> <span class="n">ответе</span>
+    <span class="s2">&quot;lastOffset&quot;</span><span class="p">:</span> <span class="s2">&quot;00000000-20ac-176a-0000-0000060f5e89&quot;</span><span class="p">,</span> <span class="o">//</span><span class="n">смешение</span> <span class="n">последнего</span> <span class="n">события</span> <span class="n">в</span> <span class="n">ответе</span>
+    <span class="s2">&quot;hasMore&quot;</span><span class="p">:</span> <span class="n">true</span> <span class="o">//</span><span class="n">есть</span> <span class="n">ли</span> <span class="n">события</span> <span class="n">после</span> <span class="n">последнего</span> <span class="n">события</span> <span class="n">из</span> <span class="n">ответа</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+<p>Модель ObjectEvent:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="p">{</span>
+<span class="s2">&quot;id&quot;</span><span class="p">:</span> <span class="s2">&quot;3c75d291-09c3-4c3b-8f9b-65cd80ef8580&quot;</span><span class="p">,</span> <span class="o">//</span> <span class="n">идентификатор</span> <span class="n">события</span>
+<span class="s2">&quot;offset&quot;</span><span class="p">:</span> <span class="s2">&quot;00000000-20ac-176a-0000-0000060f5e88&quot;</span><span class="p">,</span> <span class="o">//</span> <span class="n">смещение</span> <span class="n">события</span>
+<span class="s2">&quot;type&quot;</span><span class="p">:</span> <span class="s2">&quot;change&quot;</span><span class="p">,</span> <span class="o">//</span> <span class="n">тип</span> <span class="n">change</span> <span class="o">-</span> <span class="n">изменение</span> <span class="n">сущности</span><span class="p">,</span> <span class="n">link</span><span class="o">/</span><span class="n">unlink</span> <span class="o">-</span> <span class="n">изменения</span> <span class="n">связей</span> <span class="n">с</span> <span class="n">сущностью</span>
+<span class="s2">&quot;createInfo&quot;</span> <span class="p">:</span> <span class="p">{</span> <span class="o">//</span><span class="n">иформация</span> <span class="n">о</span> <span class="n">времени</span> <span class="n">создания</span> <span class="n">события</span>
+<span class="s2">&quot;createdAt&quot;</span> <span class="p">:</span> <span class="s2">&quot;2021-09-28T11:08:26.903198+00:00&quot;</span><span class="p">,</span> <span class="o">//</span> <span class="n">время</span> <span class="n">создания</span> <span class="n">когдасобытия</span>
+<span class="s2">&quot;createdByUserId&quot;</span><span class="p">:</span> <span class="s2">&quot;7489f14b-f11b-4e13-83c4-276a183caf82&quot;</span><span class="p">,</span> <span class="o">//</span><span class="n">идентификатор</span> <span class="n">полльзователя</span> <span class="n">создавшего</span> <span class="n">событие</span>
+<span class="s2">&quot;createdWith&quot;</span> <span class="p">:</span> <span class="s2">&quot;WebApp&quot;</span><span class="p">,</span> <span class="o">//</span> <span class="n">имя</span> <span class="n">приложения</span> <span class="n">с</span> <span class="n">использованием</span><span class="p">,</span> <span class="n">которого</span> <span class="n">было</span> <span class="n">создано</span> <span class="n">событие</span>
+<span class="p">},</span>
+<span class="s2">&quot;entityIds&quot;</span> <span class="p">:</span> <span class="p">{</span> <span class="o">//</span> <span class="n">идентификаторы</span> <span class="n">сущностей</span> <span class="n">к</span> <span class="n">которым</span> <span class="n">отсится</span> <span class="n">событе</span><span class="p">,</span> <span class="n">если</span> <span class="nb">type</span> <span class="o">=</span> <span class="n">change</span><span class="p">,</span> <span class="n">то</span> <span class="n">будет</span> <span class="n">представлено</span> <span class="n">ровно</span> <span class="n">одно</span> <span class="n">поле</span>
+<span class="o">//</span> <span class="n">из</span> <span class="n">списка</span> <span class="n">ниже</span><span class="o">.</span> <span class="n">Если</span> <span class="n">событие</span> <span class="n">об</span> <span class="n">изменении</span> <span class="n">связей</span> <span class="n">между</span> <span class="n">объектами</span> <span class="n">link</span><span class="o">/</span><span class="n">unlink</span><span class="p">,</span> <span class="n">то</span> <span class="n">будут</span> <span class="n">представлены</span>
+<span class="o">//</span> <span class="n">идентификаторы</span> <span class="n">объектов</span> <span class="n">м</span><span class="o">/</span><span class="n">у</span> <span class="n">которыми</span> <span class="n">изменилась</span> <span class="n">связь</span><span class="p">,</span> <span class="n">например</span> <span class="n">companyId</span><span class="o">-</span><span class="n">dealId</span><span class="o">.</span>
+<span class="o">//</span> <span class="n">идентификаторы</span> <span class="n">сущностей</span> <span class="n">представлены</span> <span class="n">в</span> <span class="n">виде</span> <span class="n">строк</span><span class="o">-</span><span class="n">GUID</span><span class="p">,</span> <span class="n">в</span> <span class="n">ответе</span> <span class="n">будут</span> <span class="n">представлены</span> <span class="n">только</span> <span class="nb">id</span> <span class="n">по</span> <span class="n">которым</span>
+<span class="o">//</span> <span class="n">были</span> <span class="n">изменения</span>
+<span class="s2">&quot;dealId&quot;</span> <span class="p">:</span> <span class="s2">&quot;&quot;</span><span class="p">,</span>
+<span class="s2">&quot;companyId&quot;</span> <span class="p">:</span> <span class="s2">&quot;&quot;</span><span class="p">,</span>
+<span class="s2">&quot;workflowId&quot;</span> <span class="p">:</span> <span class="s2">&quot;&quot;</span><span class="p">,</span>
+<span class="s2">&quot;taskId&quot;</span> <span class="p">:</span> <span class="s2">&quot;&quot;</span><span class="p">,</span>
+<span class="s2">&quot;notificationId&quot;</span> <span class="p">:</span> <span class="s2">&quot;&quot;</span><span class="p">,</span>
+<span class="s2">&quot;contactId&quot;</span> <span class="p">:</span> <span class="s2">&quot;&quot;</span><span class="p">,</span>
+<span class="s2">&quot;userId&quot;</span> <span class="p">:</span> <span class="s2">&quot;&quot;</span><span class="p">,</span>
+<span class="s2">&quot;groupId&quot;</span> <span class="p">:</span> <span class="s2">&quot;&quot;</span><span class="p">,</span>
+<span class="s2">&quot;integrationId&quot;</span> <span class="p">:</span> <span class="s2">&quot;&quot;</span><span class="p">,</span>
+<span class="s2">&quot;roleId&quot;</span> <span class="p">:</span> <span class="s2">&quot;&quot;</span><span class="p">,</span>
+<span class="s2">&quot;communicationId&quot;</span> <span class="p">:</span> <span class="s2">&quot;&quot;</span><span class="p">,</span>
+<span class="s2">&quot;analyticsSettingId&quot;</span> <span class="p">:</span> <span class="s2">&quot;&quot;</span><span class="p">,</span>
+<span class="s2">&quot;templateId&quot;</span> <span class="p">:</span> <span class="s2">&quot;&quot;</span><span class="p">,</span>
+<span class="s2">&quot;catalogItemId&quot;</span> <span class="p">:</span> <span class="s2">&quot;&quot;</span>
+<span class="p">},</span>
+<span class="s2">&quot;changeData&quot;</span> <span class="p">:</span> <span class="p">{</span> <span class="o">//</span><span class="n">описание</span> <span class="n">изменения</span> <span class="n">сущности</span><span class="p">,</span> <span class="n">которое</span> <span class="n">произошло</span>
+<span class="s2">&quot;type&quot;</span> <span class="p">:</span> <span class="s2">&quot;patch&quot;</span><span class="p">,</span> <span class="o">//</span><span class="n">тип</span> <span class="n">изменения</span> <span class="n">create</span><span class="p">,</span> <span class="n">patch</span><span class="p">,</span> <span class="n">delete</span><span class="p">,</span> <span class="n">restore</span>
+<span class="s2">&quot;old&quot;</span> <span class="p">:</span> <span class="p">{},</span> <span class="o">//</span> <span class="n">описание</span> <span class="n">объекта</span> <span class="n">перед</span> <span class="n">изменением</span><span class="o">.</span> <span class="n">Для</span> <span class="n">изменений</span> <span class="n">create</span><span class="o">/</span><span class="n">restore</span> <span class="n">тут</span> <span class="n">будет</span> <span class="n">null</span><span class="p">,</span>
+<span class="o">//</span> <span class="n">для</span> <span class="n">patch</span><span class="o">/</span><span class="n">delete</span> <span class="o">-</span> <span class="n">json</span> <span class="n">сериализованное</span> <span class="n">представление</span> <span class="n">объекта</span><span class="o">.</span>
+<span class="o">//</span> <span class="n">Например</span><span class="p">,</span> <span class="n">для</span> <span class="n">если</span> <span class="n">событие</span> <span class="n">описывает</span> <span class="n">PATCH</span> <span class="n">Company</span> <span class="n">здесь</span> <span class="n">будет</span> <span class="n">json</span> <span class="n">модели</span> <span class="n">Company</span>
+<span class="s2">&quot;new&quot;</span> <span class="p">:</span> <span class="p">{},</span> <span class="o">//</span> <span class="n">описвание</span> <span class="n">объекта</span> <span class="n">после</span> <span class="n">изменения</span><span class="o">.</span> <span class="n">Для</span> <span class="n">delete</span> <span class="n">здесь</span> <span class="n">будет</span> <span class="n">null</span><span class="o">.</span>
+<span class="p">}</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="id4">
+<h2>Алгоритм синхронизации<a class="headerlink" href="#id4" title="Ссылка на этот заголовок">¶</a></h2>
+<p>Допустим, нужно синхронизировать из Контур CRM изменения по объектам Company.</p>
+<ol class="arabic simple">
+<li><p>Если syncedOffset не проинициализирован, то syncedOffset:= „00000000-0000-0000-0000-000000000000“.</p></li>
+<li><p>Формируем запрос за событиям на получение сущностей с offset = syncedOffset и limit равным 50.</p></li>
+<li><p>Фильтруем полученные события. Eсли entityIds/companyId != null, то это событие описывает либо изменение какого-то объекта Company, либо связей этого объекта.</p></li>
+<li><p>На основании отфильтрованные событий. По eventType и changeDatas обновляем соответствующие сущности во внешней системе.</p></li>
+<li><p>Сохраняем в syncedOffset = lastOffset из ответа.</p></li>
+<li><p>Если в ответе hasMore = false, то засыпаем на какое-то время (например, 1 минута).</p></li>
+<li><p>Переходим на шаг 1.</p></li>
+</ol>
+<p>При получении изменения через ленту событий гарантируется. что будут получены все изменения.</p>
+</div>
+</div>
+
+
+           </div>
+          </div>
+          <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
+        <a href="index.html" class="btn btn-neutral float-left" title="Получение информации об измененных сущностях" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="webhooks.html" class="btn btn-neutral float-right" title="Подписка на события об изменениях — WebHook" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p></p>
+  </div>
+
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

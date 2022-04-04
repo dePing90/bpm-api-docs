@@ -1,0 +1,254 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="ru" >
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Создание пользовательских полей &mdash; документация Контур CRM 1.1</title><link rel="stylesheet" href="../_static/css/theme.css" type="text/css" />
+    <link rel="stylesheet" href="../_static/pygments.css" type="text/css" /><link rel="shortcut icon" href="../_static/favicon.ico"/>
+  <!--[if lt IE 9]>
+    <script src="../_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  <script id="documentation_options" data-url_root="../" src="../_static/documentation_options.js"></script>
+        <script src="../_static/jquery.js"></script>
+        <script src="../_static/underscore.js"></script>
+        <script src="../_static/doctools.js"></script>
+        <script src="../_static/language_data.js"></script>
+        <script src="../_static/translations.js"></script>
+    <script src="../_static/js/theme.js"></script>
+    <link rel="index" title="Алфавитный указатель" href="../genindex.html" />
+    <link rel="search" title="Поиск" href="../search.html" />
+    <link rel="next" title="Типы пользовательских полей" href="custom-fields-type.html" />
+    <link rel="prev" title="Работа с пользовательскими полями" href="index.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+            <a href="../index.html" class="icon icon-home"> Контур CRM
+          </a>
+              <div class="version">
+                1.1
+              </div>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../models/index.html">Описание моделей</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../entity-creation/index.html">Создание и модификация сущностей</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../entity-modification-info/index.html">Получение информации об измененных сущностях</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="index.html">Работа с пользовательскими полями</a><ul class="current">
+<li class="toctree-l2 current"><a class="current reference internal" href="#">Создание пользовательских полей</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#id2">Создание пользовательских полей через интерфейс</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#api">Создание пользовательских через API</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="custom-fields-type.html">Типы пользовательских полей</a></li>
+<li class="toctree-l2"><a class="reference internal" href="custom-fields-interface.html">Отображение в интерфейсе</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../phone-integration/index.html">Интеграция с телефонией</a></li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../index.html">Контур CRM</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="../index.html" class="icon icon-home"></a> &raquo;</li>
+          <li><a href="index.html">Работа с пользовательскими полями</a> &raquo;</li>
+      <li>Создание пользовательских полей</li>
+      <li class="wy-breadcrumbs-aside">
+            <a href="../_sources/custom-fields/custom-fields-creation.rst.txt" rel="nofollow"> View page source</a>
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <div class="section" id="id1">
+<h1>Создание пользовательских полей<a class="headerlink" href="#id1" title="Ссылка на этот заголовок">¶</a></h1>
+<p>Crm.Kontur позволяет добавлять пользовательские поля в основные сущности системы:</p>
+<ul class="simple">
+<li><p>Сделку (Deal)</p></li>
+<li><p>Компанию (Company)</p></li>
+<li><p>Контакт (Contact)</p></li>
+<li><p>Пользователя (User)</p></li>
+</ul>
+<div class="section" id="id2">
+<h2>Создание пользовательских полей через интерфейс<a class="headerlink" href="#id2" title="Ссылка на этот заголовок">¶</a></h2>
+<p>Для того, чтобы добавить в сделку поле нужно:</p>
+<ol class="arabic simple">
+<li><p>С правами Администратора перейти в карточку сделки</p></li>
+<li><p>Перейти в настройки и выбрать «Добавить поле»</p></li>
+</ol>
+<img alt="../_images/custom-fields-menu.png" src="../_images/custom-fields-menu.png" />
+<ol class="arabic simple" start="3">
+<li><p>Заполняем настройки. Нажимаем «Сохранить».</p></li>
+</ol>
+<img alt="../_images/new-field.png" src="../_images/new-field.png" />
+<ol class="arabic simple" start="4">
+<li><p>После добавления поля, в выбираем в Настройках (п.2) настроить «Настроить порядок полей»</p></li>
+</ol>
+<img alt="../_images/fields-order.png" src="../_images/fields-order.png" />
+<ol class="arabic simple" start="5">
+<li><p>Перетаскиваем поле выше «Показать еще», чтобы всегда видеть его при открытии карточки сделки.</p></li>
+<li><p>Переходим на «Список сделок» и если нам необходимо добавляем поле для «вывода» на списке.</p></li>
+</ol>
+<img alt="../_images/columns-settings.png" src="../_images/columns-settings.png" />
+</div>
+<div class="section" id="api">
+<h2>Создание пользовательских через API<a class="headerlink" href="#api" title="Ссылка на этот заголовок">¶</a></h2>
+<p>Для того, чтобы добавить пользовательское поле в сущность, необходимо объявить его в настройках (Settings) рабочего пространства (Workspace).</p>
+<p>Метод API:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">PATCH</span> <span class="n">https</span><span class="p">:</span><span class="o">//</span><span class="n">crm</span><span class="o">.</span><span class="n">kontur</span><span class="o">.</span><span class="n">ru</span><span class="o">/</span><span class="n">api</span><span class="o">/</span><span class="n">v1</span><span class="o">/</span><span class="p">{</span><span class="n">ws</span><span class="p">}</span><span class="o">/</span><span class="n">settings</span>
+</pre></div>
+</div>
+<p>В модели Settings есть поле CustomFields, в котом описываются пользовательские поля.</p>
+<p>Пример.</p>
+<p>Для контакта (Contact) требуется добавить:</p>
+<ul class="simple">
+<li><p>поле типа «список» с названием «Тип» и значениями «Хороший», «Плохой».</p></li>
+<li><p>поле типа «ссылка» с названием «Соц. сеть».</p></li>
+<li><p>поле типа «Checkbox» с названием «Проверен».</p></li>
+</ul>
+<p>Для Компании (Company):</p>
+<ul class="simple">
+<li><p>строковое поле с названием «Cчет» — расчетный счет клиента.</p></li>
+</ul>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">curl</span> <span class="o">-</span><span class="n">X</span> <span class="s1">&#39;PATCH&#39;</span> \
+<span class="s1">&#39;https://crm.kontur.ru/api/v1/testswaggerspace/settings&#39;</span> \
+<span class="o">-</span><span class="n">H</span> <span class="s1">&#39;accept: application/json&#39;</span> \
+<span class="o">-</span><span class="n">H</span> <span class="s1">&#39;Authorization: Bearer fa1036cb0805c4b682cc81634eb6ecdd338f1e20908a2b9491e82c3da4dc8a8f&#39;</span> \
+<span class="o">-</span><span class="n">H</span> <span class="s1">&#39;Content-Type: application/json-patch+json&#39;</span> \
+<span class="o">-</span><span class="n">d</span> <span class="s1">&#39;{</span>
+<span class="s2">&quot;operations&quot;</span><span class="p">:</span> <span class="p">[</span>
+<span class="p">{</span>
+<span class="s2">&quot;op&quot;</span><span class="p">:</span> <span class="s2">&quot;add&quot;</span><span class="p">,</span>
+<span class="s2">&quot;path&quot;</span><span class="p">:</span> <span class="s2">&quot;/customFields/contact&quot;</span><span class="p">,</span>
+<span class="s2">&quot;value&quot;</span><span class="p">:</span> <span class="p">{</span>
+<span class="s2">&quot;id&quot;</span><span class="p">:</span> <span class="s2">&quot;socialLink&quot;</span><span class="p">,</span>
+<span class="s2">&quot;name&quot;</span><span class="p">:</span> <span class="s2">&quot;Соц. сеть&quot;</span><span class="p">,</span>
+<span class="s2">&quot;description&quot;</span><span class="p">:</span> <span class="s2">&quot;Ссылка на социальную сеть&quot;</span><span class="p">,</span>
+<span class="s2">&quot;type&quot;</span><span class="p">:</span> <span class="s2">&quot;url&quot;</span>
+<span class="p">}</span>
+<span class="p">},</span>
+<span class="p">{</span>
+<span class="s2">&quot;op&quot;</span><span class="p">:</span> <span class="s2">&quot;add&quot;</span><span class="p">,</span>
+<span class="s2">&quot;path&quot;</span><span class="p">:</span> <span class="s2">&quot;/customFields/contact&quot;</span><span class="p">,</span>
+<span class="s2">&quot;value&quot;</span><span class="p">:</span> <span class="p">{</span>
+<span class="s2">&quot;id&quot;</span><span class="p">:</span> <span class="s2">&quot;typeContact&quot;</span><span class="p">,</span>
+<span class="s2">&quot;name&quot;</span><span class="p">:</span> <span class="s2">&quot;Тип&quot;</span><span class="p">,</span>
+<span class="s2">&quot;description&quot;</span><span class="p">:</span> <span class="s2">&quot;Тип&quot;</span><span class="p">,</span>
+<span class="s2">&quot;type&quot;</span><span class="p">:</span> <span class="s2">&quot;select&quot;</span><span class="p">,</span>
+<span class="s2">&quot;options&quot;</span><span class="p">:</span> <span class="p">[</span>
+<span class="p">{</span>
+<span class="s2">&quot;id&quot;</span><span class="p">:</span> <span class="s2">&quot;good&quot;</span><span class="p">,</span>
+<span class="s2">&quot;name&quot;</span><span class="p">:</span> <span class="s2">&quot;Хороший&quot;</span>
+<span class="p">},</span>
+<span class="p">{</span>
+<span class="s2">&quot;id&quot;</span><span class="p">:</span> <span class="s2">&quot;bad&quot;</span><span class="p">,</span>
+<span class="s2">&quot;name&quot;</span><span class="p">:</span> <span class="s2">&quot;Плохой&quot;</span>
+<span class="p">}</span>
+<span class="p">]</span>
+<span class="p">}</span>
+<span class="p">},</span>
+<span class="p">{</span>
+<span class="s2">&quot;op&quot;</span><span class="p">:</span> <span class="s2">&quot;add&quot;</span><span class="p">,</span>
+<span class="s2">&quot;path&quot;</span><span class="p">:</span> <span class="s2">&quot;/customFields/contact&quot;</span><span class="p">,</span>
+<span class="s2">&quot;value&quot;</span><span class="p">:</span> <span class="p">{</span>
+<span class="s2">&quot;id&quot;</span><span class="p">:</span> <span class="s2">&quot;verifiedContact&quot;</span><span class="p">,</span>
+<span class="s2">&quot;name&quot;</span><span class="p">:</span> <span class="s2">&quot;Проверен&quot;</span><span class="p">,</span>
+<span class="s2">&quot;description&quot;</span><span class="p">:</span> <span class="s2">&quot;Проверенный ли контакт?&quot;</span><span class="p">,</span>
+<span class="s2">&quot;type&quot;</span><span class="p">:</span> <span class="s2">&quot;boolean&quot;</span>
+<span class="p">}</span>
+<span class="p">},</span>
+<span class="p">{</span>
+<span class="s2">&quot;op&quot;</span><span class="p">:</span> <span class="s2">&quot;add&quot;</span><span class="p">,</span>
+<span class="s2">&quot;path&quot;</span><span class="p">:</span> <span class="s2">&quot;/customFields/company&quot;</span><span class="p">,</span>
+<span class="s2">&quot;value&quot;</span><span class="p">:</span> <span class="p">{</span>
+<span class="s2">&quot;id&quot;</span><span class="p">:</span> <span class="s2">&quot;countingNum&quot;</span><span class="p">,</span>
+<span class="s2">&quot;name&quot;</span><span class="p">:</span> <span class="s2">&quot;Счет&quot;</span><span class="p">,</span>
+<span class="s2">&quot;description&quot;</span><span class="p">:</span> <span class="s2">&quot;Рассчетный счет клиента&quot;</span><span class="p">,</span>
+<span class="s2">&quot;type&quot;</span><span class="p">:</span> <span class="s2">&quot;text&quot;</span>
+<span class="p">}</span>
+<span class="p">}</span>
+<span class="p">]</span>
+<span class="p">}</span><span class="s1">&#39;</span>
+</pre></div>
+</div>
+<p>В ответ получаем 200 Ok и актуальные настройки пространства, модель Settings.</p>
+<p>Описание модели CustomFieldSettings из Settings.CustomFields.</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>  <span class="p">{</span>
+      <span class="s2">&quot;id&quot;</span><span class="p">:</span> <span class="s2">&quot;typeContact&quot;</span><span class="p">,</span> <span class="o">//</span><span class="n">идентификатор</span> <span class="n">поле</span><span class="p">,</span> <span class="n">поля</span> <span class="n">удалять</span><span class="o">/</span><span class="n">модифицировать</span>
+      <span class="o">//</span><span class="n">в</span> <span class="n">настройках</span> <span class="n">можно</span> <span class="n">только</span> <span class="n">по</span> <span class="nb">id</span>
+      <span class="s2">&quot;name&quot;</span><span class="p">:</span> <span class="s2">&quot;Тип&quot;</span><span class="p">,</span> <span class="o">//</span> <span class="n">Наименоваение</span> <span class="o">-</span> <span class="n">будет</span> <span class="n">выводиться</span> <span class="n">в</span> <span class="n">UI</span>
+      <span class="s2">&quot;description&quot;</span><span class="p">:</span> <span class="s2">&quot;Тип&quot;</span><span class="p">,</span> <span class="o">//</span> <span class="n">Описание</span> <span class="o">-</span> <span class="n">будет</span> <span class="n">выводить</span> <span class="n">в</span> <span class="n">UI</span>
+      <span class="s2">&quot;type&quot;</span><span class="p">:</span> <span class="s2">&quot;select&quot;</span><span class="p">,</span> <span class="o">//</span><span class="n">тип</span> <span class="n">поля</span>
+      <span class="s2">&quot;hidden&quot;</span><span class="p">:</span> <span class="n">false</span><span class="p">,</span> <span class="o">//</span> <span class="n">должно</span> <span class="n">ли</span> <span class="n">поле</span> <span class="n">быть</span> <span class="n">скрытым</span> <span class="n">в</span> <span class="n">UI</span>
+      <span class="s2">&quot;readOnly&quot;</span><span class="p">:</span> <span class="n">false</span><span class="p">,</span> <span class="o">//</span> <span class="n">пользователь</span> <span class="n">в</span> <span class="n">UI</span> <span class="n">не</span> <span class="n">может</span> <span class="n">его</span> <span class="n">редактировать</span>
+      <span class="s2">&quot;permanent&quot;</span><span class="p">:</span> <span class="n">false</span><span class="p">,</span>
+      <span class="s2">&quot;options&quot;</span><span class="p">:</span> <span class="p">[</span> <span class="o">//</span><span class="n">используется</span> <span class="n">для</span> <span class="n">конфигурации</span> <span class="n">возмодных</span> <span class="n">вариантов</span> <span class="n">значенийсписков</span><span class="o">.</span>
+      <span class="o">//</span><span class="n">только</span> <span class="n">для</span> <span class="nb">type</span> <span class="o">=</span> <span class="n">select</span> <span class="n">или</span> <span class="nb">type</span> <span class="o">=</span> <span class="n">multiSelect</span>
+      <span class="p">{</span>
+      <span class="s2">&quot;id&quot;</span><span class="p">:</span> <span class="s2">&quot;good&quot;</span><span class="p">,</span>
+      <span class="s2">&quot;name&quot;</span><span class="p">:</span> <span class="s2">&quot;Хороший&quot;</span><span class="p">,</span>
+      <span class="s2">&quot;order&quot;</span><span class="p">:</span> <span class="mi">0</span>
+      <span class="p">},</span>
+      <span class="p">{</span>
+      <span class="s2">&quot;id&quot;</span><span class="p">:</span> <span class="s2">&quot;bad&quot;</span><span class="p">,</span>
+      <span class="s2">&quot;name&quot;</span><span class="p">:</span> <span class="s2">&quot;Плохой&quot;</span><span class="p">,</span>
+      <span class="s2">&quot;order&quot;</span><span class="p">:</span> <span class="mi">0</span>
+      <span class="p">}</span>
+      <span class="p">],</span>
+      <span class="s2">&quot;uiSettings&quot;</span><span class="p">:</span> <span class="p">{}</span> <span class="o">//</span><span class="n">используется</span> <span class="n">для</span> <span class="n">настройки</span> <span class="n">отображения</span> <span class="n">поля</span> <span class="n">в</span> <span class="n">UI</span><span class="p">,</span> <span class="n">подробнее</span> <span class="n">ниже</span> <span class="n">и</span> <span class="n">в</span> <span class="n">Swagger</span><span class="o">.</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+</div>
+</div>
+
+
+           </div>
+          </div>
+          <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
+        <a href="index.html" class="btn btn-neutral float-left" title="Работа с пользовательскими полями" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="custom-fields-type.html" class="btn btn-neutral float-right" title="Типы пользовательских полей" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p></p>
+  </div>
+
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

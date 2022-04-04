@@ -1,0 +1,200 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="ru" >
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Пример модицикации контакта &mdash; документация Контур CRM 1.1</title><link rel="stylesheet" href="../_static/css/theme.css" type="text/css" />
+    <link rel="stylesheet" href="../_static/pygments.css" type="text/css" /><link rel="shortcut icon" href="../_static/favicon.ico"/>
+  <!--[if lt IE 9]>
+    <script src="../_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  <script id="documentation_options" data-url_root="../" src="../_static/documentation_options.js"></script>
+        <script src="../_static/jquery.js"></script>
+        <script src="../_static/underscore.js"></script>
+        <script src="../_static/doctools.js"></script>
+        <script src="../_static/language_data.js"></script>
+        <script src="../_static/translations.js"></script>
+    <script src="../_static/js/theme.js"></script>
+    <link rel="index" title="Алфавитный указатель" href="../genindex.html" />
+    <link rel="search" title="Поиск" href="../search.html" />
+    <link rel="next" title="Формирование PATCH запросов" href="patch-requests.html" />
+    <link rel="prev" title="Пример создания нескольких контактов" href="batch-create.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+            <a href="../index.html" class="icon icon-home"> Контур CRM
+          </a>
+              <div class="version">
+                1.1
+              </div>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../models/index.html">Описание моделей</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="index.html">Создание и модификация сущностей</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="company-creation.html">Пример создания Клиента</a></li>
+<li class="toctree-l2"><a class="reference internal" href="batch-create.html">Пример создания нескольких контактов</a></li>
+<li class="toctree-l2 current"><a class="current reference internal" href="#">Пример модицикации контакта</a></li>
+<li class="toctree-l2"><a class="reference internal" href="patch-requests.html">Формирование PATCH запросов</a></li>
+<li class="toctree-l2"><a class="reference internal" href="patch-operations.html">Операции, доступные в PATCH запросах</a></li>
+<li class="toctree-l2"><a class="reference internal" href="path-operations.html">Формирование пути в операциях</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../entity-modification-info/index.html">Получение информации об измененных сущностях</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../custom-fields/index.html">Работа с пользовательскими полями</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../phone-integration/index.html">Интеграция с телефонией</a></li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../index.html">Контур CRM</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="../index.html" class="icon icon-home"></a> &raquo;</li>
+          <li><a href="index.html">Создание и модификация сущностей</a> &raquo;</li>
+      <li>Пример модицикации контакта</li>
+      <li class="wy-breadcrumbs-aside">
+            <a href="../_sources/entity-creation/contact-modification.rst.txt" rel="nofollow"> View page source</a>
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <div class="section" id="id1">
+<h1>Пример модицикации контакта<a class="headerlink" href="#id1" title="Ссылка на этот заголовок">¶</a></h1>
+<p><a class="reference external" href="https://developer.kontur.ru/doc/crm/method?type=get&amp;path=%2Fapi%2Fv1%2F%7Bws%7D%2Fcontacts%2F%7Bid%7D">Метод API для изменения контактов</a></p>
+<p>Допустим, есть контакт и у него обновилась информация.
+Настоящая фамилия не Мостовой, а Бочкин и должность
+не «Руководитель IT отдела», а «Менеджер по продажам». Так же удалим телефон и добавим почту. Исходный Contact в API:</p>
+<div class="highlight-c# notranslate"><div class="highlight"><pre><span></span>  <span class="p">{</span>
+      <span class="s">&quot;updateInfo&quot;</span><span class="p">:</span> <span class="p">{</span>
+          <span class="s">&quot;updatedAt&quot;</span><span class="p">:</span> <span class="s">&quot;2021-10-02T13:32:00.973935+00:00&quot;</span><span class="p">,</span>
+          <span class="s">&quot;updatedByUserId&quot;</span><span class="p">:</span> <span class="s">&quot;253f8b40-abe9-4643-81f2-6a6ffa4861be&quot;</span><span class="p">,</span>
+          <span class="s">&quot;updatedWith&quot;</span><span class="p">:</span> <span class="s">&quot;WebApp&quot;</span><span class="p">,</span>
+          <span class="s">&quot;createdAt&quot;</span><span class="p">:</span> <span class="s">&quot;2021-10-02T13:32:00.973935+00:00&quot;</span><span class="p">,</span>
+          <span class="s">&quot;createdByUserId&quot;</span><span class="p">:</span> <span class="s">&quot;253f8b40-abe9-4643-81f2-6a6ffa4861be&quot;</span><span class="p">,</span>
+          <span class="s">&quot;createdWith&quot;</span><span class="p">:</span> <span class="s">&quot;WebApp&quot;</span>
+      <span class="p">},</span>
+  <span class="s">&quot;links&quot;</span><span class="p">:</span> <span class="p">{</span>
+      <span class="s">&quot;companyIds&quot;</span><span class="p">:</span> <span class="p">[</span>
+          <span class="s">&quot;98479adb-9802-4856-8e8c-6380851f4ae7&quot;</span>
+          <span class="p">]</span>
+       <span class="p">},</span>
+  <span class="s">&quot;position&quot;</span><span class="p">:</span> <span class="s">&quot;Руководитель IT отдела&quot;</span><span class="p">,</span>
+  <span class="s">&quot;name&quot;</span><span class="p">:</span> <span class="s">&quot;Мостовой Александр Викторович&quot;</span><span class="p">,</span>
+  <span class="s">&quot;messengerContacts&quot;</span><span class="p">:</span> <span class="p">[],</span>
+  <span class="s">&quot;phones&quot;</span><span class="p">:</span> <span class="p">[</span>
+      <span class="p">{</span>
+      <span class="s">&quot;id&quot;</span><span class="p">:</span> <span class="s">&quot;7ed85d94-7827-4481-9142-db07a04835a3&quot;</span><span class="p">,</span>
+      <span class="s">&quot;type&quot;</span><span class="p">:</span> <span class="s">&quot;work&quot;</span><span class="p">,</span>
+      <span class="s">&quot;value&quot;</span><span class="p">:</span> <span class="s">&quot;89452547894&quot;</span>
+      <span class="p">}</span>
+   <span class="p">],</span>
+  <span class="s">&quot;emails&quot;</span><span class="p">:</span> <span class="p">[],</span>
+  <span class="s">&quot;regionCode&quot;</span><span class="p">:</span> <span class="s">&quot;66&quot;</span><span class="p">,</span>
+  <span class="s">&quot;customFields&quot;</span><span class="p">:</span> <span class="p">{},</span>
+  <span class="s">&quot;tags&quot;</span><span class="p">:</span> <span class="p">[],</span>
+  <span class="s">&quot;id&quot;</span><span class="p">:</span> <span class="s">&quot;529edc65-e929-4957-b7b4-924126547323&quot;</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+<p>Запрос на модификацию:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">curl</span> <span class="o">-</span><span class="n">X</span> <span class="s1">&#39;PATCH&#39;</span> \
+    <span class="s1">&#39;https://crm.kontur.ru/api/v1/testswaggerspace/contacts/529edc65-e929-4957-b7b4-924126547323&#39;</span> \
+    <span class="o">-</span><span class="n">H</span> <span class="s1">&#39;accept: application/json&#39;</span> \
+    <span class="o">-</span><span class="n">H</span> <span class="s1">&#39;Authorization: Bearer b21f4388c6e09b5e87fb1d2e9c179f0d0ee261dce0002820e3a98768b0e059bc&#39;</span> \
+    <span class="o">-</span><span class="n">H</span> <span class="s1">&#39;Content-Type: application/json-patch+json&#39;</span> \
+    <span class="o">-</span><span class="n">d</span> <span class="s1">&#39;{</span>
+    <span class="s2">&quot;operations&quot;</span> <span class="p">:</span> <span class="p">[</span>
+        <span class="p">{</span> <span class="s2">&quot;op&quot;</span> <span class="p">:</span> <span class="s2">&quot;Replace&quot;</span><span class="p">,</span> <span class="s2">&quot;path&quot;</span><span class="p">:</span> <span class="s2">&quot;/name&quot;</span><span class="p">,</span> <span class="n">value</span><span class="p">:</span> <span class="s2">&quot;Бочкин Александр Викторович&quot;</span><span class="p">},</span>
+        <span class="p">{</span> <span class="s2">&quot;op&quot;</span> <span class="p">:</span> <span class="s2">&quot;Replace&quot;</span><span class="p">,</span> <span class="s2">&quot;path&quot;</span><span class="p">:</span> <span class="s2">&quot;/position&quot;</span><span class="p">,</span> <span class="n">value</span><span class="p">:</span> <span class="s2">&quot;Менеджер по продажам&quot;</span><span class="p">},</span>
+        <span class="p">{</span> <span class="s2">&quot;op&quot;</span> <span class="p">:</span> <span class="s2">&quot;Remove&quot;</span><span class="p">,</span> <span class="s2">&quot;path&quot;</span><span class="p">:</span> <span class="s2">&quot;/phones/7ed85d94-7827-4481-9142-db07a04835a3&quot;</span> <span class="p">},</span>
+        <span class="p">{</span> <span class="s2">&quot;op&quot;</span> <span class="p">:</span> <span class="s2">&quot;Add&quot;</span><span class="p">,</span> <span class="s2">&quot;path&quot;</span> <span class="p">:</span> <span class="s2">&quot;/emails&quot;</span><span class="p">,</span> <span class="s2">&quot;value&quot;</span> <span class="p">:</span> <span class="p">{</span> <span class="s2">&quot;type&quot;</span> <span class="p">:</span> <span class="s2">&quot;work&quot;</span><span class="p">,</span> <span class="s2">&quot;value&quot;</span> <span class="p">:</span> <span class="s2">&quot;bochkin@test.ru&quot;</span> <span class="p">}}</span>
+    <span class="p">]</span>
+ <span class="p">}</span><span class="s1">&#39;</span>
+</pre></div>
+</div>
+<p>Ответ на запрос 200 OK и модель Contact:</p>
+<div class="highlight-c# notranslate"><div class="highlight"><pre><span></span><span class="p">{</span>
+<span class="s">&quot;updateInfo&quot;</span><span class="p">:</span> <span class="p">{</span>
+<span class="s">&quot;updatedAt&quot;</span><span class="p">:</span> <span class="s">&quot;2021-10-02T14:27:26.392842+00:00&quot;</span><span class="p">,</span>
+<span class="s">&quot;updatedByUserId&quot;</span><span class="p">:</span> <span class="s">&quot;253f8b40-abe9-4643-81f2-6a6ffa4861be&quot;</span><span class="p">,</span>
+<span class="s">&quot;updatedWith&quot;</span><span class="p">:</span> <span class="s">&quot;WebApp&quot;</span><span class="p">,</span>
+<span class="s">&quot;createdAt&quot;</span><span class="p">:</span> <span class="s">&quot;2021-10-02T13:32:00.973935+00:00&quot;</span><span class="p">,</span>
+<span class="s">&quot;createdByUserId&quot;</span><span class="p">:</span> <span class="s">&quot;253f8b40-abe9-4643-81f2-6a6ffa4861be&quot;</span><span class="p">,</span>
+<span class="s">&quot;createdWith&quot;</span><span class="p">:</span> <span class="s">&quot;WebApp&quot;</span>
+<span class="p">},</span>
+<span class="s">&quot;links&quot;</span><span class="p">:</span> <span class="p">{</span>
+<span class="s">&quot;companyIds&quot;</span><span class="p">:</span> <span class="p">[</span>
+<span class="s">&quot;98479adb-9802-4856-8e8c-6380851f4ae7&quot;</span>
+<span class="p">]</span>
+<span class="p">},</span>
+<span class="s">&quot;position&quot;</span><span class="p">:</span> <span class="s">&quot;Менеджер по продажам&quot;</span><span class="p">,</span>
+<span class="s">&quot;name&quot;</span><span class="p">:</span> <span class="s">&quot;Бочкин Александр Викторович&quot;</span><span class="p">,</span>
+<span class="s">&quot;messengerContacts&quot;</span><span class="p">:</span> <span class="p">[],</span>
+<span class="s">&quot;phones&quot;</span><span class="p">:</span> <span class="p">[],</span>
+<span class="s">&quot;emails&quot;</span><span class="p">:</span> <span class="p">[</span>
+<span class="p">{</span>
+<span class="s">&quot;id&quot;</span><span class="p">:</span> <span class="s">&quot;f96b8aa3-e215-46ed-89f3-64079f993da9&quot;</span><span class="p">,</span>
+<span class="s">&quot;type&quot;</span><span class="p">:</span> <span class="s">&quot;work&quot;</span><span class="p">,</span>
+<span class="s">&quot;value&quot;</span><span class="p">:</span> <span class="s">&quot;bochkin@test.ru&quot;</span>
+<span class="p">}</span>
+<span class="p">],</span>
+<span class="s">&quot;regionCode&quot;</span><span class="p">:</span> <span class="s">&quot;66&quot;</span><span class="p">,</span>
+<span class="s">&quot;customFields&quot;</span><span class="p">:</span> <span class="p">{},</span>
+<span class="s">&quot;tags&quot;</span><span class="p">:</span> <span class="p">[],</span>
+<span class="s">&quot;id&quot;</span><span class="p">:</span> <span class="s">&quot;529edc65-e929-4957-b7b4-924126547323&quot;</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+</div>
+
+
+           </div>
+          </div>
+          <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
+        <a href="batch-create.html" class="btn btn-neutral float-left" title="Пример создания нескольких контактов" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="patch-requests.html" class="btn btn-neutral float-right" title="Формирование PATCH запросов" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p></p>
+  </div>
+
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>
