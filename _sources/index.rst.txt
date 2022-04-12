@@ -1,7 +1,7 @@
 .. _`Описание методов в Swagger`: https://developer.kontur.ru/doc/crm
 
 API Контур CRM
-===================================
+===============
 
 `Описание методов в Swagger`_
 
@@ -15,3 +15,5 @@ API Контур CRM
    entity-modification-info/index
    custom-fields/index
    phone-integration/index
+   api/index
+   

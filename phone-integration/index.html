@@ -17,6 +17,7 @@
     <script src="../_static/js/theme.js"></script>
     <link rel="index" title="Алфавитный указатель" href="../genindex.html" />
     <link rel="search" title="Поиск" href="../search.html" />
+    <link rel="next" title="Работа с API" href="../api/index.html" />
     <link rel="prev" title="Отображение в интерфейсе" href="../custom-fields/custom-fields-interface.html" /> 
 </head>
 
@@ -43,7 +44,28 @@
 <li class="toctree-l1"><a class="reference internal" href="../entity-creation/index.html">Создание и модификация сущностей</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../entity-modification-info/index.html">Получение информации об измененных сущностях</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../custom-fields/index.html">Работа с пользовательскими полями</a></li>
-<li class="toctree-l1 current"><a class="current reference internal" href="#">Интеграция с телефонией</a></li>
+<li class="toctree-l1 current"><a class="current reference internal" href="#">Интеграция с телефонией</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="#id2">Описание интеграции</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#id3">Пример звонка</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#rst-markup-createintegration">Создание интеграции</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="#id5">Создание приватной интеграции</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#id6">Вход в настройки</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#id7">Установка интеграции</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="#id8">Создание публичной интеграции</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#id9">Вход в настройки</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#id10">Создание интеграции</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#id11">Установка интеграции</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="#id12">Особенности интеграции</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#id13">Алгоритм работы с методами</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../api/index.html">Работа с API</a></li>
 </ul>
 
         </div>
@@ -70,9 +92,175 @@
           <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
            <div itemprop="articleBody">
              
-  <div class="section" id="id2">
-<h1>Интеграция с телефонией<a class="headerlink" href="#id2" title="Ссылка на этот заголовок">¶</a></h1>
-<p><a class="reference external" href="https://docs.google.com/document/d/1OEJiU7EfrriMWJEtfSM_vVAdHwWC77fbXOM935uIH_8/edit#heading=h.vjsbz1dxa1pt">Пока в гуглодоке</a></p>
+  <div class="section" id="id1">
+<h1>Интеграция с телефонией<a class="headerlink" href="#id1" title="Ссылка на этот заголовок">¶</a></h1>
+<div class="section" id="id2">
+<h2>Описание интеграции<a class="headerlink" href="#id2" title="Ссылка на этот заголовок">¶</a></h2>
+<p>API Контур.CRM позволяет подключить прямую интеграцию с телефонией. В интеграции реализуются сценарии использования: входящий и исходящий вызов, пауза, перевод, и другие. Система видит звонок набором связанных между собой плеч, где каждое плечо это разговор между двумя конкретными участниками. Звонки бывают трех типов:</p>
+<ul class="simple">
+<li><p>Входящий — клиент звонит на внешний номер;</p></li>
+<li><p>Исходящий — пользователь звонит на внешний номер;</p></li>
+<li><p>Внутренний — пользователь звонит пользователю на внутренний номер.</p></li>
+</ul>
+<div class="section" id="id3">
+<h3>Пример звонка<a class="headerlink" href="#id3" title="Ссылка на этот заголовок">¶</a></h3>
+<p>Иван делает звонок по внешнему номеру. Телефония переводит звонок клиента на менеджера Машу. Маша разговаривает с Иваном, потом делает консультационный звонок по внутреннему номеру эксперту Диме. После решения вопроса Маша возвращается к Ивану и заканчивает с ним разговор. В таком звонке два плеча: разговор клиента с менеджером и разговор менеджера с экспертом.</p>
+<img alt="../_images/example-call.png" src="../_images/example-call.png" />
+</div>
+<div class="section" id="rst-markup-createintegration">
+<span id="id4"></span><h3>Создание интеграции<a class="headerlink" href="#rst-markup-createintegration" title="Ссылка на этот заголовок">¶</a></h3>
+<p>Интеграции бывают двух типов:</p>
+<ul class="simple">
+<li><p>Приватная интеграция — создается администратором и доступна только сотрудникам приглашенным в это пространство.</p></li>
+<li><p>Публичная интеграция — создается администратором и доступна пользователям всех пространств. Если интеграция установлена, то напишите на почту, чтобы сделать ее публичной: <a class="reference external" href="mailto:crm-support&#37;&#52;&#48;kontur&#46;ru">crm-support<span>&#64;</span>kontur<span>&#46;</span>ru</a>. После включения сторонние организации добавят ее в разделе «Настройки» —&gt; «Интеграции» —&gt; «Добавить интеграцию».</p></li>
+</ul>
+<img alt="../_images/settings-admin.png" src="../_images/settings-admin.png" />
+</div>
+</div>
+<div class="section" id="id5">
+<h2>Создание приватной интеграции<a class="headerlink" href="#id5" title="Ссылка на этот заголовок">¶</a></h2>
+<div class="section" id="id6">
+<h3>Вход в настройки<a class="headerlink" href="#id6" title="Ссылка на этот заголовок">¶</a></h3>
+<ol class="arabic">
+<li><p>Перейдите по ссылке: <a class="reference external" href="https://crm.kontur.ru">https://crm.kontur.ru</a> и авторизуйтесь. Система автоматически подставит название пространства на латинице.</p></li>
+<li><p>Если пространств несколько, то выберите нужное из списка: <a class="reference external" href="https://crm.kontur.ru/workspaces">https://crm.kontur.ru/workspaces</a>. Если одно — пропустите этот пункт.</p></li>
+<li><p>Измените адрес в строке браузера и перейдите по ссылке: <a class="reference external" href="https://crm.kontur.ru/api">https://crm.kontur.ru/api</a>/имя_пространства/private-integrations; где:</p>
+<blockquote>
+<div><ol class="arabic simple">
+<li><p>«имя_пространства» — уникальное название для организации в Контур.CRM;</p></li>
+<li><p>вместо «app» – «api»;</p></li>
+<li><p>вместо «main» – «private-integrations».</p></li>
+</ol>
+</div></blockquote>
+</li>
+<li><p>После отобразится строка «Authorization» и Bearer-токен. Наличие заполненного Bearer-токена означает, что авторизационная информация передана.</p></li>
+</ol>
+<img alt="../_images/authorization-private-integrations.png" src="../_images/authorization-private-integrations.png" />
+</div>
+<div class="section" id="id7">
+<h3>Установка интеграции<a class="headerlink" href="#id7" title="Ссылка на этот заголовок">¶</a></h3>
+<ol class="arabic simple">
+<li><p>Создайте manifest.json файл. В нем нужно указать информацию об интеграции:</p>
+<ol class="arabic simple">
+<li><p>Название интеграции;</p></li>
+<li><p>Версию интеграции;</p></li>
+<li><p>Веб-адрес. Пример см. ниже.</p></li>
+</ol>
+</li>
+<li><p>Создайте zip-архив с вложенным manifest.json файлом.</p></li>
+<li><p>Нажмите кнопку «Выберите файл» и загрузите zip-архив в интеграцию.</p></li>
+<li><p>Нажмите на кнопку «Install». Интеграция установится в пространство, кнопка «Install» поменяется на «Uninstall».</p></li>
+</ol>
+<img alt="../_images/authorization-private-integrations.png" src="../_images/authorization-private-integrations.png" />
+<p>Если интеграцию нужно изменить:</p>
+<ol class="arabic simple">
+<li><p>Нажмите кнопку «Выберите файл» и загрузите zip-архив с измененным файлом в интеграцию.</p></li>
+<li><p>Переустановите интеграцию в пространство — нажмите «Uninstall» и затем снова «Install».</p></li>
+</ol>
+<p><strong>Пример</strong></p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="p">{</span>
+<span class="s2">&quot;name&quot;</span><span class="p">:</span> <span class="s2">&quot;my_workspace.myIntegration2020&quot;</span><span class="p">,</span>
+<span class="s2">&quot;version&quot;</span><span class="p">:</span> <span class="s2">&quot;1.0&quot;</span><span class="p">,</span>
+<span class="s2">&quot;baseUrl&quot;</span><span class="p">:</span> <span class="s2">&quot;https://my-integration.ru&quot;</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="section" id="id8">
+<h2>Создание публичной интеграции<a class="headerlink" href="#id8" title="Ссылка на этот заголовок">¶</a></h2>
+<div class="section" id="id9">
+<h3>Вход в настройки<a class="headerlink" href="#id9" title="Ссылка на этот заголовок">¶</a></h3>
+<ol class="arabic">
+<li><p>Перейдите по ссылке: <a class="reference external" href="https://crm.kontur.ru">https://crm.kontur.ru</a> и авторизуйтесь. Система автоматически подставит название пространства на латинице.</p></li>
+<li><p>Если пространств несколько, то выберите нужное из списка: <a class="reference external" href="https://crm.kontur.ru/workspaces">https://crm.kontur.ru/workspaces</a>. Если одно — пропустите этот пункт.</p></li>
+<li><p>Измените адрес в строке браузера и перейдите по ссылке: <a class="reference external" href="https://crm.kontur.ru/api">https://crm.kontur.ru/api</a>/имя_пространства/integrations; где:</p>
+<blockquote>
+<div><ol class="arabic simple">
+<li><p>«имя_пространства» — уникальное название для организации в Контур.CRM;</p></li>
+<li><p>вместо «app» – «api»;</p></li>
+<li><p>вместо «main» – «integrations».</p></li>
+</ol>
+</div></blockquote>
+</li>
+<li><p>После отобразятся публичные интеграции. Появление списка публичных интеграций означает, что авторизационная информация передана.</p></li>
+</ol>
+<img alt="../_images/login-settings-integrations.png" src="../_images/login-settings-integrations.png" />
+</div>
+<div class="section" id="id10">
+<h3>Создание интеграции<a class="headerlink" href="#id10" title="Ссылка на этот заголовок">¶</a></h3>
+<ol class="arabic simple">
+<li><p>Введите уникальное имя интеграции. Разрешены большие и маленькие латинские символы, цифры, точка и знак подчеркивания, название должно начинаться с латинской буквы. Пример: my_workspace.myIntegration2020.</p></li>
+<li><p>Введите версию интеграции, в соответствии с форматом: major.minor.patch.build-prerelease. Части major и minor обязательные. Пример версии интеграции: 1.0; 1.0.1; 0.0.1.146; 1.12-pre2020; 1.2.3-alpha; 100.1.3.256-beta40.</p></li>
+<li><p>Нажмите «Create». Интеграция будет создана и появится в списке.</p></li>
+</ol>
+<img alt="../_images/create-public-integrations.png" src="../_images/create-public-integrations.png" />
+</div>
+<div class="section" id="id11">
+<h3>Установка интеграции<a class="headerlink" href="#id11" title="Ссылка на этот заголовок">¶</a></h3>
+<ol class="arabic simple">
+<li><p>Нажмите на кнопку «Install». Интеграция установится в пространство, кнопка «Install» поменяется на «Uninstall».</p></li>
+<li><p>Нажмите на кнопку «Setup» и введите параметры интеграции. Подробнее про активацию в разделе: Активация интеграции.</p></li>
+<li><p>Чтобы установленная интеграция стала публичной, напишите нам на почту: <a class="reference external" href="mailto:crm-support&#37;&#52;&#48;kontur&#46;ru">crm-support<span>&#64;</span>kontur<span>&#46;</span>ru</a>. После включения сторонние организации смогут добавить ее в разделе: «Настройки» —&gt; «Интеграции» —&gt; «Добавить интеграцию».</p></li>
+</ol>
+<img alt="../_images/setup-public-integrations.png" src="../_images/setup-public-integrations.png" />
+<p>Интеграцию можно изменить двумя способами:</p>
+<ol class="arabic simple">
+<li><p>Выполнить запрос PATCH Integration Instances указав патч объекта. Подробнее в разделе: <a class="reference internal" href="../api/api-integration.html#rst-markup-integrationsinstances"><span class="std std-ref">Включение системных вызовов</span></a>.</p></li>
+<li><p>Нажать на кнопку «Setup» и ввести параметры интеграции. Подробнее про активацию в разделе: <a class="reference internal" href="../api/api-integration.html#rst-markup-integrationsetup"><span class="std std-ref">Активация интеграции</span></a>.</p></li>
+</ol>
+<p><strong>Пример</strong></p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="p">{</span><span class="s2">&quot;autoRedirect&quot;</span><span class="p">:</span><span class="n">true</span><span class="p">,</span><span class="s2">&quot;autoAnswer&quot;</span><span class="p">:</span><span class="n">true</span><span class="p">}</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="section" id="id12">
+<h2>Особенности интеграции<a class="headerlink" href="#id12" title="Ссылка на этот заголовок">¶</a></h2>
+<p>Подключить телефонию можно без создания собственной интеграции, если она добавлена в магазин интеграций. Если такой вариант не подходит, то <a class="reference internal" href="#rst-markup-createintegration"><span class="std std-ref">создайте публичную или приватную интеграцию</span></a>, в зависимости от нужд организации.</p>
+<p>Чтобы подключить телефонию в Контур.CRM, установите интеграцию в пространстве. Интеграции выдается API-ключ, с помощью которого вы сможете авторизовать вызовы в API. В пространстве можно подключить неограниченное количество интеграций.</p>
+<p>При создании интеграции, вам необходимо реализовать следующую функциональность:</p>
+<ul>
+<li><p>Регистрацию завершенных звонков и чтение истории из телефонии. Завершенный звонок это состоявшийся или пропущенный вызов.</p></li>
+<li><p>Сообщение о событиях: поступление вызова, подняли трубку, положили трубку, поставили на удержание, и другие. При вызове Контур.CRM отобразит в интерфейсе пространства кнопки «Принять звонок» и «Положить трубку».</p></li>
+<li><p>HTTP-сервер для обработки системных вызовов.</p>
+<blockquote>
+<div><ol class="arabic simple">
+<li><p>Системный вызов CALL — интеграция начинает новый звонок. Контур.CRM выполнит его, когда пользователь нажимает кнопку «Позвонить» в интерфейсе.</p></li>
+<li><p>Системный вызов HANGUP — интеграция завершает плечо звонка. Вызов делает Контур.CRM, когда пользователь нажимает на кнопку «Положить трубку» в интерфейсе.</p></li>
+</ol>
+</div></blockquote>
+</li>
+<li><p>Переадресацию звонка на ответственного пользователя, при необходимости в таком сценарии. Пользователь может создать карточку «Cделки» и указать в ней номер клиента. При поступлении входящего вызова звонок будет адресован ответственному сотруднику в активной сделке.</p></li>
+</ul>
+<p>Чтобы избежать дублирования звонков в системе, интеграция должна сопоставлять звонок с помощью внутреннего идентификатора телефонии. Если звонки поступают по внутренним номерам, то в плечах модели звонка будут записаны идентификаторы пользователей. Интеграция должна обеспечить сохранение соответствия «Пользователь Контур.CRM» &lt;—&gt; «Внутренний номер в телефонии». Записи разговора могут храниться в плечах звонка. Для сохранения записи нужно загрузить ее во временное хранилище с помощью <a class="reference internal" href="../api/api-files.html#rst-markup-uploadfile"><span class="std std-ref">API Files</span></a></p>
+</div>
+<div class="section" id="id13">
+<h2>Алгоритм работы с методами<a class="headerlink" href="#id13" title="Ссылка на этот заголовок">¶</a></h2>
+<p>Рассмотрим сценарии входящих и исходящих звонков API Контур.CRM. Порядок методов зависит от интеграции и особенностей от телефонии.</p>
+<p><strong>Пример входящего звонка</strong></p>
+<ol class="arabic simple">
+<li><p>Если в интеграции включена переадресация звонка, то при активной карточке сделки вызов будет адресован ответственному сотруднику <a class="reference internal" href="../api/api-telephony.html#rst-markup-telephonycallredirect"><span class="std std-ref">GET TelephonyCallRedirect</span></a></p></li>
+<li><p>Интеграция сообщает о начале звонка <a class="reference internal" href="../api/api-telephony.html#rst-markup-telephonycallstarted"><span class="std std-ref">POST TelephonyCallStarted</span></a> и событии звонка <a class="reference internal" href="../api/api-telephony.html#rst-markup-telephonycallevent"><span class="std std-ref">POST TelephonyCallEvent</span></a>.</p></li>
+<li><p>При неудачной попытке позвонить, интеграция отправляет сообщение <a class="reference internal" href="../api/api-telephony.html#rst-markup-telephonycallfailed"><span class="std std-ref">POST TelephonyCallFailed</span></a>.</p></li>
+<li><p>Пользователь решает завершить звонок и нажимает в интерфейсе «Положить трубку». Контур.CRM отправит запрос на HTTP-сервер указанный в интеграции <a class="reference internal" href="../api/api-telephony.html#rst-markup-communicationshangup"><span class="std std-ref">POST CommunicationsHangup</span></a>.</p></li>
+<li><p>Интеграция сообщает о завершении звонка между участниками <a class="reference internal" href="../api/api-telephony.html#rst-markup-telephonycallfinished"><span class="std std-ref">POST TelephonyCallFinished</span></a>.</p></li>
+<li><p>Интеграция регистрирует завершенный звонок <a class="reference internal" href="../api/api-telephony.html#rst-markup-telephonyregistercall"><span class="std std-ref">POST TelephonyRegisterCall</span></a> и загружает файл во временное хранилище API Files <a class="reference internal" href="../api/api-files.html#rst-markup-uploadfile"><span class="std std-ref">POST UploadFile</span></a>.</p></li>
+<li><p>Интеграция сообщает о появлении записи разговора <a class="reference internal" href="../api/api-telephony.html#rst-markup-telephonycallrecording"><span class="std std-ref">POST TelephonyCallRecording</span></a></p></li>
+<li><p>Запись звонка доступна для прослушивания в Контур.CRM.</p></li>
+</ol>
+<p><strong>Пример исходящего звонка</strong></p>
+<ol class="arabic simple">
+<li><p>Пользователь нажимает «Позвонить» в интерфейсе. Контур.CRM отправит запрос на HTTP-сервер указанный в интеграции <a class="reference internal" href="../api/api-telephony.html#rst-markup-ommunicationsall"><span class="std std-ref">POST СommunicationsСall</span></a>.</p></li>
+<li><p>Интеграция сообщает о начале звонка <a class="reference internal" href="../api/api-telephony.html#rst-markup-telephonycallstarted"><span class="std std-ref">POST TelephonyCallStarted</span></a> и событии звонка <a class="reference internal" href="../api/api-telephony.html#rst-markup-telephonycallevent"><span class="std std-ref">POST TelephonyCallEvent</span></a>.</p></li>
+<li><p>При неудачной попытке позвонить, интеграция отправляет сообщение <a class="reference internal" href="../api/api-telephony.html#rst-markup-telephonycallfailed"><span class="std std-ref">POST TelephonyCallFailed</span></a>.</p></li>
+<li><p>Пользователь решает завершить звонок и нажимает в интерфейсе «Положить трубку». Контур.CRM отправит запрос на HTTP-сервер указанный в интеграции <a class="reference internal" href="../api/api-telephony.html#rst-markup-communicationshangup"><span class="std std-ref">POST CommunicationsHangup</span></a>.</p></li>
+<li><p>Интеграция сообщает о завершении звонка между участниками <a class="reference internal" href="../api/api-telephony.html#rst-markup-telephonycallfinished"><span class="std std-ref">POST TelephonyCallFinished</span></a>.</p></li>
+<li><p>Интеграция регистрирует завершенный звонок <a class="reference internal" href="../api/api-telephony.html#rst-markup-telephonyregistercall"><span class="std std-ref">POST TelephonyRegisterCall</span></a> и загружает файл во временное хранилище API Files <a class="reference internal" href="../api/api-files.html#rst-markup-uploadfile"><span class="std std-ref">POST UploadFile</span></a>.</p></li>
+<li><p>Интеграция сообщает о появлении записи разговора <a class="reference internal" href="../api/api-telephony.html#rst-markup-telephonycallrecording"><span class="std std-ref">POST TelephonyCallRecording</span></a></p></li>
+<li><p>Запись звонка доступна для прослушивания в Контур.CRM.</p></li>
+</ol>
+</div>
 </div>
 
 
@@ -80,6 +268,7 @@
           </div>
           <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
         <a href="../custom-fields/custom-fields-interface.html" class="btn btn-neutral float-left" title="Отображение в интерфейсе" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="../api/index.html" class="btn btn-neutral float-right" title="Работа с API" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
     </div>
 
   <hr/>

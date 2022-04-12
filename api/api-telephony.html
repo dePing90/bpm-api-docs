@@ -1,0 +1,691 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="ru" >
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>API телефонии &mdash; документация Контур CRM 1.1</title><link rel="stylesheet" href="../_static/css/theme.css" type="text/css" />
+    <link rel="stylesheet" href="../_static/pygments.css" type="text/css" /><link rel="shortcut icon" href="../_static/favicon.ico"/>
+  <!--[if lt IE 9]>
+    <script src="../_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  <script id="documentation_options" data-url_root="../" src="../_static/documentation_options.js"></script>
+        <script src="../_static/jquery.js"></script>
+        <script src="../_static/underscore.js"></script>
+        <script src="../_static/doctools.js"></script>
+        <script src="../_static/language_data.js"></script>
+        <script src="../_static/translations.js"></script>
+    <script src="../_static/js/theme.js"></script>
+    <link rel="index" title="Алфавитный указатель" href="../genindex.html" />
+    <link rel="search" title="Поиск" href="../search.html" />
+    <link rel="next" title="API files" href="api-files.html" />
+    <link rel="prev" title="API авторизации" href="api-authorization.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+            <a href="../index.html" class="icon icon-home"> Контур CRM
+          </a>
+              <div class="version">
+                1.1
+              </div>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../models/index.html">Описание моделей</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../entity-creation/index.html">Создание и модификация сущностей</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../entity-modification-info/index.html">Получение информации об измененных сущностях</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../custom-fields/index.html">Работа с пользовательскими полями</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../phone-integration/index.html">Интеграция с телефонией</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="index.html">Работа с API</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="api-integration.html">API интеграции</a></li>
+<li class="toctree-l2"><a class="reference internal" href="api-authorization.html">API авторизации</a></li>
+<li class="toctree-l2 current"><a class="current reference internal" href="#">API телефонии</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#id1">Системные вызовы</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#call">Системный вызов CALL</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#hangup">Системный вызов HANGUP</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="#id2">События реального времени</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#rst-markup-telephonycallstarted">Сообщение о начале звонка</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#rst-markup-telephonycallevent">Сообщение о событии звонка</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#rst-markup-telephonycallfinished">Сообщение о завершении звонка</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#rst-markup-telephonycallfailed">Сообщение о неудачной попытке позвонить</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#rst-markup-telephonycallrecording">Сообщение о появлении записи разговора</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#rst-markup-telephonyregistercall">Регистрация завершенных звонков</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#rst-markup-telephonycallredirect">Переадресация звонка на ответственного</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="api-files.html">API files</a></li>
+</ul>
+</li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../index.html">Контур CRM</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="../index.html" class="icon icon-home"></a> &raquo;</li>
+          <li><a href="index.html">Работа с API</a> &raquo;</li>
+      <li>API телефонии</li>
+      <li class="wy-breadcrumbs-aside">
+            <a href="../_sources/api/api-telephony.rst.txt" rel="nofollow"> View page source</a>
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <div class="section" id="api">
+<h1>API телефонии<a class="headerlink" href="#api" title="Ссылка на этот заголовок">¶</a></h1>
+<div class="section" id="id1">
+<h2>Системные вызовы<a class="headerlink" href="#id1" title="Ссылка на этот заголовок">¶</a></h2>
+<p>Контур.CRM делает системные вызовы, когда пользователь нажимает кнопку «Позвонить» или «Положить трубку» в интерфейсе CRM. Для обработки таких вызовов интеграция должна принимать вызовы по HTTP через интернет — вызовы будут происходить с серверов Контур.CRM.</p>
+<p>В системных вызовах Контур.CRM будет передавать заголовки:</p>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">X-XCOM-AccessKey</span></code> — ключ доступа для обратных вызовов в пространство. При отправке запросов не нужно повторно сообщать API-ключ интеграции.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">X-XCOM-Integration-Echo</span></code> — для ответа со стороны интеграции, а не случайного сервера. Интеграция должна вернуть содержимое заголовка в таком же заголовке ответа.</p></li>
+</ul>
+<p><strong>Пример</strong></p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">POST</span> <span class="n">api</span><span class="o">/</span><span class="n">v1</span><span class="o">/</span><span class="n">my</span><span class="o">-</span><span class="n">workspace</span><span class="o">/</span><span class="n">communications</span><span class="o">/</span><span class="n">call</span>
+<span class="n">Host</span><span class="p">:</span> <span class="n">my</span><span class="o">-</span><span class="n">integration</span><span class="o">.</span><span class="n">ru</span>
+<span class="n">X</span><span class="o">-</span><span class="n">XCOM</span><span class="o">-</span><span class="n">AccessKey</span><span class="p">:</span> <span class="n">dda</span><span class="o">...</span><span class="n">d67</span>
+<span class="n">X</span><span class="o">-</span><span class="n">XCOM</span><span class="o">-</span><span class="n">Integration</span><span class="o">-</span><span class="n">Echo</span><span class="p">:</span> <span class="mi">7</span><span class="n">g8</span><span class="o">...</span><span class="n">d6a</span>
+</pre></div>
+</div>
+<p><strong>Ответ</strong></p>
+<p><strong>200</strong></p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">HTTP</span><span class="o">/</span><span class="mf">1.1</span> <span class="mi">200</span> <span class="n">OK</span>
+<span class="n">X</span><span class="o">-</span><span class="n">XCOM</span><span class="o">-</span><span class="n">Integration</span><span class="o">-</span><span class="n">Echo</span><span class="p">:</span><span class="mi">7</span><span class="n">g8</span><span class="o">...</span><span class="n">d6a</span>
+</pre></div>
+</div>
+<div class="section" id="call">
+<span id="rst-markup-ommunicationsall"></span><h3>Системный вызов CALL<a class="headerlink" href="#call" title="Ссылка на этот заголовок">¶</a></h3>
+<p>Метод: <a class="reference external" href="https://developer.kontur.ru/doc/crm/method?type=post&amp;path=%2Fapi%2Fv1%2F%7Bws%7D%2Fcommunications%2Fcall">POST СommunicationsСall</a></p>
+<p>При помощи этого метода Контур.CRM делает вызов, когда пользователь нажимает кнопку «Позвонить» в интерфейсе. В интеграции должна быть включена функциональность <code class="docutils literal notranslate"><span class="pre">CALL</span></code> и <code class="docutils literal notranslate"><span class="pre">HANGUP</span></code>. Подробнее в разделе: <a class="reference internal" href="api-integration.html#rst-markup-integrationsinstances"><span class="std std-ref">Включение системных вызовов</span></a>.</p>
+<p><strong>Параметры</strong></p>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">ws</span></code> — Уникальное название рабочего пространства.</p></li>
+</ul>
+<p><strong>Тело запроса</strong></p>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">communicationId</span></code> —  Идентификатор коммуникации. Передается в системном вызове <code class="docutils literal notranslate"><span class="pre">CALL</span></code>, если звонок совершается по инициативе пользователя Контур.CRM.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">fromUserId</span></code> — Идентификатор абонента, который переводит звонок.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">toUserId</span></code> — Идентификатор пользователя, который принимает звонок. Заполняется при внутреннем звонке;</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">clientPhone</span></code> — Телефон, принимающий или совершающий звонок;</p></li>
+</ul>
+<p><strong>Пример</strong></p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">POST</span> <span class="o">/</span><span class="n">api</span><span class="o">/</span><span class="n">v1</span><span class="o">/</span><span class="n">my</span><span class="o">-</span><span class="n">worksapce</span><span class="o">/</span><span class="n">communications</span><span class="o">/</span><span class="n">call</span>
+<span class="n">Host</span><span class="p">:</span> <span class="n">my</span><span class="o">-</span><span class="n">integration</span><span class="o">.</span><span class="n">ru</span>
+<span class="n">X</span><span class="o">-</span><span class="n">XCOM</span><span class="o">-</span><span class="n">AccessKey</span><span class="p">:</span> <span class="n">dda</span><span class="o">...</span><span class="n">d67</span>
+<span class="n">X</span><span class="o">-</span><span class="n">XCOM</span><span class="o">-</span><span class="n">Integration</span><span class="o">-</span><span class="n">Echo</span><span class="p">:</span> <span class="mi">7</span><span class="n">g8</span><span class="o">...</span><span class="n">d6a</span>
+</pre></div>
+</div>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="p">{</span>
+<span class="s2">&quot;communicationId&quot;</span><span class="p">:</span> <span class="s2">&quot;30a...b4e&quot;</span><span class="p">,</span>
+<span class="s2">&quot;fromUserId&quot;</span><span class="p">:</span> <span class="s2">&quot;3f6...5c4&quot;</span><span class="p">,</span>
+<span class="s2">&quot;toUserId&quot;</span><span class="p">:</span> <span class="s2">&quot;44d...52a&quot;</span><span class="p">,</span>
+<span class="s2">&quot;clientPhone&quot;</span><span class="p">:</span> <span class="s2">&quot;79997775533&quot;</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+<p><strong>Ответы</strong></p>
+<p><strong>200</strong></p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="s2">&quot;OK&quot;</span>
+</pre></div>
+</div>
+<p><strong>409</strong></p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="p">{</span>
+<span class="s2">&quot;invalidDatas&quot;</span><span class="p">:</span> <span class="p">[],</span>
+<span class="s2">&quot;invalidConstraints&quot;</span><span class="p">:</span> <span class="p">{},</span>
+<span class="s2">&quot;status&quot;</span><span class="p">:</span> <span class="s2">&quot;notSupported&quot;</span><span class="p">,</span>
+<span class="s2">&quot;message&quot;</span><span class="p">:</span> <span class="s2">&quot;Feature Call is not supported by any integration&quot;</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="hangup">
+<span id="rst-markup-communicationshangup"></span><h3>Системный вызов HANGUP<a class="headerlink" href="#hangup" title="Ссылка на этот заголовок">¶</a></h3>
+<p>Метод: <a class="reference external" href="https://developer.kontur.ru/doc/crm/method?type=post&amp;path=%2Fapi%2Fv1%2F%7Bws%7D%2Fcommunications%2F%7Bid%7D%2Fhangup">POST CommunicationsHangup</a></p>
+<p>При помощи этого метода Контур.CRM делает вызов, когда пользователь нажимает кнопку «Положить трубку» в интерфейсе. В интеграции должна быть включена функциональность  <code class="docutils literal notranslate"><span class="pre">CALL</span></code> и <code class="docutils literal notranslate"><span class="pre">HANGUP</span></code>. Подробнее в разделе: <a class="reference internal" href="api-integration.html#rst-markup-integrationsinstances"><span class="std std-ref">Включение системных вызовов</span></a>.</p>
+<p><strong>Параметры</strong></p>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">ws</span></code> — Уникальное название рабочего пространства;</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">Id</span></code> — Идентификатор звонка.</p></li>
+</ul>
+<p><strong>Тело запроса</strong></p>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">realtimeCallItemId</span></code> — Идентификатор плеча звонка в момент вызова со стороны телефонии, требуется для событий реального времени.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">userId</span></code> — Идентификатор пользователя.</p></li>
+</ul>
+<p><strong>Пример</strong></p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">POST</span> <span class="n">api</span><span class="o">/</span><span class="n">v1</span><span class="o">/</span><span class="n">my</span><span class="o">-</span><span class="n">workspace</span><span class="o">/</span><span class="n">communications</span><span class="o">/</span><span class="n">hangup</span>
+<span class="n">Host</span><span class="p">:</span> <span class="n">my</span><span class="o">-</span><span class="n">integration</span><span class="o">.</span><span class="n">ru</span>
+<span class="n">X</span><span class="o">-</span><span class="n">XCOM</span><span class="o">-</span><span class="n">AccessKey</span><span class="p">:</span> <span class="n">dda</span><span class="o">...</span><span class="n">d67</span>
+<span class="n">X</span><span class="o">-</span><span class="n">XCOM</span><span class="o">-</span><span class="n">Integration</span><span class="o">-</span><span class="n">Echo</span><span class="p">:</span> <span class="n">ue1</span><span class="o">...</span><span class="mi">11</span><span class="n">o</span>
+</pre></div>
+</div>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="p">{</span>
+<span class="s2">&quot;realtimeCallItemId&quot;</span><span class="p">:</span> <span class="s2">&quot;7dg...us1&quot;</span><span class="p">,</span>
+<span class="s2">&quot;userId&quot;</span><span class="p">:</span> <span class="s2">&quot;4a4....86b&quot;</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+<p><strong>Ответы</strong></p>
+<p><strong>200</strong></p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="s2">&quot;OK&quot;</span>
+</pre></div>
+</div>
+<p><strong>409</strong></p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="p">{</span>
+<span class="s2">&quot;status&quot;</span><span class="p">:</span> <span class="s2">&quot;notSupported&quot;</span><span class="p">,</span>
+<span class="s2">&quot;message&quot;</span><span class="p">:</span> <span class="s2">&quot;string&quot;</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="section" id="id2">
+<h2>События реального времени<a class="headerlink" href="#id2" title="Ссылка на этот заголовок">¶</a></h2>
+<p>Интеграция должна регистрировать события реального времени, это отображает интерфейс звонка. Под такими событиями подразумеваем:</p>
+<ul class="simple">
+<li><p>Сообщение о начале звонка</p></li>
+<li><p>Сообщение о событии звонка</p></li>
+<li><p>Сообщение о завершении звонка</p></li>
+<li><p>Сообщение о неудачной попытке позвонить</p></li>
+<li><p>Сообщение о появлении записи разговора</p></li>
+</ul>
+<div class="section" id="rst-markup-telephonycallstarted">
+<span id="id3"></span><h3>Сообщение о начале звонка<a class="headerlink" href="#rst-markup-telephonycallstarted" title="Ссылка на этот заголовок">¶</a></h3>
+<p>Метод: <a class="reference external" href="https://developer.kontur.ru/doc/crm/method?type=post&amp;path=%2Fapi%2Fv1%2F%7Bws%7D%2Fcommunications%2Fcallbacks%2Ftelephony%2Fcall-started">POST TelephonyCallStarted</a></p>
+<p>Метод регистрирует сообщение о начале звонка. В теле запроса нужно указать <code class="docutils literal notranslate"><span class="pre">externalId</span></code>, этот идентификатор отправляется в сообщении о событии звонка.</p>
+<p><strong>Параметры</strong></p>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">ws</span></code> — Уникальное название рабочего пространства.</p></li>
+</ul>
+<p><strong>Тело запроса</strong></p>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">timestamp</span></code> — Момент возникновения события;</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">communicationId</span></code> — Идентификатор коммуникации. Передается в системном вызове CALL, если звонок совершается по инициативе пользователя Контур.CRM;</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">externalId</span></code> — Уникальный идентификатор всего звонка;</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">externalVatsPhone</span></code> — Внешний номер;</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">direction</span></code> — Направление вызова: <code class="docutils literal notranslate"><span class="pre">inbound</span></code> (входящий), <code class="docutils literal notranslate"><span class="pre">outbound</span></code> (исходящий), <code class="docutils literal notranslate"><span class="pre">internal</span></code> (внутренний);</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">clientPhone</span></code> — Телефон, принимающий или совершающий звонок.</p></li>
+</ul>
+<p><strong>Пример</strong></p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">POST</span> <span class="n">api</span><span class="o">/</span><span class="n">v1</span><span class="o">/</span><span class="n">my</span><span class="o">-</span><span class="n">workspace</span><span class="o">/</span><span class="n">communications</span><span class="o">/</span><span class="n">callbacks</span><span class="o">/</span><span class="n">telephony</span><span class="o">/</span><span class="n">call</span><span class="o">-</span><span class="n">started</span>
+<span class="n">X</span><span class="o">-</span><span class="n">XCOM</span><span class="o">-</span><span class="n">AccessKey</span><span class="p">:</span><span class="mi">7</span><span class="n">fd</span><span class="o">...</span><span class="mi">84</span><span class="n">a</span>
+</pre></div>
+</div>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="p">{</span>
+<span class="s2">&quot;timestamp&quot;</span><span class="p">:</span> <span class="s2">&quot;2022-03-22T10:38:35.6152798+00:00&quot;</span><span class="p">,</span>
+<span class="s2">&quot;communicationId&quot;</span><span class="p">:</span> <span class="s2">&quot;184...bcd&quot;</span><span class="p">,</span>
+<span class="s2">&quot;externalId&quot;</span><span class="p">:</span> <span class="s2">&quot;333...434&quot;</span><span class="p">,</span>
+<span class="s2">&quot;externalVatsPhone&quot;</span><span class="p">:</span> <span class="s2">&quot;79229929292&quot;</span><span class="p">,</span>
+<span class="s2">&quot;clientPhone&quot;</span><span class="p">:</span> <span class="s2">&quot;79997775533&quot;</span><span class="p">,</span>
+<span class="s2">&quot;direction&quot;</span><span class="p">:</span> <span class="s2">&quot;inbound&quot;</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+<p><strong>Ответы</strong></p>
+<p><strong>200</strong></p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="p">{</span>
+<span class="s2">&quot;updateInfo&quot;</span><span class="p">:</span> <span class="p">{</span>
+<span class="s2">&quot;updatedAt&quot;</span><span class="p">:</span> <span class="s2">&quot;2022-03-22T10:41:17.963539+00:00&quot;</span><span class="p">,</span>
+<span class="s2">&quot;updatedWith&quot;</span><span class="p">:</span> <span class="s2">&quot;Integration.megafon&quot;</span><span class="p">,</span>
+<span class="s2">&quot;createdAt&quot;</span><span class="p">:</span> <span class="s2">&quot;2022-03-22T10:38:35.176007+00:00&quot;</span><span class="p">,</span>
+<span class="s2">&quot;createdWith&quot;</span><span class="p">:</span> <span class="s2">&quot;Integration.megafon&quot;</span>
+<span class="p">},</span>
+<span class="s2">&quot;links&quot;</span><span class="p">:</span> <span class="p">{</span>
+<span class="s2">&quot;companyIds&quot;</span><span class="p">:</span> <span class="p">[</span>
+  <span class="s2">&quot;aa8a...fe6&quot;</span>
+<span class="p">],</span>
+<span class="s2">&quot;contactIds&quot;</span><span class="p">:</span> <span class="p">[</span>
+  <span class="s2">&quot;2ee...0a6&quot;</span><span class="p">,</span>
+  <span class="s2">&quot;b6c...4f1&quot;</span>
+<span class="p">],</span>
+<span class="s2">&quot;dealIds&quot;</span><span class="p">:</span> <span class="p">[</span>
+  <span class="s2">&quot;aeb7...8fe&quot;</span><span class="p">,</span>
+  <span class="s2">&quot;c557...d0a&quot;</span>
+<span class="p">]</span>
+<span class="p">},</span>
+<span class="s2">&quot;externalId&quot;</span><span class="p">:</span> <span class="s2">&quot;Megafon/333...434&quot;</span><span class="p">,</span>
+<span class="s2">&quot;externalCreatedAt&quot;</span><span class="p">:</span> <span class="s2">&quot;2022-03-22T10:38:35.176007+00:00&quot;</span><span class="p">,</span>
+<span class="s2">&quot;type&quot;</span><span class="p">:</span> <span class="s2">&quot;call&quot;</span><span class="p">,</span>
+<span class="s2">&quot;direction&quot;</span><span class="p">:</span> <span class="s2">&quot;inbound&quot;</span><span class="p">,</span>
+<span class="s2">&quot;status&quot;</span><span class="p">:</span> <span class="s2">&quot;sealed&quot;</span><span class="p">,</span>
+<span class="s2">&quot;integrationId&quot;</span><span class="p">:</span> <span class="s2">&quot;7a1...523&quot;</span><span class="p">,</span>
+<span class="s2">&quot;data&quot;</span><span class="p">:</span> <span class="p">{</span>
+<span class="s2">&quot;call&quot;</span><span class="p">:</span> <span class="p">{</span>
+    <span class="s2">&quot;clientPhone&quot;</span><span class="p">:</span> <span class="s2">&quot;79997775533&quot;</span><span class="p">,</span>
+    <span class="s2">&quot;externalVatsPhone&quot;</span><span class="p">:</span> <span class="s2">&quot;79229929292&quot;</span><span class="p">,</span>
+    <span class="s2">&quot;items&quot;</span><span class="p">:</span> <span class="p">[</span>
+    <span class="p">{</span>
+      <span class="s2">&quot;id&quot;</span><span class="p">:</span> <span class="s2">&quot;333...434&quot;</span><span class="p">,</span>
+      <span class="s2">&quot;from&quot;</span><span class="p">:</span> <span class="p">{</span>
+        <span class="s2">&quot;type&quot;</span><span class="p">:</span> <span class="s2">&quot;client&quot;</span>
+      <span class="p">},</span>
+      <span class="s2">&quot;to&quot;</span><span class="p">:</span> <span class="p">{</span>
+        <span class="s2">&quot;type&quot;</span><span class="p">:</span> <span class="s2">&quot;user&quot;</span>
+      <span class="p">},</span>
+      <span class="s2">&quot;recordings&quot;</span><span class="p">:</span> <span class="p">[],</span>
+      <span class="s2">&quot;finishedAt&quot;</span><span class="p">:</span> <span class="s2">&quot;2022-03-22T10:38:47.1835703+00:00&quot;</span>
+    <span class="p">}</span>
+    <span class="p">],</span>
+    <span class="s2">&quot;events&quot;</span><span class="p">:</span> <span class="p">[</span>
+    <span class="p">{</span>
+    <span class="s2">&quot;externalCallItemId&quot;</span><span class="p">:</span> <span class="s2">&quot;333...434&quot;</span><span class="p">,</span>
+    <span class="s2">&quot;realtimeCallItemId&quot;</span><span class="p">:</span> <span class="s2">&quot;333...434&quot;</span><span class="p">,</span>
+    <span class="s2">&quot;timestamp&quot;</span><span class="p">:</span> <span class="s2">&quot;2022-03-22T10:38:35.6152798+00:00&quot;</span><span class="p">,</span>
+    <span class="s2">&quot;type&quot;</span><span class="p">:</span> <span class="s2">&quot;appeared&quot;</span><span class="p">,</span>
+    <span class="s2">&quot;from&quot;</span><span class="p">:</span> <span class="p">{</span>
+    <span class="s2">&quot;type&quot;</span><span class="p">:</span> <span class="s2">&quot;client&quot;</span>
+        <span class="p">},</span>
+        <span class="s2">&quot;to&quot;</span><span class="p">:</span> <span class="p">{</span>
+         <span class="s2">&quot;type&quot;</span><span class="p">:</span> <span class="s2">&quot;user&quot;</span>
+        <span class="p">}</span>
+    <span class="p">},</span>
+    <span class="p">{</span>
+      <span class="s2">&quot;externalCallItemId&quot;</span><span class="p">:</span> <span class="s2">&quot;333...434&quot;</span><span class="p">,</span>
+      <span class="s2">&quot;realtimeCallItemId&quot;</span><span class="p">:</span> <span class="s2">&quot;333...434&quot;</span><span class="p">,</span>
+      <span class="s2">&quot;timestamp&quot;</span><span class="p">:</span> <span class="s2">&quot;2022-03-22T10:38:47.1835703+00:00&quot;</span><span class="p">,</span>
+      <span class="s2">&quot;type&quot;</span><span class="p">:</span> <span class="s2">&quot;disconnected&quot;</span><span class="p">,</span>
+      <span class="s2">&quot;from&quot;</span><span class="p">:</span> <span class="p">{</span>
+        <span class="s2">&quot;type&quot;</span><span class="p">:</span> <span class="s2">&quot;client&quot;</span>
+        <span class="p">},</span>
+        <span class="s2">&quot;to&quot;</span><span class="p">:</span> <span class="p">{</span>
+        <span class="s2">&quot;type&quot;</span><span class="p">:</span> <span class="s2">&quot;user&quot;</span>
+    <span class="p">}</span>
+    <span class="p">}</span>
+    <span class="p">]</span>
+    <span class="p">}</span>
+<span class="p">},</span>
+<span class="s2">&quot;assignedToGroupId&quot;</span><span class="p">:</span> <span class="s2">&quot;000...000&quot;</span><span class="p">,</span>
+<span class="s2">&quot;id&quot;</span><span class="p">:</span> <span class="s2">&quot;184...bcd&quot;</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+<p><strong>409</strong></p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="p">{</span>
+<span class="s2">&quot;errors&quot;</span><span class="p">:</span> <span class="p">{</span>
+<span class="s2">&quot;direction&quot;</span><span class="p">:</span> <span class="p">[</span>
+    <span class="s2">&quot;Error converting value </span><span class="se">\&quot;</span><span class="s2">in2bound</span><span class="se">\&quot;</span><span class="s2"> to type &#39;Xcom.Api.Models.Communications.CommunicationDirection&#39;. Path &#39;direction&#39;, line 7, position 27.&quot;</span>
+<span class="p">],</span>
+<span class="s2">&quot;callStartedInfo&quot;</span><span class="p">:</span> <span class="p">[</span>
+  <span class="s2">&quot;The callStartedInfo field is required.&quot;</span>
+<span class="p">]</span>
+<span class="p">},</span>
+<span class="s2">&quot;type&quot;</span><span class="p">:</span> <span class="s2">&quot;https://tools.ietf.org/html/rfc7231#section-6.5.1&quot;</span><span class="p">,</span>
+<span class="s2">&quot;title&quot;</span><span class="p">:</span> <span class="s2">&quot;One or more validation errors occurred.&quot;</span><span class="p">,</span>
+<span class="s2">&quot;status&quot;</span><span class="p">:</span> <span class="mi">400</span><span class="p">,</span>
+<span class="s2">&quot;traceId&quot;</span><span class="p">:</span> <span class="s2">&quot;00-1...a-00&quot;</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="rst-markup-telephonycallevent">
+<span id="id4"></span><h3>Сообщение о событии звонка<a class="headerlink" href="#rst-markup-telephonycallevent" title="Ссылка на этот заголовок">¶</a></h3>
+<p>Метод: <a class="reference external" href="https://developer.kontur.ru/doc/crm/method?type=post&amp;path=%2Fapi%2Fv1%2F%7Bws%7D%2Fcommunications%2Fcallbacks%2Ftelephony%2Fcall-event">POST TelephonyCallEvent</a></p>
+<p>Метод регистрирует сообщение о звонке, когда произошло одно из событий:</p>
+<ul class="simple">
+<li><p>Поступил вызов;</p></li>
+<li><p>Подняли трубку;</p></li>
+<li><p>Положили трубку;</p></li>
+<li><p>Поставили на удержание.</p></li>
+</ul>
+<p><strong>Параметры</strong></p>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">ws</span></code> — Уникальное название рабочего пространства.</p></li>
+</ul>
+<p><strong>Тело запроса</strong></p>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">communicationId</span></code> —  Идентификатор коммуникации. Передается в системном вызове <code class="docutils literal notranslate"><span class="pre">CALL</span></code>, если звонок совершается по инициативе пользователя Контур.CRM;</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">externalId</span></code> — Уникальный идентификатор всего звонка;</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">externalCallItemId</span></code> — Идентификатор плеча звонка со стороны телефонии;</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">realtimeCallItemId</span></code> — Идентификатор плеча звонка в момент вызова со стороны телефонии, требуется для событий реального времени;</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">timestamp</span></code> — Время возникновения события;</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">type</span></code> — Тип события: <code class="docutils literal notranslate"><span class="pre">appeared</span></code> (появился), <code class="docutils literal notranslate"><span class="pre">connected</span></code> (подключен) <code class="docutils literal notranslate"><span class="pre">disconnected</span></code> (отключен), <code class="docutils literal notranslate"><span class="pre">paused</span></code> (пауза), <code class="docutils literal notranslate"><span class="pre">finished</span></code> (завершено);</p></li>
+<li><dl class="simple">
+<dt><code class="docutils literal notranslate"><span class="pre">from</span></code> — Участник плеча, совершающий звонок;</dt><dd><ol class="arabic simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">type</span></code> — Тип клиента: пользователь (<code class="docutils literal notranslate"><span class="pre">user</span></code>) или клиент (<code class="docutils literal notranslate"><span class="pre">client</span></code>);</p></li>
+</ol>
+</dd>
+</dl>
+</li>
+<li><dl class="simple">
+<dt><code class="docutils literal notranslate"><span class="pre">to</span></code> — Участник плеча, принимающий звонок;</dt><dd><ol class="arabic simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">type</span></code> — Тип клиента: пользователь (<code class="docutils literal notranslate"><span class="pre">user</span></code>) или клиент (<code class="docutils literal notranslate"><span class="pre">client</span></code>);</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">userId</span></code> — Если тип клиента пользователь (<code class="docutils literal notranslate"><span class="pre">user</span></code>), то это определяет идентификатор пользователя.</p></li>
+</ol>
+</dd>
+</dl>
+</li>
+</ul>
+<p><strong>Пример</strong></p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">POST</span> <span class="n">api</span><span class="o">/</span><span class="n">v1</span><span class="o">/</span><span class="n">my</span><span class="o">-</span><span class="n">workspace</span><span class="o">/</span><span class="n">communications</span><span class="o">/</span><span class="n">callbacks</span><span class="o">/</span><span class="n">telephony</span><span class="o">/</span><span class="n">call</span><span class="o">-</span><span class="n">event</span>
+<span class="n">X</span><span class="o">-</span><span class="n">XCOM</span><span class="o">-</span><span class="n">AccessKey</span><span class="p">:</span> <span class="n">dda</span><span class="o">...</span><span class="n">d67</span>
+</pre></div>
+</div>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="p">{</span>
+<span class="s2">&quot;communicationId&quot;</span><span class="p">:</span> <span class="s2">&quot;435...68e&quot;</span><span class="p">,</span>
+<span class="s2">&quot;externalId&quot;</span><span class="p">:</span> <span class="s2">&quot;Megafon/262...280&quot;</span><span class="p">,</span>
+<span class="s2">&quot;externalCallItemId&quot;</span><span class="p">:</span> <span class="s2">&quot;262...280&quot;</span><span class="p">,</span>
+<span class="s2">&quot;realtimeCallItemId&quot;</span><span class="p">:</span> <span class="s2">&quot;262...280&quot;</span><span class="p">,</span>
+<span class="s2">&quot;timestamp&quot;</span><span class="p">:</span> <span class="s2">&quot;2022-03-17T10:19:05.5106605+00:00&quot;</span><span class="p">,</span>
+<span class="s2">&quot;type&quot;</span><span class="p">:</span> <span class="s2">&quot;appeared&quot;</span><span class="p">,</span>
+<span class="s2">&quot;from&quot;</span><span class="p">:</span> <span class="p">{</span>
+    <span class="s2">&quot;type&quot;</span><span class="p">:</span> <span class="s2">&quot;client&quot;</span><span class="p">,</span>
+<span class="p">},</span>
+<span class="s2">&quot;to&quot;</span><span class="p">:</span> <span class="p">{</span>
+    <span class="s2">&quot;type&quot;</span><span class="p">:</span> <span class="s2">&quot;user&quot;</span><span class="p">,</span>
+    <span class="s2">&quot;userId&quot;</span><span class="p">:</span> <span class="s2">&quot;ae9...53d&quot;</span>
+<span class="p">}</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+<p><strong>Ответы</strong></p>
+<p><strong>200</strong></p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="s2">&quot;OK&quot;</span>
+</pre></div>
+</div>
+<p><strong>409</strong></p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="p">{</span>
+<span class="s2">&quot;status&quot;</span><span class="p">:</span> <span class="s2">&quot;communicationNotFound&quot;</span><span class="p">,</span>
+<span class="s2">&quot;message&quot;</span><span class="p">:</span> <span class="s2">&quot;Communication not found. Id: 435...68e&quot;</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="rst-markup-telephonycallfinished">
+<span id="id5"></span><h3>Сообщение о завершении звонка<a class="headerlink" href="#rst-markup-telephonycallfinished" title="Ссылка на этот заголовок">¶</a></h3>
+<p>Метод: <a class="reference external" href="https://developer.kontur.ru/doc/crm/method?type=post&amp;path=%2Fapi%2Fv1%2F%7Bws%7D%2Fcommunications%2Fcallbacks%2Ftelephony%2Fcall-finished">POST TelephonyCallFinished</a></p>
+<p>Метод регистрирует сообщение о завершении звонка.</p>
+<p><strong>Параметры</strong></p>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">ws</span></code> — Уникальное название рабочего пространства.</p></li>
+</ul>
+<p><strong>Тело запроса</strong></p>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">timestamp</span></code> — Время возникновения события;</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">communicationId</span></code> —  Идентификатор коммуникации. Передается в системном вызове CALL, если звонок совершается по инициативе пользователя Контур.CRM;</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">externalId</span></code> — Уникальный идентификатор всего звонка;</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">externalVatsPhone</span></code> — Внешний номер;</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">clientPhone</span></code> — Телефон, принимающий или совершающий звонок;</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">direction</span></code> — Направление вызова: <code class="docutils literal notranslate"><span class="pre">inbound</span></code> (входящий), <code class="docutils literal notranslate"><span class="pre">outbound</span></code> (исходящий), <code class="docutils literal notranslate"><span class="pre">internal</span></code> (внутренний).</p></li>
+</ul>
+<p><strong>Пример</strong></p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="p">{</span>
+<span class="s2">&quot;timestamp&quot;</span><span class="p">:</span> <span class="s2">&quot;2022-03-22T10:41:19.8948611+00:00&quot;</span><span class="p">,</span>
+<span class="s2">&quot;communicationId&quot;</span><span class="p">:</span> <span class="s2">&quot;f48...4ac&quot;</span><span class="p">,</span>
+<span class="s2">&quot;externalId&quot;</span><span class="p">:</span> <span class="s2">&quot;Megafon/335...952&quot;</span><span class="p">,</span>
+<span class="s2">&quot;externalVatsPhone&quot;</span><span class="p">:</span> <span class="s2">&quot;79229929292&quot;</span><span class="p">,</span>
+<span class="s2">&quot;clientPhone&quot;</span><span class="p">:</span> <span class="s2">&quot;79997775533&quot;</span><span class="p">,</span>
+<span class="s2">&quot;direction&quot;</span><span class="p">:</span> <span class="s2">&quot;inbound&quot;</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+<p><strong>Ответы</strong></p>
+<p><strong>200</strong></p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="s2">&quot;OK&quot;</span>
+</pre></div>
+</div>
+<p><strong>409</strong></p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="p">{</span>
+<span class="s2">&quot;status&quot;</span><span class="p">:</span> <span class="s2">&quot;communicationNotFound&quot;</span><span class="p">,</span>
+<span class="s2">&quot;message&quot;</span><span class="p">:</span> <span class="s2">&quot;Communication not found. Id: f48...4ac&quot;</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="rst-markup-telephonycallfailed">
+<span id="id6"></span><h3>Сообщение о неудачной попытке позвонить<a class="headerlink" href="#rst-markup-telephonycallfailed" title="Ссылка на этот заголовок">¶</a></h3>
+<p>Метод: <a class="reference external" href="https://developer.kontur.ru/doc/crm/method?type=post&amp;path=%2Fapi%2Fv1%2F%7Bws%7D%2Fcommunications%2Fcallbacks%2Ftelephony%2Fcall-failed">POST TelephonyCallFailed</a></p>
+<p>Метод регистрирует сообщение о неудачной попытке позвонить. В теле запроса нужно указать идентификатор коммуникации из системного вызова <code class="docutils literal notranslate"><span class="pre">CALL</span></code>.</p>
+<p>Когда пользователь начинает звонок, CRM делает системный вызов CALL и просит интеграцию начать звонок. В ответ на вызов интеграция должна вернуть ответ 200. Если позвонить не удалось, то вернуть ошибочный код ответа, такую функциональность можно реализовать асинхронно.</p>
+<p><strong>Параметры</strong></p>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">ws</span></code> — Уникальное название рабочего пространства;</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">communicationId</span></code> —  Идентификатор коммуникации. Передается в системном вызове <code class="docutils literal notranslate"><span class="pre">CALL</span></code>, если звонок совершается по инициативе пользователя Контур.CRM.</p></li>
+</ul>
+<p><strong>Пример</strong></p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">POST</span> <span class="o">/</span><span class="n">api</span><span class="o">/</span><span class="n">v1</span><span class="o">/</span><span class="n">my</span><span class="o">-</span><span class="n">workspace</span><span class="o">/</span><span class="n">communications</span><span class="o">/</span><span class="n">callbacks</span><span class="o">/</span><span class="n">telephony</span><span class="o">/</span><span class="n">call</span><span class="o">-</span><span class="n">recording</span>
+<span class="n">X</span><span class="o">-</span><span class="n">XCOM</span><span class="o">-</span><span class="n">AccessKey</span><span class="p">:</span> <span class="n">dda</span><span class="o">...</span><span class="n">d67</span>
+</pre></div>
+</div>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="p">{</span>
+<span class="s2">&quot;communicationId&quot;</span><span class="p">:</span> <span class="s2">&quot;411...ba9&quot;</span><span class="p">,</span>
+<span class="s2">&quot;externalId&quot;</span><span class="p">:</span> <span class="s2">&quot;Megafon/644...384&quot;</span><span class="p">,</span>
+<span class="s2">&quot;externalCallItemId&quot;</span><span class="p">:</span> <span class="s2">&quot;644...384&quot;</span><span class="p">,</span>
+<span class="s2">&quot;recordingFileId&quot;</span><span class="p">:</span> <span class="s2">&quot;a75...f3a&quot;</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+<p><strong>Ответы</strong></p>
+<p><strong>200</strong></p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="s2">&quot;OK&quot;</span>
+</pre></div>
+</div>
+<p><strong>409</strong></p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="p">{</span>
+<span class="s2">&quot;status&quot;</span><span class="p">:</span> <span class="s2">&quot;communicationNotFound&quot;</span><span class="p">,</span>
+<span class="s2">&quot;message&quot;</span><span class="p">:</span> <span class="s2">&quot;Communication not found. Id: 184...bcd&quot;</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="rst-markup-telephonycallrecording">
+<span id="id7"></span><h3>Сообщение о появлении записи разговора<a class="headerlink" href="#rst-markup-telephonycallrecording" title="Ссылка на этот заголовок">¶</a></h3>
+<p>Метод: <a class="reference external" href="https://developer.kontur.ru/doc/crm/method?type=post&amp;path=%2Fapi%2Fv1%2F%7Bws%7D%2Fcommunications%2Fcallbacks%2Ftelephony%2Fcall-recording">POST TelephonyCallRecording</a></p>
+<p>Метод отправляет сообщение о появлении записи разговора после загрузки файла в хранилище API Files. Позволяет быстрее привязать запись разговора к звонку.</p>
+<p>Достаточно сохранять записи разговоров в процессе регистрации завершенных звонков, при чтении истории звонков из телефонии. Появление звонка в истории телефонии означает, что звонок завершен и запись готова.</p>
+<p><strong>Параметры</strong></p>
+<p>ws — Уникальное название рабочего пространства.</p>
+<p><strong>Тело запроса</strong></p>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">communicationId</span></code> —  Идентификатор коммуникации. Передается в системном вызове <code class="docutils literal notranslate"><span class="pre">CALL</span></code>, если звонок совершается по инициативе пользователя Контур.CRM;</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">externalCallItemId</span></code> — Идентификатор плеча звонка со стороны телефонии;</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">realtimeCallItemId</span></code> — Идентификатор плеча звонка в момент вызова со стороны телефонии, требуется для событий реального времени;</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">recordingFileId</span></code> — Идентификатор записанного файла разговора.</p></li>
+</ul>
+<p><strong>Пример</strong></p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">POST</span> <span class="o">/</span><span class="n">api</span><span class="o">/</span><span class="n">v1</span><span class="o">/</span><span class="n">my</span><span class="o">-</span><span class="n">workspace</span><span class="o">/</span><span class="n">communications</span><span class="o">/</span><span class="n">callbacks</span><span class="o">/</span><span class="n">telephony</span><span class="o">/</span><span class="n">call</span><span class="o">-</span><span class="n">recording</span>
+<span class="n">X</span><span class="o">-</span><span class="n">XCOM</span><span class="o">-</span><span class="n">AccessKey</span><span class="p">:</span> <span class="n">dda</span><span class="o">...</span><span class="n">d67</span>
+</pre></div>
+</div>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="p">{</span>
+<span class="s2">&quot;communicationId&quot;</span><span class="p">:</span> <span class="s2">&quot;411...ba9&quot;</span><span class="p">,</span>
+<span class="s2">&quot;externalId&quot;</span><span class="p">:</span> <span class="s2">&quot;Megafon/644...384&quot;</span><span class="p">,</span>
+<span class="s2">&quot;externalCallItemId&quot;</span><span class="p">:</span> <span class="s2">&quot;644...384&quot;</span><span class="p">,</span>
+<span class="s2">&quot;recordingFileId&quot;</span><span class="p">:</span> <span class="s2">&quot;a75...f3a&quot;</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+<p><strong>Ответы</strong></p>
+<p><strong>200</strong></p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="s2">&quot;OK&quot;</span>
+</pre></div>
+</div>
+<p><strong>409</strong></p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="p">{</span>
+<span class="s2">&quot;status&quot;</span><span class="p">:</span> <span class="s2">&quot;communicationNotFound&quot;</span><span class="p">,</span>
+<span class="s2">&quot;message&quot;</span><span class="p">:</span> <span class="s2">&quot;Communication not found. Id: 184...bcd&quot;</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="rst-markup-telephonyregistercall">
+<span id="id8"></span><h3>Регистрация завершенных звонков<a class="headerlink" href="#rst-markup-telephonyregistercall" title="Ссылка на этот заголовок">¶</a></h3>
+<p>Метод: <a class="reference external" href="https://developer.kontur.ru/doc/crm/method?type=post&amp;path=%2Fapi%2Fv1%2F%7Bws%7D%2Fcommunications%2Fcallbacks%2Ftelephony%2Fregister-call">POST TelephonyRegisterCall</a></p>
+<p>Метод регистрирует завершенный звонок. В интеграции должно быть реализовано чтение истории звонков из телефонии, регистрация состоявшихся или пропущенных звонков в Контур.CRM.</p>
+<p><strong>Параметры</strong></p>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">ws</span></code> — Уникальное название рабочего пространства.</p></li>
+</ul>
+<p><strong>Тело запроса</strong></p>
+<ul>
+<li><p><code class="docutils literal notranslate"><span class="pre">externalVatsPhone</span></code> — Внешний номер;</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">clientPhone</span></code> — Телефон, принимающий или совершающий звонок;</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">items</span></code> — Массив плеч звонка;</p>
+<blockquote>
+<div><ol class="arabic simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">id</span></code> — Уникальный идентификатор плеча звонка;</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">from</span></code> — Участник плеча, совершающий звонок;</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">to</span></code> — Участник плеча, принимающий звонок.</p></li>
+</ol>
+</div></blockquote>
+</li>
+<li><p><code class="docutils literal notranslate"><span class="pre">recordings</span></code> — Массив записей разговоров плеч звонка;</p>
+<blockquote>
+<div><ol class="arabic simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">fileId</span></code> — Идентификатор записи разговора;</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">fileName</span></code> — Название файла;</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">contentType</span></code> — Тип файла;</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">contentLength</span></code> — Размер файла в байтах.</p></li>
+</ol>
+</div></blockquote>
+</li>
+<li><p><code class="docutils literal notranslate"><span class="pre">startedAt</span></code> — Время приема звонка;</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">finishedAt</span></code> — Время завершения звонка;</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">communicationId</span></code> —  Идентификатор коммуникации. Передается в системном вызове <code class="docutils literal notranslate"><span class="pre">CALL</span></code>, если звонок совершается по инициативе пользователя Контур.CRM;</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">externalCreatedAt</span></code> — Дата и время звонка;</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">externalId</span></code> — Уникальный идентификатор всего звонка;</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">direction</span></code> — Направление вызова: <code class="docutils literal notranslate"><span class="pre">inbound</span></code> (входящий), <code class="docutils literal notranslate"><span class="pre">outbound</span></code> (исходящий), <code class="docutils literal notranslate"><span class="pre">internal</span></code> (внутренний).</p></li>
+</ul>
+<p><strong>Пример</strong></p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">POST</span> <span class="o">/</span><span class="n">api</span><span class="o">/</span><span class="n">v1</span><span class="o">/</span><span class="n">my</span><span class="o">-</span><span class="n">workspace</span><span class="o">/</span><span class="n">communications</span><span class="o">/</span><span class="n">callbacks</span><span class="o">/</span><span class="n">telephony</span><span class="o">/</span><span class="n">register</span><span class="o">-</span><span class="n">call</span>
+<span class="n">X</span><span class="o">-</span><span class="n">XCOM</span><span class="o">-</span><span class="n">AccessKey</span><span class="p">:</span> <span class="n">dda</span><span class="o">...</span><span class="n">d67</span>
+</pre></div>
+</div>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="p">{</span>
+<span class="s2">&quot;externalVatsPhone&quot;</span><span class="p">:</span> <span class="s2">&quot;79229929292&quot;</span><span class="p">,</span>
+<span class="s2">&quot;clientPhone&quot;</span><span class="p">:</span> <span class="s2">&quot;79997775533&quot;</span><span class="p">,</span>
+<span class="s2">&quot;items&quot;</span><span class="p">:</span> <span class="p">[</span>
+    <span class="p">{</span>
+        <span class="s2">&quot;id&quot;</span><span class="p">:</span> <span class="s2">&quot;143...68e&quot;</span><span class="p">,</span>
+        <span class="s2">&quot;from&quot;</span><span class="p">:</span> <span class="p">{</span>
+            <span class="s2">&quot;type&quot;</span><span class="p">:</span> <span class="s2">&quot;client&quot;</span><span class="p">,</span>
+        <span class="p">},</span>
+        <span class="s2">&quot;to&quot;</span><span class="p">:</span> <span class="p">{</span>
+            <span class="s2">&quot;type&quot;</span><span class="p">:</span> <span class="s2">&quot;user&quot;</span><span class="p">,</span>
+            <span class="s2">&quot;userId&quot;</span><span class="p">:</span> <span class="s2">&quot;ae9...53d&quot;</span>
+        <span class="p">},</span>
+        <span class="s2">&quot;recordings&quot;</span><span class="p">:</span> <span class="p">[</span>
+            <span class="p">{</span>
+                <span class="s2">&quot;fileId&quot;</span><span class="p">:</span> <span class="s2">&quot;ceb...45e&quot;</span><span class="p">,</span>
+                <span class="s2">&quot;fileName&quot;</span><span class="p">:</span> <span class="s2">&quot;ceb4...45e&quot;</span><span class="p">,</span>
+                <span class="s2">&quot;contentType&quot;</span><span class="p">:</span> <span class="s2">&quot;audio/mpeg&quot;</span><span class="p">,</span>
+                <span class="s2">&quot;contentLength&quot;</span><span class="p">:</span> <span class="s2">&quot;9216&quot;</span>
+            <span class="p">}</span>
+        <span class="p">],</span>
+        <span class="s2">&quot;startedAt&quot;</span><span class="p">:</span> <span class="s2">&quot;2022-03-18T07:27:54.6911428+00:00&quot;</span><span class="p">,</span>
+        <span class="s2">&quot;finishedAt&quot;</span><span class="p">:</span> <span class="s2">&quot;2022-03-18T07:27:59.0622478+00:00&quot;</span>
+    <span class="p">}</span>
+<span class="p">],</span>
+<span class="s2">&quot;communicationId&quot;</span><span class="p">:</span> <span class="s2">&quot;4358...68e&quot;</span><span class="p">,</span>
+<span class="s2">&quot;externalCreatedAt&quot;</span><span class="p">:</span> <span class="s2">&quot;2022-03-17T10:18:58.998205+00:00&quot;</span><span class="p">,</span>
+<span class="s2">&quot;externalId&quot;</span><span class="p">:</span> <span class="s2">&quot;262...280&quot;</span><span class="p">,</span>
+<span class="s2">&quot;direction&quot;</span><span class="p">:</span> <span class="s2">&quot;outbound&quot;</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+<p><strong>Ответы</strong></p>
+<p><strong>200</strong></p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="s2">&quot;OK&quot;</span>
+</pre></div>
+</div>
+<p><strong>409</strong></p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="s2">&quot;Error&quot;</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="rst-markup-telephonycallredirect">
+<span id="id9"></span><h3>Переадресация звонка на ответственного<a class="headerlink" href="#rst-markup-telephonycallredirect" title="Ссылка на этот заголовок">¶</a></h3>
+<p>Метод: <a class="reference external" href="https://developer.kontur.ru/doc/crm/method?type=get&amp;path=%2Fapi%2Fv1%2F%7Bws%7D%2Fcommunications%2Fcallbacks%2Ftelephony%2Fcall-redirect">GET TelephonyCallRedirect</a></p>
+<p>Метод переадресовывает звонок на ответственного за сделку пользователя. Переадресовать звонок можно двумя способами:</p>
+<p>По <code class="docutils literal notranslate"><span class="pre">externalId</span></code> — Если звонок зарегистрирован и Контур.CRM получил его уникальный идентификатор. Телефония программно перенаправляет входящий звонок на необходимый внутренний номер. Для получения информации о пользователе нужно отправить запрос, а в ответ будет возвращен список пользователей Контур.CRM.</p>
+<p>По номеру телефона — До всех возможных событий. Телефония позволяет перенаправить звонок до получения <code class="docutils literal notranslate"><span class="pre">externalId</span></code>, ответственного пользователя достаточно получить по номеру телефона.
+Выбор способа переадресации зависит от возможностей телефонии.</p>
+<p><strong>Параметры</strong></p>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">ws</span></code> — Уникальное название рабочего пространства;</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">externalId</span></code> — Уникальный идентификатор всего звонка;</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">phoneNumber</span></code> — Номер телефона ответственного за сделку пользователя.</p></li>
+</ul>
+<p><strong>Пример</strong></p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>GET api/v1/my-workspace/communications/callbacks/telephony/call-redirect?externalId=ab1...16t
+X-XCOM-AccessKey: dda...d67
+</pre></div>
+</div>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>GET api/v1/my-workspace/communications/callbacks/telephony/call-redirect?phoneNumber=791229929292
+X-XCOM-AccessKey: dda...d67
+</pre></div>
+</div>
+<p><strong>Ответы</strong></p>
+<p><strong>200</strong></p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="p">{</span>
+<span class="s2">&quot;userIds&quot;</span><span class="p">:</span> <span class="p">[</span>
+<span class="s2">&quot;ae9...53d&quot;</span>
+<span class="p">]</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+<p><strong>409</strong></p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="p">{</span>
+<span class="s2">&quot;status&quot;</span><span class="p">:</span> <span class="s2">&quot;notFound&quot;</span><span class="p">,</span>
+<span class="s2">&quot;message&quot;</span><span class="p">:</span> <span class="s2">&quot;Communication Xcom.Api.Models.Communications.CallRedirectRequest not found&quot;</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+</div>
+</div>
+</div>
+
+
+           </div>
+          </div>
+          <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
+        <a href="api-authorization.html" class="btn btn-neutral float-left" title="API авторизации" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="api-files.html" class="btn btn-neutral float-right" title="API files" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p></p>
+  </div>
+
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>
