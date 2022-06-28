@@ -52,7 +52,7 @@ source_suffix = ['.rst']
 master_doc = 'index'
 
 # General information about the project.
-project = u'Контур CRM'
+project = u'Контур BPM'
 copyright = u'2021, Graziella'
 author = u'Graziella'
 
@@ -125,7 +125,7 @@ todo_include_todos = False
 #html_theme = 'nature'
 #html_theme = 'haiku'
 #html_theme = 'pyramid'
-html_theme = 'sphinx_rtd_theme'
+html_theme = "sphinx_rtd_theme"
 html_favicon = '_static/favicon.ico'
 
 # Theme options are theme-specific and customize the look and feel of a theme

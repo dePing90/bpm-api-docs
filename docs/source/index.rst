@@ -1,6 +1,6 @@
-.. _`Описание методов в Swagger`: https://developer.kontur.ru/doc/crm
+.. _`Описание методов в Swagger`: https://developer.kontur.ru/doc/bpm
 
-API Контур CRM
+API Контур BPM
 ===============
 
 `Описание методов в Swagger`_
