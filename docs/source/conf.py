@@ -52,7 +52,8 @@ source_suffix = ['.rst']
 master_doc = 'index'
 
 # General information about the project.
-project = u'Контур BPM'
+# project = u'Контур BPM'
+project = u'Контур КЭДО'
 copyright = u'2021, Graziella'
 author = u'Graziella'
 
