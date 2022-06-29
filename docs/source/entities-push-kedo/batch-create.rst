@@ -1,13 +1,12 @@
-.. _`Метод API для создания контактов`: https://developer.kontur.ru/doc/crm/method?type=post&path=%2Fapi%2Fv1%2F%7Bws%7D%2Fcontacts%2Fcreate
+.. _`Метод API для создания нескольких пользователей`: https://developer.kontur.ru/doc/bpm/method?type=post&path=%2Fapi%2Fv1%2F%7Bws%7D%2Fusers%2Fcreate
 
 Создание пачки
 ====================================
 
-`Метод API для создания контактов`_
-*Ссылку нужно заменить*
+`Метод API для создания нескольких пользователей`_
 
-*Нужен какой-то поясняющий текст?*
-
+Рассмотрим пример эффективного создания нескольких пользователей за один запрос к API. 
+В Body передается модель ContactCreationArgsBatchCreateRequest.
 Формируем запрос:
 
 .. code-block::
@@ -38,7 +37,7 @@
 В ответ на успешное создание получим 200 OK:
 
 .. code-block:: c#
-    
+
     {
     "items": {
         "a8214dc2-454d-4943-8132-25e5085a986e": {

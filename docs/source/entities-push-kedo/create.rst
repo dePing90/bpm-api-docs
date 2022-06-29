@@ -1,12 +1,11 @@
-.. _`Метод API для создания пользователя`: https://developer.kontur.ru/doc/bpm/method?type=post&path=%2Fapi%2Fv1%2F%7Bws%7D%2Fusers
+.. _`Метод API для создания пользователя`: https://developer.kontur.ru/doc/bpm//method?type=post&path=%2Fapi%2Fv1%2F%7Bws%7D%2Fusers
 
 Создание 
 =======================
 
-Рассмотрим на примере создания пользователя
 `Метод API для создания пользователя`_
 
-Запрос:
+Рассмотрим на примере создания пользователя. Запрос:
 
 .. code-block::
 

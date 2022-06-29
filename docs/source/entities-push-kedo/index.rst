@@ -8,4 +8,3 @@
    modification
    patch-requests
    patch-operations
-   path-operations
