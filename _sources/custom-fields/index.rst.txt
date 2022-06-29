@@ -5,4 +5,3 @@
 
     custom-fields-creation
     custom-fields-type
-    custom-fields-interface

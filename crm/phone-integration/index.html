@@ -1,0 +1,170 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="ru" >
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Интеграция с телефонией &mdash; документация Контур КЭДО 1.1</title><link rel="stylesheet" href="../../_static/css/theme.css" type="text/css" />
+    <link rel="stylesheet" href="../../_static/pygments.css" type="text/css" /><link rel="shortcut icon" href="../../_static/favicon.ico"/>
+  <!--[if lt IE 9]>
+    <script src="../../_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  <script id="documentation_options" data-url_root="../../" src="../../_static/documentation_options.js"></script>
+        <script src="../../_static/jquery.js"></script>
+        <script src="../../_static/underscore.js"></script>
+        <script src="../../_static/doctools.js"></script>
+        <script src="../../_static/language_data.js"></script>
+        <script src="../../_static/translations.js"></script>
+    <script src="../../_static/js/theme.js"></script>
+    <link rel="index" title="Алфавитный указатель" href="../../genindex.html" />
+    <link rel="search" title="Поиск" href="../../search.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+            <a href="../../index.html" class="icon icon-home"> Контур КЭДО
+          </a>
+              <div class="version">
+                1.1
+              </div>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <ul>
+<li class="toctree-l1"><a class="reference internal" href="../../entities-kedo/index.html">Описание сущностей</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../entities-push-kedo/index.html">Создание и изменение сущностей</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../entities-get-kedo/index.html">Получение информации о сущностях</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../custom-fields/index.html">Работа с пользовательскими полями</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../integrations/index.html">Интеграции и взаимодействие с API</a></li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../../index.html">Контур КЭДО</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="../../index.html" class="icon icon-home"></a> &raquo;</li>
+      <li>Интеграция с телефонией</li>
+      <li class="wy-breadcrumbs-aside">
+            <a href="../../_sources/crm/phone-integration/index.rst.txt" rel="nofollow"> View page source</a>
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <div class="section" id="id1">
+<h1>Интеграция с телефонией<a class="headerlink" href="#id1" title="Ссылка на этот заголовок">¶</a></h1>
+<div class="section" id="id2">
+<h2>Описание интеграции<a class="headerlink" href="#id2" title="Ссылка на этот заголовок">¶</a></h2>
+<p>API Контур.CRM позволяет подключить прямую интеграцию с телефонией. В интеграции реализуются сценарии использования: входящий и исходящий вызов, пауза, перевод, и другие. Система видит звонок набором связанных между собой плеч, где каждое плечо это разговор между двумя конкретными участниками. Звонки бывают трех типов:</p>
+<ul class="simple">
+<li><p>Входящий — клиент звонит на внешний номер;</p></li>
+<li><p>Исходящий — пользователь звонит на внешний номер;</p></li>
+<li><p>Внутренний — пользователь звонит пользователю на внутренний номер.</p></li>
+</ul>
+<div class="section" id="id3">
+<h3>Пример звонка<a class="headerlink" href="#id3" title="Ссылка на этот заголовок">¶</a></h3>
+<p>Иван делает звонок по внешнему номеру. Телефония переводит звонок клиента на менеджера Машу. Маша разговаривает с Иваном, потом делает консультационный звонок по внутреннему номеру эксперту Диме. После решения вопроса Маша возвращается к Ивану и заканчивает с ним разговор. В таком звонке два плеча: разговор клиента с менеджером и разговор менеджера с экспертом.</p>
+<img alt="../../_images/example-call.png" src="../../_images/example-call.png" />
+</div>
+<div class="section" id="rst-markup-createintegration">
+<span id="id4"></span><h3>Создание интеграции<a class="headerlink" href="#rst-markup-createintegration" title="Ссылка на этот заголовок">¶</a></h3>
+<p>Интеграции бывают двух типов:</p>
+<ul class="simple">
+<li><p>Приватная интеграция — создается администратором и доступна только сотрудникам приглашенным в это пространство.</p></li>
+<li><p>Публичная интеграция — создается администратором и доступна пользователям всех пространств. Если интеграция установлена, то напишите на почту, чтобы сделать ее публичной: <a class="reference external" href="mailto:crm-support&#37;&#52;&#48;kontur&#46;ru">crm-support<span>&#64;</span>kontur<span>&#46;</span>ru</a>. После включения сторонние организации добавят ее в разделе «Настройки» —&gt; «Интеграции» —&gt; «Добавить интеграцию».</p></li>
+</ul>
+<img alt="../../_images/settings-admin.png" src="../../_images/settings-admin.png" />
+</div>
+</div>
+<div class="section" id="id5">
+<h2>Особенности интеграции<a class="headerlink" href="#id5" title="Ссылка на этот заголовок">¶</a></h2>
+<p>Подключить телефонию можно без создания собственной интеграции, если она добавлена в магазин интеграций. Если такой вариант не подходит, то <a class="reference internal" href="#rst-markup-createintegration"><span class="std std-ref">создайте публичную или приватную интеграцию</span></a>, в зависимости от нужд организации.</p>
+<p>Чтобы подключить телефонию в Контур.CRM, установите интеграцию в пространстве. Интеграции выдается API-ключ, с помощью которого вы сможете авторизовать вызовы в API. В пространстве можно подключить неограниченное количество интеграций.</p>
+<p>При создании интеграции, вам необходимо реализовать следующую функциональность:</p>
+<ul>
+<li><p>Регистрацию завершенных звонков и чтение истории из телефонии. Завершенный звонок это состоявшийся или пропущенный вызов.</p></li>
+<li><p>Сообщение о событиях: поступление вызова, подняли трубку, положили трубку, поставили на удержание, и другие. При вызове Контур.CRM отобразит в интерфейсе пространства кнопки «Принять звонок» и «Положить трубку».</p></li>
+<li><p>HTTP-сервер для обработки системных вызовов.</p>
+<blockquote>
+<div><ol class="arabic simple">
+<li><p>Системный вызов CALL — интеграция начинает новый звонок. Контур.CRM выполнит его, когда пользователь нажимает кнопку «Позвонить» в интерфейсе.</p></li>
+<li><p>Системный вызов HANGUP — интеграция завершает плечо звонка. Вызов делает Контур.CRM, когда пользователь нажимает на кнопку «Положить трубку» в интерфейсе.</p></li>
+</ol>
+</div></blockquote>
+</li>
+<li><p>Переадресацию звонка на ответственного пользователя, при необходимости в таком сценарии. Пользователь может создать карточку «Cделки» и указать в ней номер клиента. При поступлении входящего вызова звонок будет адресован ответственному сотруднику в активной сделке.</p></li>
+</ul>
+<p>Чтобы избежать дублирования звонков в системе, интеграция должна сопоставлять звонок с помощью внутреннего идентификатора телефонии. Если звонки поступают по внутренним номерам, то в плечах модели звонка будут записаны идентификаторы пользователей. Интеграция должна обеспечить сохранение соответствия «Пользователь Контур.CRM» &lt;—&gt; «Внутренний номер в телефонии». Записи разговора могут храниться в плечах звонка. Для сохранения записи нужно загрузить ее во временное хранилище с помощью <a class="reference internal" href="../../integrations/api-files.html#rst-markup-uploadfile"><span class="std std-ref">API Files</span></a></p>
+</div>
+<div class="section" id="id6">
+<h2>Алгоритм работы с методами<a class="headerlink" href="#id6" title="Ссылка на этот заголовок">¶</a></h2>
+<p>Рассмотрим сценарии входящих и исходящих звонков API Контур.CRM. Порядок методов зависит от интеграции и особенностей от телефонии.</p>
+<p><strong>Пример входящего звонка</strong></p>
+<ol class="arabic simple">
+<li><p>Если в интеграции включена переадресация звонка, то при активной карточке сделки вызов будет адресован ответственному сотруднику <a class="reference internal" href="api-telephony.html#rst-markup-telephonycallredirect"><span class="std std-ref">GET TelephonyCallRedirect</span></a></p></li>
+<li><p>Интеграция сообщает о начале звонка <a class="reference internal" href="api-telephony.html#rst-markup-telephonycallstarted"><span class="std std-ref">POST TelephonyCallStarted</span></a> и событии звонка <a class="reference internal" href="api-telephony.html#rst-markup-telephonycallevent"><span class="std std-ref">POST TelephonyCallEvent</span></a>.</p></li>
+<li><p>При неудачной попытке позвонить, интеграция отправляет сообщение <a class="reference internal" href="api-telephony.html#rst-markup-telephonycallfailed"><span class="std std-ref">POST TelephonyCallFailed</span></a>.</p></li>
+<li><p>Пользователь решает завершить звонок и нажимает в интерфейсе «Положить трубку». Контур.CRM отправит запрос на HTTP-сервер указанный в интеграции <a class="reference internal" href="api-telephony.html#rst-markup-communicationshangup"><span class="std std-ref">POST CommunicationsHangup</span></a>.</p></li>
+<li><p>Интеграция сообщает о завершении звонка между участниками <a class="reference internal" href="api-telephony.html#rst-markup-telephonycallfinished"><span class="std std-ref">POST TelephonyCallFinished</span></a>.</p></li>
+<li><p>Интеграция регистрирует завершенный звонок <a class="reference internal" href="api-telephony.html#rst-markup-telephonyregistercall"><span class="std std-ref">POST TelephonyRegisterCall</span></a> и загружает файл во временное хранилище API Files <a class="reference internal" href="../../integrations/api-files.html#rst-markup-uploadfile"><span class="std std-ref">POST UploadFile</span></a>.</p></li>
+<li><p>Интеграция сообщает о появлении записи разговора <a class="reference internal" href="api-telephony.html#rst-markup-telephonycallrecording"><span class="std std-ref">POST TelephonyCallRecording</span></a></p></li>
+<li><p>Запись звонка доступна для прослушивания в Контур.CRM.</p></li>
+</ol>
+<p><strong>Пример исходящего звонка</strong></p>
+<ol class="arabic simple">
+<li><p>Пользователь нажимает «Позвонить» в интерфейсе. Контур.CRM отправит запрос на HTTP-сервер указанный в интеграции <a class="reference internal" href="api-telephony.html#rst-markup-ommunicationsall"><span class="std std-ref">POST СommunicationsСall</span></a>.</p></li>
+<li><p>Интеграция сообщает о начале звонка <a class="reference internal" href="api-telephony.html#rst-markup-telephonycallstarted"><span class="std std-ref">POST TelephonyCallStarted</span></a> и событии звонка <a class="reference internal" href="api-telephony.html#rst-markup-telephonycallevent"><span class="std std-ref">POST TelephonyCallEvent</span></a>.</p></li>
+<li><p>При неудачной попытке позвонить, интеграция отправляет сообщение <a class="reference internal" href="api-telephony.html#rst-markup-telephonycallfailed"><span class="std std-ref">POST TelephonyCallFailed</span></a>.</p></li>
+<li><p>Пользователь решает завершить звонок и нажимает в интерфейсе «Положить трубку». Контур.CRM отправит запрос на HTTP-сервер указанный в интеграции <a class="reference internal" href="api-telephony.html#rst-markup-communicationshangup"><span class="std std-ref">POST CommunicationsHangup</span></a>.</p></li>
+<li><p>Интеграция сообщает о завершении звонка между участниками <a class="reference internal" href="api-telephony.html#rst-markup-telephonycallfinished"><span class="std std-ref">POST TelephonyCallFinished</span></a>.</p></li>
+<li><p>Интеграция регистрирует завершенный звонок <a class="reference internal" href="api-telephony.html#rst-markup-telephonyregistercall"><span class="std std-ref">POST TelephonyRegisterCall</span></a> и загружает файл во временное хранилище API Files <a class="reference internal" href="../../integrations/api-files.html#rst-markup-uploadfile"><span class="std std-ref">POST UploadFile</span></a>.</p></li>
+<li><p>Интеграция сообщает о появлении записи разговора <a class="reference internal" href="api-telephony.html#rst-markup-telephonycallrecording"><span class="std std-ref">POST TelephonyCallRecording</span></a></p></li>
+<li><p>Запись звонка доступна для прослушивания в Контур.CRM.</p></li>
+</ol>
+</div>
+</div>
+
+
+           </div>
+          </div>
+          <footer>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p></p>
+  </div>
+
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

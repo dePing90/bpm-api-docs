@@ -1,19 +1,28 @@
-.. _`Описание методов в Swagger`: https://developer.kontur.ru/doc/crm
+.. _`Описание методов в Swagger`: https://developer.kontur.ru/doc/bpm
 
-API Контур CRM
+API Контур КЭДО
 ===============
 
-`Описание методов в Swagger`_
+.. API Контур BPM
+.. ===============
+
+.. `Описание методов в Swagger`_
 
 Содержание
 ----------
 .. toctree::
    :maxdepth: 1 
 
-   models/index
-   entity-creation/index
-   entity-modification-info/index
+   entities-kedo/index
+   entities-push-kedo/index
+   entities-get-kedo/index
    custom-fields/index
-   phone-integration/index
-   api/index
+   integrations/index
+
+.. В текущей версии собрана документация по КЭДО. Разделы, касаемые crm, скрыты:
+.. crm/models-crm/index
+.. crm/entities-push-crm/index
+.. crm/entities-get-crm/index
+.. crm/phone-integration/index
+.. поэтому при сборке будет 4 предупреждения, что страницы не объявлены — это норм
    

@@ -3,7 +3,7 @@
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Работа с пользовательскими полями &mdash; документация Контур КЭДО 1.1</title><link rel="stylesheet" href="../_static/css/theme.css" type="text/css" />
+  <title>Описание сущностей &mdash; документация Контур КЭДО 1.1</title><link rel="stylesheet" href="../_static/css/theme.css" type="text/css" />
     <link rel="stylesheet" href="../_static/pygments.css" type="text/css" /><link rel="shortcut icon" href="../_static/favicon.ico"/>
   <!--[if lt IE 9]>
     <script src="../_static/js/html5shiv.min.js"></script>
@@ -17,8 +17,8 @@
     <script src="../_static/js/theme.js"></script>
     <link rel="index" title="Алфавитный указатель" href="../genindex.html" />
     <link rel="search" title="Поиск" href="../search.html" />
-    <link rel="next" title="Создание пользовательских полей" href="custom-fields-creation.html" />
-    <link rel="prev" title="Подписка на события об изменениях — WebHook" href="../entities-get-kedo/webhooks.html" /> 
+    <link rel="next" title="Пространства и пользователи" href="workspace-users.html" />
+    <link rel="prev" title="API Контур КЭДО" href="../index.html" /> 
 </head>
 
 <body class="wy-body-for-nav"> 
@@ -40,14 +40,17 @@
 </div>
         </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
               <ul class="current">
-<li class="toctree-l1"><a class="reference internal" href="../entities-kedo/index.html">Описание сущностей</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../entities-push-kedo/index.html">Создание и изменение сущностей</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../entities-get-kedo/index.html">Получение информации о сущностях</a></li>
-<li class="toctree-l1 current"><a class="current reference internal" href="#">Работа с пользовательскими полями</a><ul>
-<li class="toctree-l2"><a class="reference internal" href="custom-fields-creation.html">Создание пользовательских полей</a></li>
-<li class="toctree-l2"><a class="reference internal" href="custom-fields-type.html">Типы пользовательских полей</a></li>
+<li class="toctree-l1 current"><a class="current reference internal" href="#">Описание сущностей</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="workspace-users.html">Пространства и пользователи</a></li>
+<li class="toctree-l2"><a class="reference internal" href="routes.html">Маршрут</a></li>
+<li class="toctree-l2"><a class="reference internal" href="document-schemes.html">Документ-схема</a></li>
+<li class="toctree-l2"><a class="reference internal" href="documents.html">Документ</a></li>
+<li class="toctree-l2"><a class="reference internal" href="org-structure.html">Оргструктура</a></li>
 </ul>
 </li>
+<li class="toctree-l1"><a class="reference internal" href="../entities-push-kedo/index.html">Создание и изменение сущностей</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../entities-get-kedo/index.html">Получение информации о сущностях</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../custom-fields/index.html">Работа с пользовательскими полями</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../integrations/index.html">Интеграции и взаимодействие с API</a></li>
 </ul>
 
@@ -65,9 +68,9 @@
           <div role="navigation" aria-label="Page navigation">
   <ul class="wy-breadcrumbs">
       <li><a href="../index.html" class="icon icon-home"></a> &raquo;</li>
-      <li>Работа с пользовательскими полями</li>
+      <li>Описание сущностей</li>
       <li class="wy-breadcrumbs-aside">
-            <a href="../_sources/custom-fields/index.rst.txt" rel="nofollow"> View page source</a>
+            <a href="../_sources/entities-kedo/index.rst.txt" rel="nofollow"> View page source</a>
       </li>
   </ul>
   <hr/>
@@ -76,18 +79,15 @@
            <div itemprop="articleBody">
              
   <div class="section" id="id1">
-<h1>Работа с пользовательскими полями<a class="headerlink" href="#id1" title="Ссылка на этот заголовок">¶</a></h1>
+<h1>Описание сущностей<a class="headerlink" href="#id1" title="Ссылка на этот заголовок">¶</a></h1>
+<p>Контур КЭДО — система кадрового документооборота с сотрудниками. Основные сущности:</p>
 <div class="toctree-wrapper compound">
 <ul>
-<li class="toctree-l1"><a class="reference internal" href="custom-fields-creation.html">Создание пользовательских полей</a><ul>
-<li class="toctree-l2"><a class="reference internal" href="custom-fields-creation.html#api">Создание пользовательских через API</a></li>
-</ul>
-</li>
-<li class="toctree-l1"><a class="reference internal" href="custom-fields-type.html">Типы пользовательских полей</a><ul>
-<li class="toctree-l2"><a class="reference internal" href="custom-fields-type.html#id2">Конфигурация полей для отображения в интерфейсе</a></li>
-<li class="toctree-l2"><a class="reference internal" href="custom-fields-type.html#id3">Возможности для полей по типам</a></li>
-</ul>
-</li>
+<li class="toctree-l1"><a class="reference internal" href="workspace-users.html">Пространства и пользователи</a></li>
+<li class="toctree-l1"><a class="reference internal" href="routes.html">Маршрут</a></li>
+<li class="toctree-l1"><a class="reference internal" href="document-schemes.html">Документ-схема</a></li>
+<li class="toctree-l1"><a class="reference internal" href="documents.html">Документ</a></li>
+<li class="toctree-l1"><a class="reference internal" href="org-structure.html">Оргструктура</a></li>
 </ul>
 </div>
 </div>
@@ -96,8 +96,8 @@
            </div>
           </div>
           <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
-        <a href="../entities-get-kedo/webhooks.html" class="btn btn-neutral float-left" title="Подписка на события об изменениях — WebHook" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
-        <a href="custom-fields-creation.html" class="btn btn-neutral float-right" title="Создание пользовательских полей" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+        <a href="../index.html" class="btn btn-neutral float-left" title="API Контур КЭДО" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="workspace-users.html" class="btn btn-neutral float-right" title="Пространства и пользователи" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
     </div>
 
   <hr/>

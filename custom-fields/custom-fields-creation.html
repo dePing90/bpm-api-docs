@@ -3,7 +3,7 @@
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Создание пользовательских полей &mdash; документация Контур CRM 1.1</title><link rel="stylesheet" href="../_static/css/theme.css" type="text/css" />
+  <title>Создание пользовательских полей &mdash; документация Контур КЭДО 1.1</title><link rel="stylesheet" href="../_static/css/theme.css" type="text/css" />
     <link rel="stylesheet" href="../_static/pygments.css" type="text/css" /><link rel="shortcut icon" href="../_static/favicon.ico"/>
   <!--[if lt IE 9]>
     <script src="../_static/js/html5shiv.min.js"></script>
@@ -26,7 +26,7 @@
     <nav data-toggle="wy-nav-shift" class="wy-nav-side">
       <div class="wy-side-scroll">
         <div class="wy-side-nav-search" >
-            <a href="../index.html" class="icon icon-home"> Контур CRM
+            <a href="../index.html" class="icon icon-home"> Контур КЭДО
           </a>
               <div class="version">
                 1.1
@@ -40,21 +40,18 @@
 </div>
         </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
               <ul class="current">
-<li class="toctree-l1"><a class="reference internal" href="../models/index.html">Описание моделей</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../entity-creation/index.html">Создание и модификация сущностей</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../entity-modification-info/index.html">Получение информации об измененных сущностях</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../entities-kedo/index.html">Описание сущностей</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../entities-push-kedo/index.html">Создание и изменение сущностей</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../entities-get-kedo/index.html">Получение информации о сущностях</a></li>
 <li class="toctree-l1 current"><a class="reference internal" href="index.html">Работа с пользовательскими полями</a><ul class="current">
 <li class="toctree-l2 current"><a class="current reference internal" href="#">Создание пользовательских полей</a><ul>
-<li class="toctree-l3"><a class="reference internal" href="#id2">Создание пользовательских полей через интерфейс</a></li>
 <li class="toctree-l3"><a class="reference internal" href="#api">Создание пользовательских через API</a></li>
 </ul>
 </li>
 <li class="toctree-l2"><a class="reference internal" href="custom-fields-type.html">Типы пользовательских полей</a></li>
-<li class="toctree-l2"><a class="reference internal" href="custom-fields-interface.html">Отображение в интерфейсе</a></li>
 </ul>
 </li>
-<li class="toctree-l1"><a class="reference internal" href="../phone-integration/index.html">Интеграция с телефонией</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../api/index.html">Работа с API</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../integrations/index.html">Интеграции и взаимодействие с API</a></li>
 </ul>
 
         </div>
@@ -63,7 +60,7 @@
 
     <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
           <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
-          <a href="../index.html">Контур CRM</a>
+          <a href="../index.html">Контур КЭДО</a>
       </nav>
 
       <div class="wy-nav-content">
@@ -84,35 +81,11 @@
              
   <div class="section" id="id1">
 <h1>Создание пользовательских полей<a class="headerlink" href="#id1" title="Ссылка на этот заголовок">¶</a></h1>
-<p>Crm.Kontur позволяет добавлять пользовательские поля в основные сущности системы:</p>
+<p>Контур КЭДО позволяет добавлять пользовательские поля в основные сущности системы:</p>
 <ul class="simple">
-<li><p>Сделку (Deal)</p></li>
-<li><p>Компанию (Company)</p></li>
-<li><p>Контакт (Contact)</p></li>
 <li><p>Пользователя (User)</p></li>
+<li><p>Документы (Documents)</p></li>
 </ul>
-<div class="section" id="id2">
-<h2>Создание пользовательских полей через интерфейс<a class="headerlink" href="#id2" title="Ссылка на этот заголовок">¶</a></h2>
-<p>Для того, чтобы добавить в сделку поле нужно:</p>
-<ol class="arabic simple">
-<li><p>С правами Администратора перейти в карточку сделки</p></li>
-<li><p>Перейти в настройки и выбрать «Добавить поле»</p></li>
-</ol>
-<img alt="../_images/custom-fields-menu.png" src="../_images/custom-fields-menu.png" />
-<ol class="arabic simple" start="3">
-<li><p>Заполняем настройки. Нажимаем «Сохранить».</p></li>
-</ol>
-<img alt="../_images/new-field.png" src="../_images/new-field.png" />
-<ol class="arabic simple" start="4">
-<li><p>После добавления поля, в выбираем в Настройках (п.2) настроить «Настроить порядок полей»</p></li>
-</ol>
-<img alt="../_images/fields-order.png" src="../_images/fields-order.png" />
-<ol class="arabic simple" start="5">
-<li><p>Перетаскиваем поле выше «Показать еще», чтобы всегда видеть его при открытии карточки сделки.</p></li>
-<li><p>Переходим на «Список сделок» и если нам необходимо добавляем поле для «вывода» на списке.</p></li>
-</ol>
-<img alt="../_images/columns-settings.png" src="../_images/columns-settings.png" />
-</div>
 <div class="section" id="api">
 <h2>Создание пользовательских через API<a class="headerlink" href="#api" title="Ссылка на этот заголовок">¶</a></h2>
 <p>Для того, чтобы добавить пользовательское поле в сущность, необходимо объявить его в настройках (Settings) рабочего пространства (Workspace).</p>
@@ -121,7 +94,7 @@
 </pre></div>
 </div>
 <p>В модели Settings есть поле CustomFields, в котом описываются пользовательские поля.</p>
-<p>Пример.</p>
+<p><em>Примеры надо заменить</em></p>
 <p>Для контакта (Contact) требуется добавить:</p>
 <ul class="simple">
 <li><p>поле типа «список» с названием «Тип» и значениями «Хороший», «Плохой».</p></li>
