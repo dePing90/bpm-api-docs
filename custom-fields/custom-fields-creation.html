@@ -95,81 +95,77 @@
 </div>
 <p>В модели Settings есть поле CustomFields, в котом описываются пользовательские поля.</p>
 <p><em>Примеры надо заменить</em></p>
-<p>Для контакта (Contact) требуется добавить:</p>
+<p>Для пользователя (User) требуется добавить:</p>
 <ul class="simple">
 <li><p>поле типа «список» с названием «Тип» и значениями «Хороший», «Плохой».</p></li>
 <li><p>поле типа «ссылка» с названием «Соц. сеть».</p></li>
 <li><p>поле типа «Checkbox» с названием «Проверен».</p></li>
 </ul>
-<p>Для Компании (Company):</p>
-<ul class="simple">
-<li><p>строковое поле с названием «Cчет» — расчетный счет клиента.</p></li>
-</ul>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">curl</span> <span class="o">-</span><span class="n">X</span> <span class="s1">&#39;PATCH&#39;</span> \
-<span class="s1">&#39;https://crm.kontur.ru/api/v1/testswaggerspace/settings&#39;</span> \
-<span class="o">-</span><span class="n">H</span> <span class="s1">&#39;accept: application/json&#39;</span> \
-<span class="o">-</span><span class="n">H</span> <span class="s1">&#39;Authorization: Bearer fa1036cb0805c4b682cc81634eb6ecdd338f1e20908a2b9491e82c3da4dc8a8f&#39;</span> \
-<span class="o">-</span><span class="n">H</span> <span class="s1">&#39;Content-Type: application/json-patch+json&#39;</span> \
-<span class="o">-</span><span class="n">d</span> <span class="s1">&#39;{</span>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>  <span class="n">curl</span> <span class="o">-</span><span class="n">X</span> <span class="s1">&#39;PATCH&#39;</span> \
+  <span class="s1">&#39;https://xcom.kontur.ru/api/v1/testswaggerspace/settings&#39;</span> \
+  <span class="o">-</span><span class="n">H</span> <span class="s1">&#39;accept: application/json&#39;</span> \
+  <span class="o">-</span><span class="n">H</span> <span class="s1">&#39;Authorization: Bearer xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx&#39;</span> \
+  <span class="o">-</span><span class="n">H</span> <span class="s1">&#39;Content-Type: application/json-patch+json&#39;</span> \
+  <span class="o">-</span><span class="n">d</span> <span class="s1">&#39;{</span>
 <span class="s2">&quot;operations&quot;</span><span class="p">:</span> <span class="p">[</span>
-<span class="p">{</span>
-<span class="s2">&quot;op&quot;</span><span class="p">:</span> <span class="s2">&quot;add&quot;</span><span class="p">,</span>
-<span class="s2">&quot;path&quot;</span><span class="p">:</span> <span class="s2">&quot;/customFields/contact&quot;</span><span class="p">,</span>
-<span class="s2">&quot;value&quot;</span><span class="p">:</span> <span class="p">{</span>
-<span class="s2">&quot;id&quot;</span><span class="p">:</span> <span class="s2">&quot;socialLink&quot;</span><span class="p">,</span>
-<span class="s2">&quot;name&quot;</span><span class="p">:</span> <span class="s2">&quot;Соц. сеть&quot;</span><span class="p">,</span>
-<span class="s2">&quot;description&quot;</span><span class="p">:</span> <span class="s2">&quot;Ссылка на социальную сеть&quot;</span><span class="p">,</span>
-<span class="s2">&quot;type&quot;</span><span class="p">:</span> <span class="s2">&quot;url&quot;</span>
-<span class="p">}</span>
-<span class="p">},</span>
-<span class="p">{</span>
-<span class="s2">&quot;op&quot;</span><span class="p">:</span> <span class="s2">&quot;add&quot;</span><span class="p">,</span>
-<span class="s2">&quot;path&quot;</span><span class="p">:</span> <span class="s2">&quot;/customFields/contact&quot;</span><span class="p">,</span>
-<span class="s2">&quot;value&quot;</span><span class="p">:</span> <span class="p">{</span>
-<span class="s2">&quot;id&quot;</span><span class="p">:</span> <span class="s2">&quot;typeContact&quot;</span><span class="p">,</span>
-<span class="s2">&quot;name&quot;</span><span class="p">:</span> <span class="s2">&quot;Тип&quot;</span><span class="p">,</span>
-<span class="s2">&quot;description&quot;</span><span class="p">:</span> <span class="s2">&quot;Тип&quot;</span><span class="p">,</span>
-<span class="s2">&quot;type&quot;</span><span class="p">:</span> <span class="s2">&quot;select&quot;</span><span class="p">,</span>
-<span class="s2">&quot;options&quot;</span><span class="p">:</span> <span class="p">[</span>
-<span class="p">{</span>
-<span class="s2">&quot;id&quot;</span><span class="p">:</span> <span class="s2">&quot;good&quot;</span><span class="p">,</span>
-<span class="s2">&quot;name&quot;</span><span class="p">:</span> <span class="s2">&quot;Хороший&quot;</span>
-<span class="p">},</span>
-<span class="p">{</span>
-<span class="s2">&quot;id&quot;</span><span class="p">:</span> <span class="s2">&quot;bad&quot;</span><span class="p">,</span>
-<span class="s2">&quot;name&quot;</span><span class="p">:</span> <span class="s2">&quot;Плохой&quot;</span>
-<span class="p">}</span>
+  <span class="p">{</span>
+    <span class="s2">&quot;op&quot;</span><span class="p">:</span> <span class="s2">&quot;add&quot;</span><span class="p">,</span>
+    <span class="s2">&quot;path&quot;</span><span class="p">:</span> <span class="s2">&quot;/customFields/user&quot;</span><span class="p">,</span>
+    <span class="s2">&quot;value&quot;</span><span class="p">:</span> <span class="p">{</span>
+      <span class="s2">&quot;id&quot;</span><span class="p">:</span> <span class="s2">&quot;socialLink&quot;</span><span class="p">,</span>
+      <span class="s2">&quot;name&quot;</span><span class="p">:</span> <span class="s2">&quot;Соц. сеть&quot;</span><span class="p">,</span>
+      <span class="s2">&quot;description&quot;</span><span class="p">:</span> <span class="s2">&quot;Ссылка на социальную сеть&quot;</span><span class="p">,</span>
+      <span class="s2">&quot;type&quot;</span><span class="p">:</span> <span class="s2">&quot;url&quot;</span>
+    <span class="p">}</span>
+  <span class="p">},</span>
+  <span class="p">{</span>
+    <span class="s2">&quot;op&quot;</span><span class="p">:</span> <span class="s2">&quot;add&quot;</span><span class="p">,</span>
+    <span class="s2">&quot;path&quot;</span><span class="p">:</span> <span class="s2">&quot;/customFields/user&quot;</span><span class="p">,</span>
+    <span class="s2">&quot;value&quot;</span><span class="p">:</span> <span class="p">{</span>
+      <span class="s2">&quot;id&quot;</span><span class="p">:</span> <span class="s2">&quot;type&quot;</span><span class="p">,</span>
+      <span class="s2">&quot;name&quot;</span><span class="p">:</span> <span class="s2">&quot;Тип&quot;</span><span class="p">,</span>
+      <span class="s2">&quot;description&quot;</span><span class="p">:</span> <span class="s2">&quot;Тип&quot;</span><span class="p">,</span>
+      <span class="s2">&quot;type&quot;</span><span class="p">:</span> <span class="s2">&quot;select&quot;</span><span class="p">,</span>
+      <span class="s2">&quot;options&quot;</span><span class="p">:</span> <span class="p">[</span>
+        <span class="p">{</span>
+          <span class="s2">&quot;id&quot;</span><span class="p">:</span> <span class="s2">&quot;good&quot;</span><span class="p">,</span>
+          <span class="s2">&quot;name&quot;</span><span class="p">:</span> <span class="s2">&quot;Хороший&quot;</span>
+        <span class="p">},</span>
+        <span class="p">{</span>
+          <span class="s2">&quot;id&quot;</span><span class="p">:</span> <span class="s2">&quot;bad&quot;</span><span class="p">,</span>
+          <span class="s2">&quot;name&quot;</span><span class="p">:</span> <span class="s2">&quot;Плохой&quot;</span>
+        <span class="p">}</span>
+      <span class="p">]</span>
+    <span class="p">}</span>
+  <span class="p">},</span>
+  <span class="p">{</span>
+    <span class="s2">&quot;op&quot;</span><span class="p">:</span> <span class="s2">&quot;add&quot;</span><span class="p">,</span>
+    <span class="s2">&quot;path&quot;</span><span class="p">:</span> <span class="s2">&quot;/customFields/user&quot;</span><span class="p">,</span>
+    <span class="s2">&quot;value&quot;</span><span class="p">:</span> <span class="p">{</span>
+      <span class="s2">&quot;id&quot;</span><span class="p">:</span> <span class="s2">&quot;verifiedUser&quot;</span><span class="p">,</span>
+      <span class="s2">&quot;name&quot;</span><span class="p">:</span> <span class="s2">&quot;Проверен&quot;</span><span class="p">,</span>
+      <span class="s2">&quot;description&quot;</span><span class="p">:</span> <span class="s2">&quot;Проверен?&quot;</span><span class="p">,</span>
+      <span class="s2">&quot;type&quot;</span><span class="p">:</span> <span class="s2">&quot;boolean&quot;</span>
+    <span class="p">}</span>
+  <span class="p">},</span>
+  <span class="p">{</span>
+    <span class="s2">&quot;op&quot;</span><span class="p">:</span> <span class="s2">&quot;add&quot;</span><span class="p">,</span>
+    <span class="s2">&quot;path&quot;</span><span class="p">:</span> <span class="s2">&quot;/customFields/company&quot;</span><span class="p">,</span>
+    <span class="s2">&quot;value&quot;</span><span class="p">:</span> <span class="p">{</span>
+      <span class="s2">&quot;id&quot;</span><span class="p">:</span> <span class="s2">&quot;countingNum&quot;</span><span class="p">,</span>
+      <span class="s2">&quot;name&quot;</span><span class="p">:</span> <span class="s2">&quot;Счет&quot;</span><span class="p">,</span>
+      <span class="s2">&quot;description&quot;</span><span class="p">:</span> <span class="s2">&quot;Рассчетный счет клиента&quot;</span><span class="p">,</span>
+      <span class="s2">&quot;type&quot;</span><span class="p">:</span> <span class="s2">&quot;text&quot;</span>
+    <span class="p">}</span>
+  <span class="p">}</span>
 <span class="p">]</span>
-<span class="p">}</span>
-<span class="p">},</span>
-<span class="p">{</span>
-<span class="s2">&quot;op&quot;</span><span class="p">:</span> <span class="s2">&quot;add&quot;</span><span class="p">,</span>
-<span class="s2">&quot;path&quot;</span><span class="p">:</span> <span class="s2">&quot;/customFields/contact&quot;</span><span class="p">,</span>
-<span class="s2">&quot;value&quot;</span><span class="p">:</span> <span class="p">{</span>
-<span class="s2">&quot;id&quot;</span><span class="p">:</span> <span class="s2">&quot;verifiedContact&quot;</span><span class="p">,</span>
-<span class="s2">&quot;name&quot;</span><span class="p">:</span> <span class="s2">&quot;Проверен&quot;</span><span class="p">,</span>
-<span class="s2">&quot;description&quot;</span><span class="p">:</span> <span class="s2">&quot;Проверенный ли контакт?&quot;</span><span class="p">,</span>
-<span class="s2">&quot;type&quot;</span><span class="p">:</span> <span class="s2">&quot;boolean&quot;</span>
-<span class="p">}</span>
-<span class="p">},</span>
-<span class="p">{</span>
-<span class="s2">&quot;op&quot;</span><span class="p">:</span> <span class="s2">&quot;add&quot;</span><span class="p">,</span>
-<span class="s2">&quot;path&quot;</span><span class="p">:</span> <span class="s2">&quot;/customFields/company&quot;</span><span class="p">,</span>
-<span class="s2">&quot;value&quot;</span><span class="p">:</span> <span class="p">{</span>
-<span class="s2">&quot;id&quot;</span><span class="p">:</span> <span class="s2">&quot;countingNum&quot;</span><span class="p">,</span>
-<span class="s2">&quot;name&quot;</span><span class="p">:</span> <span class="s2">&quot;Счет&quot;</span><span class="p">,</span>
-<span class="s2">&quot;description&quot;</span><span class="p">:</span> <span class="s2">&quot;Рассчетный счет клиента&quot;</span><span class="p">,</span>
-<span class="s2">&quot;type&quot;</span><span class="p">:</span> <span class="s2">&quot;text&quot;</span>
-<span class="p">}</span>
-<span class="p">}</span>
-<span class="p">]</span>
-<span class="p">}</span><span class="s1">&#39;</span>
 </pre></div>
 </div>
+<p>}“</p>
 <p>В ответ получаем 200 Ok и актуальные настройки пространства, модель Settings.</p>
 <p>Описание модели CustomFieldSettings из Settings.CustomFields.</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span>  <span class="p">{</span>
-      <span class="s2">&quot;id&quot;</span><span class="p">:</span> <span class="s2">&quot;typeContact&quot;</span><span class="p">,</span> <span class="o">//</span><span class="n">идентификатор</span> <span class="n">поле</span><span class="p">,</span> <span class="n">поля</span> <span class="n">удалять</span><span class="o">/</span><span class="n">модифицировать</span>
+      <span class="s2">&quot;id&quot;</span><span class="p">:</span> <span class="s2">&quot;type&quot;</span><span class="p">,</span> <span class="o">//</span><span class="n">идентификатор</span> <span class="n">поле</span><span class="p">,</span> <span class="n">поля</span> <span class="n">удалять</span><span class="o">/</span><span class="n">модифицировать</span>
       <span class="o">//</span><span class="n">в</span> <span class="n">настройках</span> <span class="n">можно</span> <span class="n">только</span> <span class="n">по</span> <span class="nb">id</span>
       <span class="s2">&quot;name&quot;</span><span class="p">:</span> <span class="s2">&quot;Тип&quot;</span><span class="p">,</span> <span class="o">//</span> <span class="n">Наименоваение</span> <span class="o">-</span> <span class="n">будет</span> <span class="n">выводиться</span> <span class="n">в</span> <span class="n">UI</span>
       <span class="s2">&quot;description&quot;</span><span class="p">:</span> <span class="s2">&quot;Тип&quot;</span><span class="p">,</span> <span class="o">//</span> <span class="n">Описание</span> <span class="o">-</span> <span class="n">будет</span> <span class="n">выводить</span> <span class="n">в</span> <span class="n">UI</span>
@@ -194,6 +190,35 @@
 <span class="p">}</span>
 </pre></div>
 </div>
+<p>Для добавления или изменения полей в документе необходимо внести правки в соответствующей схеме документа.</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>
+</pre></div>
+</div>
+<dl>
+<dt>curl -X „PATCH“ </dt><dd><blockquote>
+<div><p>„<a class="reference external" href="https://xcom.kontur.ru/api/v1/testswaggerspace/document-schemes">https://xcom.kontur.ru/api/v1/testswaggerspace/document-schemes</a>/{scheme-id}“ -H „accept: application/json“ -H „Authorization: Bearer xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx“ -H „Content-Type: application/json-patch+json“ -d „{</p>
+</div></blockquote>
+<dl>
+<dt>«operations»: [</dt><dd><dl>
+<dt>{</dt><dd><p>«op»: «add»,
+«path»: «/customFields»,
+«value»: {</p>
+<blockquote>
+<div><p>«id»: «socialLink»,
+«name»: «Соц. сеть»,
+«description»: «Ссылка на социальную сеть»,
+«type»: «url»</p>
+</div></blockquote>
+<p>}</p>
+</dd>
+</dl>
+<p>}</p>
+</dd>
+</dl>
+<p>]
+}“</p>
+</dd>
+</dl>
 </div>
 </div>
 

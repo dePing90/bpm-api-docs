@@ -24,77 +24,73 @@
 
 *Примеры надо заменить*
 
-Для контакта (Contact) требуется добавить:
+Для пользователя (User) требуется добавить:
 
 * поле типа «список» с названием «Тип» и значениями «Хороший», «Плохой».
 * поле типа «ссылка» с названием «Соц. сеть».
 * поле типа «Checkbox» с названием «Проверен».
 
-Для Компании (Company):
-
-* строковое поле с названием «Cчет» — расчетный счет клиента.
-
 .. code-block:: 
 
     curl -X 'PATCH' \
-    'https://crm.kontur.ru/api/v1/testswaggerspace/settings' \
+    'https://xcom.kontur.ru/api/v1/testswaggerspace/settings' \
     -H 'accept: application/json' \
-    -H 'Authorization: Bearer fa1036cb0805c4b682cc81634eb6ecdd338f1e20908a2b9491e82c3da4dc8a8f' \
+    -H 'Authorization: Bearer xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx' \
     -H 'Content-Type: application/json-patch+json' \
     -d '{
-    "operations": [
+  "operations": [
     {
-    "op": "add",
-    "path": "/customFields/contact",
-    "value": {
-    "id": "socialLink",
-    "name": "Соц. сеть",
-    "description": "Ссылка на социальную сеть",
-    "type": "url"
-    }
+      "op": "add",
+      "path": "/customFields/user",
+      "value": {
+        "id": "socialLink",
+        "name": "Соц. сеть",
+        "description": "Ссылка на социальную сеть",
+        "type": "url"
+      }
     },
     {
-    "op": "add",
-    "path": "/customFields/contact",
-    "value": {
-    "id": "typeContact",
-    "name": "Тип",
-    "description": "Тип",
-    "type": "select",
-    "options": [
-    {
-    "id": "good",
-    "name": "Хороший"
+      "op": "add",
+      "path": "/customFields/user",
+      "value": {
+        "id": "type",
+        "name": "Тип",
+        "description": "Тип",
+        "type": "select",
+        "options": [
+          {
+            "id": "good",
+            "name": "Хороший"
+          },
+          {
+            "id": "bad",
+            "name": "Плохой"
+          }
+        ]
+      }
     },
     {
-    "id": "bad",
-    "name": "Плохой"
-    }
-    ]
-    }
+      "op": "add",
+      "path": "/customFields/user",
+      "value": {
+        "id": "verifiedUser",
+        "name": "Проверен",
+        "description": "Проверен?",
+        "type": "boolean"
+      }
     },
     {
-    "op": "add",
-    "path": "/customFields/contact",
-    "value": {
-    "id": "verifiedContact",
-    "name": "Проверен",
-    "description": "Проверенный ли контакт?",
-    "type": "boolean"
+      "op": "add",
+      "path": "/customFields/company",
+      "value": {
+        "id": "countingNum",
+        "name": "Счет",
+        "description": "Рассчетный счет клиента",
+        "type": "text"
+      }
     }
-    },
-    {
-    "op": "add",
-    "path": "/customFields/company",
-    "value": {
-    "id": "countingNum",
-    "name": "Счет",
-    "description": "Рассчетный счет клиента",
-    "type": "text"
-    }
-    }
-    ]
-    }'
+  ]
+}'
 
 В ответ получаем 200 Ok и актуальные настройки пространства, модель Settings.
 
@@ -103,7 +99,7 @@
 .. code-block::
 
     {
-        "id": "typeContact", //идентификатор поле, поля удалять/модифицировать 
+        "id": "type", //идентификатор поле, поля удалять/модифицировать 
         //в настройках можно только по id
         "name": "Тип", // Наименоваение - будет выводиться в UI
         "description": "Тип", // Описание - будет выводить в UI
@@ -129,4 +125,26 @@
 
 
 
+Для добавления или изменения полей в документе необходимо внести правки в соответствующей схеме документа.
 
+.. code-block::
+
+curl -X 'PATCH' \
+    'https://xcom.kontur.ru/api/v1/testswaggerspace/document-schemes/{scheme-id}' \
+    -H 'accept: application/json' \
+    -H 'Authorization: Bearer xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx' \
+    -H 'Content-Type: application/json-patch+json' \
+    -d '{
+  "operations": [
+    {
+      "op": "add",
+      "path": "/customFields",
+      "value": {
+        "id": "socialLink",
+        "name": "Соц. сеть",
+        "description": "Ссылка на социальную сеть",
+        "type": "url"
+      }
+    }
+  ]
+  }'

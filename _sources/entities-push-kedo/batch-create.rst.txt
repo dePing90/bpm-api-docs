@@ -6,7 +6,7 @@
 `Метод API для создания нескольких пользователей`_
 
 Рассмотрим пример эффективного создания нескольких пользователей за один запрос к API. 
-В Body передается модель ContactCreationArgsBatchCreateRequest.
+В Body передается модель UserCreationArgsBatchCreateRequest.
 Формируем запрос:
 
 .. code-block::

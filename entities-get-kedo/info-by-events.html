@@ -91,295 +91,204 @@
 <h2>Получение событий<a class="headerlink" href="#id2" title="Ссылка на этот заголовок">¶</a></h2>
 <p>Например:</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">curl</span> <span class="o">-</span><span class="n">X</span> <span class="s1">&#39;GET&#39;</span> \
-<span class="s1">&#39;https://crm.kontur.ru/api/v1/testswaggerspace/events?limit=2&#39;</span> \
+<span class="s1">&#39;https://xcom.kontur.ru/api/v1/testswaggerspace/events?limit=2&#39;</span> \
 <span class="o">-</span><span class="n">H</span> <span class="s1">&#39;accept: application/json&#39;</span> \
 <span class="o">-</span><span class="n">H</span> <span class="s1">&#39;Authorization: Bearer xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx&#39;</span>
 </pre></div>
 </div>
 <p>Ответ 200 Ok и модель ObjectEventsList:</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="p">{</span>
-<span class="s2">&quot;count&quot;</span><span class="p">:</span><span class="mi">2</span><span class="p">,</span>
-<span class="s2">&quot;items&quot;</span><span class="p">:[</span>
-    <span class="p">{</span>
-        <span class="s2">&quot;id&quot;</span><span class="p">:</span><span class="s2">&quot;bf5bbe99-1d50-4247-86b7-5ee2b1021e44&quot;</span><span class="p">,</span>
-        <span class="s2">&quot;offset&quot;</span><span class="p">:</span><span class="s2">&quot;00000000-20ac-176a-0000-0000060f5e86&quot;</span><span class="p">,</span>
-        <span class="s2">&quot;type&quot;</span><span class="p">:</span><span class="s2">&quot;change&quot;</span><span class="p">,</span>
-        <span class="s2">&quot;changeData&quot;</span><span class="p">:{</span>
-            <span class="s2">&quot;type&quot;</span><span class="p">:</span><span class="s2">&quot;create&quot;</span><span class="p">,</span>
-            <span class="s2">&quot;new&quot;</span><span class="p">:{</span>
-            <span class="s2">&quot;id&quot;</span><span class="p">:</span><span class="s2">&quot;43c22e9b-6d35-4521-8f77-10eaf9ea8677&quot;</span><span class="p">,</span>
-            <span class="s2">&quot;name&quot;</span><span class="p">:</span><span class="s2">&quot;Продажи&quot;</span><span class="p">,</span>
-            <span class="s2">&quot;order&quot;</span><span class="p">:</span><span class="mi">0</span><span class="p">,</span>
-            <span class="s2">&quot;stages&quot;</span><span class="p">:[</span>
-                <span class="p">{</span>
-                    <span class="s2">&quot;id&quot;</span><span class="p">:</span><span class="mi">1</span><span class="p">,</span>
-                    <span class="s2">&quot;name&quot;</span><span class="p">:</span><span class="s2">&quot;В работе&quot;</span><span class="p">,</span>
-                    <span class="s2">&quot;order&quot;</span><span class="p">:</span><span class="mi">0</span><span class="p">,</span>
-                    <span class="s2">&quot;settings&quot;</span><span class="p">:{</span>
-                        <span class="s2">&quot;constraints&quot;</span><span class="p">:[</span>
-
-                        <span class="p">]</span>
-                    <span class="p">}</span>
-                <span class="p">},</span>
-                <span class="p">{</span>
-                    <span class="s2">&quot;id&quot;</span><span class="p">:</span><span class="mi">2</span><span class="p">,</span>
-                    <span class="s2">&quot;name&quot;</span><span class="p">:</span><span class="s2">&quot;Отправлено предложение&quot;</span><span class="p">,</span>
-                    <span class="s2">&quot;order&quot;</span><span class="p">:</span><span class="mi">0</span><span class="p">,</span>
-                    <span class="s2">&quot;settings&quot;</span><span class="p">:{</span>
-                        <span class="s2">&quot;constraints&quot;</span><span class="p">:[</span>
-
-                        <span class="p">]</span>
-                    <span class="p">}</span>
-                <span class="p">},</span>
-                <span class="p">{</span>
-                    <span class="s2">&quot;id&quot;</span><span class="p">:</span><span class="mi">3</span><span class="p">,</span>
-                    <span class="s2">&quot;name&quot;</span><span class="p">:</span><span class="s2">&quot;Оформление&quot;</span><span class="p">,</span>
-                    <span class="s2">&quot;order&quot;</span><span class="p">:</span><span class="mi">0</span><span class="p">,</span>
-                    <span class="s2">&quot;settings&quot;</span><span class="p">:{</span>
-                        <span class="s2">&quot;constraints&quot;</span><span class="p">:[</span>
-
-                        <span class="p">]</span>
-                    <span class="p">}</span>
-                <span class="p">},</span>
-                <span class="p">{</span>
-                    <span class="s2">&quot;id&quot;</span><span class="p">:</span><span class="o">-</span><span class="mi">1</span><span class="p">,</span>
-                    <span class="s2">&quot;order&quot;</span><span class="p">:</span><span class="mi">0</span><span class="p">,</span>
-                    <span class="s2">&quot;settings&quot;</span><span class="p">:{</span>
-                        <span class="s2">&quot;constraints&quot;</span><span class="p">:[</span>
-
-                        <span class="p">]</span>
-                    <span class="p">}</span>
-                <span class="p">},</span>
-                <span class="p">{</span>
-                    <span class="s2">&quot;id&quot;</span><span class="p">:</span><span class="o">-</span><span class="mi">2</span><span class="p">,</span>
-                    <span class="s2">&quot;order&quot;</span><span class="p">:</span><span class="mi">0</span><span class="p">,</span>
-                    <span class="s2">&quot;settings&quot;</span><span class="p">:{</span>
-                        <span class="s2">&quot;constraints&quot;</span><span class="p">:[</span>
-
-                        <span class="p">]</span>
-                    <span class="p">}</span>
-                <span class="p">},</span>
-                <span class="p">{</span>
-                    <span class="s2">&quot;id&quot;</span><span class="p">:</span><span class="mi">0</span><span class="p">,</span>
-                    <span class="s2">&quot;order&quot;</span><span class="p">:</span><span class="mi">0</span><span class="p">,</span>
-                    <span class="s2">&quot;settings&quot;</span><span class="p">:{</span>
-                        <span class="s2">&quot;constraints&quot;</span><span class="p">:[</span>
-
-                        <span class="p">]</span>
-                    <span class="p">}</span>
-                <span class="p">}</span>
-            <span class="p">]</span>
-            <span class="p">}</span>
-        <span class="p">},</span>
-        <span class="s2">&quot;entityIds&quot;</span><span class="p">:{</span>
-            <span class="s2">&quot;workflowId&quot;</span><span class="p">:</span><span class="s2">&quot;43c22e9b-6d35-4521-8f77-10eaf9ea8677&quot;</span>
-        <span class="p">},</span>
-        <span class="s2">&quot;createInfo&quot;</span><span class="p">:{</span>
-            <span class="s2">&quot;createdAt&quot;</span><span class="p">:</span><span class="s2">&quot;2021-09-28T11:08:26.903198+00:00&quot;</span><span class="p">,</span>
-            <span class="s2">&quot;createdWith&quot;</span><span class="p">:</span><span class="s2">&quot;xcom&quot;</span>
-        <span class="p">}</span>
-    <span class="p">},</span>
-    <span class="p">{</span>
-        <span class="s2">&quot;id&quot;</span><span class="p">:</span><span class="s2">&quot;3ef692f0-1c1a-4ad3-b364-90aac4daf501&quot;</span><span class="p">,</span>
-        <span class="s2">&quot;offset&quot;</span><span class="p">:</span><span class="s2">&quot;00000000-20ac-176a-0000-0000060f5e87&quot;</span><span class="p">,</span>
-        <span class="s2">&quot;type&quot;</span><span class="p">:</span><span class="s2">&quot;change&quot;</span><span class="p">,</span>
-        <span class="s2">&quot;changeData&quot;</span><span class="p">:{</span>
-            <span class="s2">&quot;type&quot;</span><span class="p">:</span><span class="s2">&quot;create&quot;</span><span class="p">,</span>
-            <span class="s2">&quot;new&quot;</span><span class="p">:{</span>
-            <span class="s2">&quot;id&quot;</span><span class="p">:</span><span class="s2">&quot;2261e2d7-5d2d-4190-89c2-7184fa9d341f&quot;</span><span class="p">,</span>
-            <span class="s2">&quot;name&quot;</span><span class="p">:</span><span class="s2">&quot;Менеджер&quot;</span><span class="p">,</span>
-            <span class="s2">&quot;accessRights&quot;</span><span class="p">:[</span>
-                <span class="p">{</span>
-                    <span class="s2">&quot;id&quot;</span><span class="p">:</span><span class="s2">&quot;system.deals.create&quot;</span><span class="p">,</span>
-                    <span class="s2">&quot;level&quot;</span><span class="p">:</span><span class="mi">1</span>
-                <span class="p">},</span>
-                <span class="p">{</span>
-                    <span class="s2">&quot;id&quot;</span><span class="p">:</span><span class="s2">&quot;system.tasks.create&quot;</span><span class="p">,</span>
-                    <span class="s2">&quot;level&quot;</span><span class="p">:</span><span class="mi">1</span>
-                <span class="p">}</span>
-            <span class="p">]</span>
-            <span class="p">}</span>
-        <span class="p">},</span>
-        <span class="s2">&quot;entityIds&quot;</span><span class="p">:{</span>
-            <span class="s2">&quot;roleId&quot;</span><span class="p">:</span><span class="s2">&quot;2261e2d7-5d2d-4190-89c2-7184fa9d341f&quot;</span>
-        <span class="p">},</span>
-        <span class="s2">&quot;createInfo&quot;</span><span class="p">:{</span>
-            <span class="s2">&quot;createdAt&quot;</span><span class="p">:</span><span class="s2">&quot;2021-09-28T11:08:26.903198+00:00&quot;</span><span class="p">,</span>
-            <span class="s2">&quot;createdWith&quot;</span><span class="p">:</span><span class="s2">&quot;xcom&quot;</span>
-        <span class="p">}</span>
-    <span class="p">}</span>
-<span class="p">],</span>
-<span class="s2">&quot;firstOffset&quot;</span><span class="p">:</span><span class="s2">&quot;00000000-20ac-176a-0000-0000060f5e86&quot;</span><span class="p">,</span>
-<span class="s2">&quot;lastOffset&quot;</span><span class="p">:</span><span class="s2">&quot;00000000-20ac-176a-0000-0000060f5e87&quot;</span><span class="p">,</span>
-<span class="s2">&quot;hasMore&quot;</span><span class="p">:</span><span class="n">true</span>
-<span class="p">}</span>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>
 </pre></div>
 </div>
+<dl>
+<dt>{</dt><dd><p>«count»: 2,
+«items»: [</p>
+<blockquote>
+<div><dl>
+<dt>{</dt><dd><p>«id»: «ce8e3443-66f4-40cb-bb7b-a683cb3ec944»,
+«offset»: «00000000-3699-1b36-0000-000008ac36c1»,
+«type»: «change»,
+«changeData»: {</p>
+<blockquote>
+<div><p>«type»: «create»,
+«new»: {</p>
+<blockquote>
+<div><p>«id»: «72e3809c-1ad7-4761-bc3e-50cff06d1f83»,
+«name»: «отчество имя фамилия»,
+«login»: «<a class="reference external" href="mailto:test3&#37;&#52;&#48;mail&#46;ru">test3<span>&#64;</span>mail<span>&#46;</span>ru</a>»,
+«status»: «inactive»,
+«groupId»: «00000000-0000-0000-0000-000000000000»,
+«isAdmin»: false,
+«isHidden»: false,
+«lastName»: «отчество»,
+«settings»: {</p>
+<blockquote>
+<div><p>«regionCode»: «02»</p>
+</div></blockquote>
+<p>},
+«firstName»: «имя»,
+«middleName»: «фамилия»,
+«accessRights»: [],
+«customFields»: {},
+«isAuthorized»: false</p>
+</div></blockquote>
+<p>}</p>
+</div></blockquote>
+<p>},
+«entityIds»: {</p>
+<blockquote>
+<div><p>«userId»: «72e3809c-1ad7-4761-bc3e-50cff06d1f83»</p>
+</div></blockquote>
+<p>},
+«createInfo»: {</p>
+<blockquote>
+<div><p>«createdAt»: «2022-06-28T11:46:54.93681+00:00»,
+«createdByUserId»: «0ab0dc94-616c-4b86-a074-250e76b5e63c»,
+«createdWith»: «WebApp»</p>
+</div></blockquote>
+<p>}</p>
+</dd>
+</dl>
+<p>},
+{</p>
+<blockquote>
+<div><p>«id»: «e63e221b-fe36-438a-9def-b9909fd8938d»,
+«offset»: «00000000-3699-2055-0000-000008ac36c9»,
+«type»: «change»,
+«changeData»: {</p>
+<blockquote>
+<div><p>«type»: «patch»,
+«old»: {</p>
+<blockquote>
+<div><p>«id»: «e047339c-cd31-4c13-ba4b-455e3fcd60d4»,
+«name»: «отчество имя фамилия»,
+«login»: «<a class="reference external" href="mailto:test2&#37;&#52;&#48;mail&#46;ru">test2<span>&#64;</span>mail<span>&#46;</span>ru</a>»,
+«status»: «inactive»,
+«groupId»: «00000000-0000-0000-0000-000000000000»,
+«isAdmin»: false,
+«isHidden»: false,
+«lastName»: «отчество»,
+«settings»: {</p>
+<blockquote>
+<div><p>«regionCode»: «02»</p>
+</div></blockquote>
+<p>},
+«firstName»: «имя»,
+«middleName»: «фамилия»,
+«accessRights»: [],
+«customFields»: {},
+«isAuthorized»: false</p>
+</div></blockquote>
+<p>},
+«new»: {</p>
+<blockquote>
+<div><p>«id»: «e047339c-cd31-4c13-ba4b-455e3fcd60d4»,
+«name»: «Бочкин имя фамилия»,
+«login»: «<a class="reference external" href="mailto:test2&#37;&#52;&#48;mail&#46;ru">test2<span>&#64;</span>mail<span>&#46;</span>ru</a>»,
+«status»: «inactive»,
+«groupId»: «00000000-0000-0000-0000-000000000000»,
+«isAdmin»: false,
+«isHidden»: false,
+«lastName»: «Бочкин»,
+«settings»: {</p>
+<blockquote>
+<div><p>«regionCode»: «74»</p>
+</div></blockquote>
+<p>},
+«firstName»: «имя»,
+«middleName»: «фамилия»,
+«accessRights»: [],
+«customFields»: {},
+«isAuthorized»: false</p>
+</div></blockquote>
+<p>}</p>
+</div></blockquote>
+<p>},
+«entityIds»: {</p>
+<blockquote>
+<div><p>«userId»: «e047339c-cd31-4c13-ba4b-455e3fcd60d4»</p>
+</div></blockquote>
+<p>},
+«createInfo»: {</p>
+<blockquote>
+<div><p>«createdAt»: «2022-06-28T12:02:58.317662+00:00»,
+«createdByUserId»: «0ab0dc94-616c-4b86-a074-250e76b5e63c»,
+«createdWith»: «WebApp»</p>
+</div></blockquote>
+<p>}</p>
+</div></blockquote>
+<p>}</p>
+</div></blockquote>
+<p>],
+«firstOffset»: «00000000-3699-1b36-0000-000008ac36c1»,
+«lastOffset»: «00000000-3699-2055-0000-000008ac36c9»,
+«hasMore»: true</p>
+</dd>
+</dl>
+<p>}</p>
 <p>hasMore в ответе указывает, что существуют еще события после события по смещению lastOffset.
 Для их получения нужно сформировать запрос, в котором в качестве offset передать lastOffset:</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">curl</span> <span class="o">-</span><span class="n">X</span> <span class="s1">&#39;GET&#39;</span> \
-    <span class="s1">&#39;https://crm.kontur.ru/api/v1/testswaggerspace/events?offset=00000000-20ac-176a-0000-0000060f5e87&amp;limit=2&#39;</span> \
+    <span class="s1">&#39;https://xcom.kontur.ru/api/v1/testswaggerspace/events?offset=00000000-3699-2055-0000-000008ac36c9&amp;limit=2&#39;</span> \
     <span class="o">-</span><span class="n">H</span> <span class="s1">&#39;accept: application/json&#39;</span> \
     <span class="o">-</span><span class="n">H</span> <span class="s1">&#39;Authorization: Bearer xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx&#39;</span>
 </pre></div>
 </div>
 <p>Ответ 200 Ok и модель ObjectEventsList:</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="p">{</span>
-<span class="s2">&quot;count&quot;</span><span class="p">:</span><span class="mi">2</span><span class="p">,</span>
-<span class="s2">&quot;items&quot;</span><span class="p">:[</span>
-    <span class="p">{</span>
-        <span class="s2">&quot;id&quot;</span><span class="p">:</span><span class="s2">&quot;3c75d291-09c3-4c3b-8f9b-65cd80ef8580&quot;</span><span class="p">,</span>
-        <span class="s2">&quot;offset&quot;</span><span class="p">:</span><span class="s2">&quot;00000000-20ac-176a-0000-0000060f5e88&quot;</span><span class="p">,</span>
-        <span class="s2">&quot;type&quot;</span><span class="p">:</span><span class="s2">&quot;change&quot;</span><span class="p">,</span>
-        <span class="s2">&quot;changeData&quot;</span><span class="p">:{</span>
-            <span class="s2">&quot;type&quot;</span><span class="p">:</span><span class="s2">&quot;create&quot;</span><span class="p">,</span>
-            <span class="s2">&quot;new&quot;</span><span class="p">:{</span>
-            <span class="s2">&quot;id&quot;</span><span class="p">:</span><span class="s2">&quot;a9a2f13c-218f-4f17-8176-8c96b273eb18&quot;</span><span class="p">,</span>
-            <span class="s2">&quot;name&quot;</span><span class="p">:</span><span class="s2">&quot;Руководитель группы&quot;</span><span class="p">,</span>
-            <span class="s2">&quot;accessRights&quot;</span><span class="p">:[</span>
-                <span class="p">{</span>
-                    <span class="s2">&quot;id&quot;</span><span class="p">:</span><span class="s2">&quot;system.deals.create&quot;</span><span class="p">,</span>
-                    <span class="s2">&quot;level&quot;</span><span class="p">:</span><span class="mi">1</span>
-                <span class="p">},</span>
-                <span class="p">{</span>
-                    <span class="s2">&quot;id&quot;</span><span class="p">:</span><span class="s2">&quot;system.deals.edit&quot;</span><span class="p">,</span>
-                    <span class="s2">&quot;level&quot;</span><span class="p">:</span><span class="mi">1</span>
-                <span class="p">},</span>
-                <span class="p">{</span>
-                    <span class="s2">&quot;id&quot;</span><span class="p">:</span><span class="s2">&quot;system.deals.delete&quot;</span><span class="p">,</span>
-                    <span class="s2">&quot;level&quot;</span><span class="p">:</span><span class="mi">1</span>
-                <span class="p">},</span>
-                <span class="p">{</span>
-                    <span class="s2">&quot;id&quot;</span><span class="p">:</span><span class="s2">&quot;system.tasks.create&quot;</span><span class="p">,</span>
-                    <span class="s2">&quot;level&quot;</span><span class="p">:</span><span class="mi">1</span>
-                <span class="p">},</span>
-                <span class="p">{</span>
-                    <span class="s2">&quot;id&quot;</span><span class="p">:</span><span class="s2">&quot;system.tasks.edit&quot;</span><span class="p">,</span>
-                    <span class="s2">&quot;level&quot;</span><span class="p">:</span><span class="mi">1</span>
-                <span class="p">},</span>
-                <span class="p">{</span>
-                    <span class="s2">&quot;id&quot;</span><span class="p">:</span><span class="s2">&quot;system.tasks.delete&quot;</span><span class="p">,</span>
-                    <span class="s2">&quot;level&quot;</span><span class="p">:</span><span class="mi">1</span>
-                <span class="p">},</span>
-                <span class="p">{</span>
-                    <span class="s2">&quot;id&quot;</span><span class="p">:</span><span class="s2">&quot;system.analytics.view&quot;</span><span class="p">,</span>
-                    <span class="s2">&quot;level&quot;</span><span class="p">:</span><span class="mi">1</span>
-                <span class="p">},</span>
-                <span class="p">{</span>
-                    <span class="s2">&quot;id&quot;</span><span class="p">:</span><span class="s2">&quot;system.plans.edit&quot;</span><span class="p">,</span>
-                    <span class="s2">&quot;level&quot;</span><span class="p">:</span><span class="mi">1</span>
-                <span class="p">},</span>
-                <span class="p">{</span>
-                    <span class="s2">&quot;id&quot;</span><span class="p">:</span><span class="s2">&quot;system.communications.canSendCorporateEmail&quot;</span><span class="p">,</span>
-                    <span class="s2">&quot;level&quot;</span><span class="p">:</span><span class="mi">1</span>
-                <span class="p">},</span>
-                <span class="p">{</span>
-                    <span class="s2">&quot;id&quot;</span><span class="p">:</span><span class="s2">&quot;system.canImport&quot;</span><span class="p">,</span>
-                    <span class="s2">&quot;level&quot;</span><span class="p">:</span><span class="mi">1</span>
-                <span class="p">},</span>
-                <span class="p">{</span>
-                    <span class="s2">&quot;id&quot;</span><span class="p">:</span><span class="s2">&quot;system.canExport&quot;</span><span class="p">,</span>
-                    <span class="s2">&quot;level&quot;</span><span class="p">:</span><span class="mi">1</span>
-                <span class="p">},</span>
-                <span class="p">{</span>
-                    <span class="s2">&quot;id&quot;</span><span class="p">:</span><span class="s2">&quot;system.settings.edit&quot;</span><span class="p">,</span>
-                    <span class="s2">&quot;level&quot;</span><span class="p">:</span><span class="mi">1</span>
-                <span class="p">},</span>
-                <span class="p">{</span>
-                    <span class="s2">&quot;id&quot;</span><span class="p">:</span><span class="s2">&quot;system.communications.view&quot;</span><span class="p">,</span>
-                    <span class="s2">&quot;level&quot;</span><span class="p">:</span><span class="mi">1</span>
-                <span class="p">}</span>
-            <span class="p">]</span>
-            <span class="p">}</span>
-        <span class="p">},</span>
-        <span class="s2">&quot;entityIds&quot;</span><span class="p">:{</span>
-            <span class="s2">&quot;roleId&quot;</span><span class="p">:</span><span class="s2">&quot;a9a2f13c-218f-4f17-8176-8c96b273eb18&quot;</span>
-        <span class="p">},</span>
-        <span class="s2">&quot;createInfo&quot;</span><span class="p">:{</span>
-            <span class="s2">&quot;createdAt&quot;</span><span class="p">:</span><span class="s2">&quot;2021-09-28T11:08:26.903198+00:00&quot;</span><span class="p">,</span>
-            <span class="s2">&quot;createdWith&quot;</span><span class="p">:</span><span class="s2">&quot;xcom&quot;</span>
-        <span class="p">}</span>
-    <span class="p">},</span>
-    <span class="p">{</span>
-        <span class="s2">&quot;id&quot;</span><span class="p">:</span><span class="s2">&quot;075b12d5-fba2-4248-b407-f3bcdac576d8&quot;</span><span class="p">,</span>
-        <span class="s2">&quot;offset&quot;</span><span class="p">:</span><span class="s2">&quot;00000000-20ac-176a-0000-0000060f5e89&quot;</span><span class="p">,</span>
-        <span class="s2">&quot;type&quot;</span><span class="p">:</span><span class="s2">&quot;change&quot;</span><span class="p">,</span>
-        <span class="s2">&quot;changeData&quot;</span><span class="p">:{</span>
-            <span class="s2">&quot;type&quot;</span><span class="p">:</span><span class="s2">&quot;create&quot;</span><span class="p">,</span>
-            <span class="s2">&quot;new&quot;</span><span class="p">:{</span>
-            <span class="s2">&quot;id&quot;</span><span class="p">:</span><span class="s2">&quot;d490af0f-d7d2-40e1-8654-955b863cacd7&quot;</span><span class="p">,</span>
-            <span class="s2">&quot;name&quot;</span><span class="p">:</span><span class="s2">&quot;Руководитель организации&quot;</span><span class="p">,</span>
-            <span class="s2">&quot;accessRights&quot;</span><span class="p">:[</span>
-                <span class="p">{</span>
-                    <span class="s2">&quot;id&quot;</span><span class="p">:</span><span class="s2">&quot;system.deals.create&quot;</span><span class="p">,</span>
-                    <span class="s2">&quot;level&quot;</span><span class="p">:</span><span class="mi">2</span>
-                <span class="p">},</span>
-                <span class="p">{</span>
-                    <span class="s2">&quot;id&quot;</span><span class="p">:</span><span class="s2">&quot;system.deals.edit&quot;</span><span class="p">,</span>
-                    <span class="s2">&quot;level&quot;</span><span class="p">:</span><span class="mi">2</span>
-                <span class="p">},</span>
-                <span class="p">{</span>
-                    <span class="s2">&quot;id&quot;</span><span class="p">:</span><span class="s2">&quot;system.deals.delete&quot;</span><span class="p">,</span>
-                    <span class="s2">&quot;level&quot;</span><span class="p">:</span><span class="mi">2</span>
-                <span class="p">},</span>
-                <span class="p">{</span>
-                    <span class="s2">&quot;id&quot;</span><span class="p">:</span><span class="s2">&quot;system.tasks.create&quot;</span><span class="p">,</span>
-                    <span class="s2">&quot;level&quot;</span><span class="p">:</span><span class="mi">2</span>
-                <span class="p">},</span>
-                <span class="p">{</span>
-                    <span class="s2">&quot;id&quot;</span><span class="p">:</span><span class="s2">&quot;system.tasks.edit&quot;</span><span class="p">,</span>
-                    <span class="s2">&quot;level&quot;</span><span class="p">:</span><span class="mi">2</span>
-                <span class="p">},</span>
-                <span class="p">{</span>
-                    <span class="s2">&quot;id&quot;</span><span class="p">:</span><span class="s2">&quot;system.tasks.delete&quot;</span><span class="p">,</span>
-                    <span class="s2">&quot;level&quot;</span><span class="p">:</span><span class="mi">2</span>
-                <span class="p">},</span>
-                <span class="p">{</span>
-                    <span class="s2">&quot;id&quot;</span><span class="p">:</span><span class="s2">&quot;system.analytics.view&quot;</span><span class="p">,</span>
-                    <span class="s2">&quot;level&quot;</span><span class="p">:</span><span class="mi">2</span>
-                <span class="p">},</span>
-                <span class="p">{</span>
-                    <span class="s2">&quot;id&quot;</span><span class="p">:</span><span class="s2">&quot;system.plans.edit&quot;</span><span class="p">,</span>
-                    <span class="s2">&quot;level&quot;</span><span class="p">:</span><span class="mi">2</span>
-                <span class="p">},</span>
-                <span class="p">{</span>
-                    <span class="s2">&quot;id&quot;</span><span class="p">:</span><span class="s2">&quot;system.communications.canSendCorporateEmail&quot;</span><span class="p">,</span>
-                    <span class="s2">&quot;level&quot;</span><span class="p">:</span><span class="mi">2</span>
-                <span class="p">},</span>
-                <span class="p">{</span>
-                    <span class="s2">&quot;id&quot;</span><span class="p">:</span><span class="s2">&quot;system.canImport&quot;</span><span class="p">,</span>
-                    <span class="s2">&quot;level&quot;</span><span class="p">:</span><span class="mi">2</span>
-                <span class="p">},</span>
-                <span class="p">{</span>
-                    <span class="s2">&quot;id&quot;</span><span class="p">:</span><span class="s2">&quot;system.canExport&quot;</span><span class="p">,</span>
-                    <span class="s2">&quot;level&quot;</span><span class="p">:</span><span class="mi">2</span>
-                <span class="p">},</span>
-                <span class="p">{</span>
-                    <span class="s2">&quot;id&quot;</span><span class="p">:</span><span class="s2">&quot;system.settings.edit&quot;</span><span class="p">,</span>
-                    <span class="s2">&quot;level&quot;</span><span class="p">:</span><span class="mi">2</span>
-                <span class="p">},</span>
-                <span class="p">{</span>
-                    <span class="s2">&quot;id&quot;</span><span class="p">:</span><span class="s2">&quot;system.communications.view&quot;</span><span class="p">,</span>
-                    <span class="s2">&quot;level&quot;</span><span class="p">:</span><span class="mi">2</span>
-                <span class="p">}</span>
-            <span class="p">]</span>
-            <span class="p">}</span>
-        <span class="p">},</span>
-        <span class="s2">&quot;entityIds&quot;</span><span class="p">:{</span>
-            <span class="s2">&quot;roleId&quot;</span><span class="p">:</span><span class="s2">&quot;d490af0f-d7d2-40e1-8654-955b863cacd7&quot;</span>
-        <span class="p">},</span>
-        <span class="s2">&quot;createInfo&quot;</span><span class="p">:{</span>
-            <span class="s2">&quot;createdAt&quot;</span><span class="p">:</span><span class="s2">&quot;2021-09-28T11:08:26.903198+00:00&quot;</span><span class="p">,</span>
-            <span class="s2">&quot;createdWith&quot;</span><span class="p">:</span><span class="s2">&quot;xcom&quot;</span>
-        <span class="p">}</span>
-    <span class="p">}</span>
-<span class="p">],</span>
-<span class="s2">&quot;firstOffset&quot;</span><span class="p">:</span><span class="s2">&quot;00000000-20ac-176a-0000-0000060f5e88&quot;</span><span class="p">,</span>
-<span class="s2">&quot;lastOffset&quot;</span><span class="p">:</span><span class="s2">&quot;00000000-20ac-176a-0000-0000060f5e89&quot;</span><span class="p">,</span>
-<span class="s2">&quot;hasMore&quot;</span><span class="p">:</span><span class="n">true</span>
-<span class="p">}</span>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>
 </pre></div>
 </div>
+<dl>
+<dt>{</dt><dd><p>«count»: 1,
+«items»: [</p>
+<blockquote>
+<div><dl>
+<dt>{</dt><dd><p>«id»: «1bbbdaad-b5d5-42a2-b492-45dd9629b840»,
+«offset»: «00000000-36a1-7ea5-0000-000008ac9865»,
+«type»: «change»,
+«changeData»: {</p>
+<blockquote>
+<div><p>«type»: «create»,
+«new»: {</p>
+<blockquote>
+<div><p>«id»: «27f9a6ef-a248-4afc-bd7b-e61725ba8ca3»,
+«date»: «2022-06-30T21:59:59.999+03:00»,
+«text»: «Задача»,
+«typeId»: «00000000-0000-0000-0000-000000000000»,
+«contactIds»: [],
+«isCompleted»: false,
+«supervisors»: [],
+«assignedToUserId»: «0ab0dc94-616c-4b86-a074-250e76b5e63c»,
+«assignedToGroupId»: «00000000-0000-0000-0000-000000000000»,
+«attachmentFileIds»: [],
+«sendToExternalChannels»: true</p>
+</div></blockquote>
+<p>}</p>
+</div></blockquote>
+<p>},
+«entityIds»: {</p>
+<blockquote>
+<div><p>«taskId»: «27f9a6ef-a248-4afc-bd7b-e61725ba8ca3»</p>
+</div></blockquote>
+<p>},
+«createInfo»: {</p>
+<blockquote>
+<div><p>«createdAt»: «2022-06-30T10:37:23.203317+00:00»,
+«createdByUserId»: «0ab0dc94-616c-4b86-a074-250e76b5e63c»,
+«createdWith»: «WebApp»</p>
+</div></blockquote>
+<p>}</p>
+</dd>
+</dl>
+<p>}</p>
+</div></blockquote>
+<p>],
+«firstOffset»: «00000000-36a1-7ea5-0000-000008ac9865»,
+«lastOffset»: «00000000-36a1-7ea5-0000-000008ac9865»,
+«hasMore»: false</p>
+</dd>
+</dl>
+<p>}</p>
 <p>Когда в ответе будет получен hasMore = false — все события на текущий момент были прочитаны.</p>
 </div>
 <div class="section" id="id3">
@@ -409,19 +318,15 @@
 <span class="o">//</span> <span class="n">идентификаторы</span> <span class="n">объектов</span> <span class="n">м</span><span class="o">/</span><span class="n">у</span> <span class="n">которыми</span> <span class="n">изменилась</span> <span class="n">связь</span><span class="p">,</span> <span class="n">например</span> <span class="n">companyId</span><span class="o">-</span><span class="n">dealId</span><span class="o">.</span>
 <span class="o">//</span> <span class="n">идентификаторы</span> <span class="n">сущностей</span> <span class="n">представлены</span> <span class="n">в</span> <span class="n">виде</span> <span class="n">строк</span><span class="o">-</span><span class="n">GUID</span><span class="p">,</span> <span class="n">в</span> <span class="n">ответе</span> <span class="n">будут</span> <span class="n">представлены</span> <span class="n">только</span> <span class="nb">id</span> <span class="n">по</span> <span class="n">которым</span>
 <span class="o">//</span> <span class="n">были</span> <span class="n">изменения</span>
-<span class="s2">&quot;dealId&quot;</span> <span class="p">:</span> <span class="s2">&quot;&quot;</span><span class="p">,</span>
-<span class="s2">&quot;companyId&quot;</span> <span class="p">:</span> <span class="s2">&quot;&quot;</span><span class="p">,</span>
-<span class="s2">&quot;workflowId&quot;</span> <span class="p">:</span> <span class="s2">&quot;&quot;</span><span class="p">,</span>
 <span class="s2">&quot;taskId&quot;</span> <span class="p">:</span> <span class="s2">&quot;&quot;</span><span class="p">,</span>
 <span class="s2">&quot;notificationId&quot;</span> <span class="p">:</span> <span class="s2">&quot;&quot;</span><span class="p">,</span>
-<span class="s2">&quot;contactId&quot;</span> <span class="p">:</span> <span class="s2">&quot;&quot;</span><span class="p">,</span>
 <span class="s2">&quot;userId&quot;</span> <span class="p">:</span> <span class="s2">&quot;&quot;</span><span class="p">,</span>
 <span class="s2">&quot;groupId&quot;</span> <span class="p">:</span> <span class="s2">&quot;&quot;</span><span class="p">,</span>
 <span class="s2">&quot;integrationId&quot;</span> <span class="p">:</span> <span class="s2">&quot;&quot;</span><span class="p">,</span>
 <span class="s2">&quot;roleId&quot;</span> <span class="p">:</span> <span class="s2">&quot;&quot;</span><span class="p">,</span>
 <span class="s2">&quot;communicationId&quot;</span> <span class="p">:</span> <span class="s2">&quot;&quot;</span><span class="p">,</span>
-<span class="s2">&quot;analyticsSettingId&quot;</span> <span class="p">:</span> <span class="s2">&quot;&quot;</span><span class="p">,</span>
-<span class="s2">&quot;templateId&quot;</span> <span class="p">:</span> <span class="s2">&quot;&quot;</span><span class="p">,</span>
+<span class="s2">&quot;documentId&quot;</span> <span class="p">:</span> <span class="s2">&quot;&quot;</span><span class="p">,</span>
+<span class="s2">&quot;routeId&quot;</span> <span class="p">:</span> <span class="s2">&quot;&quot;</span><span class="p">,</span>
 <span class="s2">&quot;catalogItemId&quot;</span> <span class="p">:</span> <span class="s2">&quot;&quot;</span>
 <span class="p">},</span>
 <span class="s2">&quot;changeData&quot;</span> <span class="p">:</span> <span class="p">{</span> <span class="o">//</span><span class="n">описание</span> <span class="n">изменения</span> <span class="n">сущности</span><span class="p">,</span> <span class="n">которое</span> <span class="n">произошло</span>
@@ -437,17 +342,17 @@
 </div>
 <div class="section" id="id4">
 <h2>Алгоритм синхронизации<a class="headerlink" href="#id4" title="Ссылка на этот заголовок">¶</a></h2>
-<p>Допустим, нужно синхронизировать из Контур КЭДО изменения по объектам Company.</p>
+<p>Допустим, нужно синхронизировать из Контур КЭДО изменения по объектам User.</p>
 <ol class="arabic simple">
 <li><p>Если syncedOffset не проинициализирован, то syncedOffset:= „00000000-0000-0000-0000-000000000000“.</p></li>
 <li><p>Формируем запрос за событиям на получение сущностей с offset = syncedOffset и limit равным 50.</p></li>
-<li><p>Фильтруем полученные события. Eсли entityIds/companyId != null, то это событие описывает либо изменение какого-то объекта Company, либо связей этого объекта.</p></li>
+<li><p>Фильтруем полученные события. Eсли entityIds/userId != null, то это событие описывает либо изменение какого-то объекта User, либо связей этого объекта.</p></li>
 <li><p>На основании отфильтрованные событий. По eventType и changeDatas обновляем соответствующие сущности во внешней системе.</p></li>
 <li><p>Сохраняем в syncedOffset = lastOffset из ответа.</p></li>
 <li><p>Если в ответе hasMore = false, то засыпаем на какое-то время (например, 1 минута).</p></li>
 <li><p>Переходим на шаг 1.</p></li>
 </ol>
-<p>При получении изменения через ленту событий гарантируется. что будут получены все изменения.</p>
+<p>При получении изменения через ленту событий гарантируется, что будут получены все изменения.</p>
 </div>
 </div>
 
