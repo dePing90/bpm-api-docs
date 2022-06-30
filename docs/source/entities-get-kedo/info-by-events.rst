@@ -17,7 +17,7 @@
 .. code-block::
 
     curl -X 'GET' \
-    'https://crm.kontur.ru/api/v1/testswaggerspace/events?limit=2' \
+    'https://xcom.kontur.ru/api/v1/testswaggerspace/events?limit=2' \
     -H 'accept: application/json' \
     -H 'Authorization: Bearer xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx'
 
@@ -25,122 +25,100 @@
 
 .. code-block::
 
+{
+  "count": 2,
+  "items": [
     {
-    "count":2,
-    "items":[
-        {
-            "id":"bf5bbe99-1d50-4247-86b7-5ee2b1021e44",
-            "offset":"00000000-20ac-176a-0000-0000060f5e86",
-            "type":"change",
-            "changeData":{
-                "type":"create",
-                "new":{
-                "id":"43c22e9b-6d35-4521-8f77-10eaf9ea8677",
-                "name":"Продажи",
-                "order":0,
-                "stages":[
-                    {
-                        "id":1,
-                        "name":"В работе",
-                        "order":0,
-                        "settings":{
-                            "constraints":[
-                            
-                            ]
-                        }
-                    },
-                    {
-                        "id":2,
-                        "name":"Отправлено предложение",
-                        "order":0,
-                        "settings":{
-                            "constraints":[
-                            
-                            ]
-                        }
-                    },
-                    {
-                        "id":3,
-                        "name":"Оформление",
-                        "order":0,
-                        "settings":{
-                            "constraints":[
-                            
-                            ]
-                        }
-                    },
-                    {
-                        "id":-1,
-                        "order":0,
-                        "settings":{
-                            "constraints":[
-                            
-                            ]
-                        }
-                    },
-                    {
-                        "id":-2,
-                        "order":0,
-                        "settings":{
-                            "constraints":[
-                            
-                            ]
-                        }
-                    },
-                    {
-                        "id":0,
-                        "order":0,
-                        "settings":{
-                            "constraints":[
-                            
-                            ]
-                        }
-                    }
-                ]
-                }
-            },
-            "entityIds":{
-                "workflowId":"43c22e9b-6d35-4521-8f77-10eaf9ea8677"
-            },
-            "createInfo":{
-                "createdAt":"2021-09-28T11:08:26.903198+00:00",
-                "createdWith":"xcom"
-            }
-        },
-        {
-            "id":"3ef692f0-1c1a-4ad3-b364-90aac4daf501",
-            "offset":"00000000-20ac-176a-0000-0000060f5e87",
-            "type":"change",
-            "changeData":{
-                "type":"create",
-                "new":{
-                "id":"2261e2d7-5d2d-4190-89c2-7184fa9d341f",
-                "name":"Менеджер",
-                "accessRights":[
-                    {
-                        "id":"system.deals.create",
-                        "level":1
-                    },
-                    {
-                        "id":"system.tasks.create",
-                        "level":1
-                    }
-                ]
-                }
-            },
-            "entityIds":{
-                "roleId":"2261e2d7-5d2d-4190-89c2-7184fa9d341f"
-            },
-            "createInfo":{
-                "createdAt":"2021-09-28T11:08:26.903198+00:00",
-                "createdWith":"xcom"
-            }
+      "id": "ce8e3443-66f4-40cb-bb7b-a683cb3ec944",
+      "offset": "00000000-3699-1b36-0000-000008ac36c1",
+      "type": "change",
+      "changeData": {
+        "type": "create",
+        "new": {
+          "id": "72e3809c-1ad7-4761-bc3e-50cff06d1f83",
+          "name": "отчество имя фамилия",
+          "login": "test3@mail.ru",
+          "status": "inactive",
+          "groupId": "00000000-0000-0000-0000-000000000000",
+          "isAdmin": false,
+          "isHidden": false,
+          "lastName": "отчество",
+          "settings": {
+            "regionCode": "02"            
+          },
+          "firstName": "имя",
+          "middleName": "фамилия",
+          "accessRights": [],
+          "customFields": {},
+          "isAuthorized": false
         }
-    ],
-    "firstOffset":"00000000-20ac-176a-0000-0000060f5e86",
-    "lastOffset":"00000000-20ac-176a-0000-0000060f5e87",
-    "hasMore":true
+      },
+      "entityIds": {
+        "userId": "72e3809c-1ad7-4761-bc3e-50cff06d1f83"
+      },
+      "createInfo": {
+        "createdAt": "2022-06-28T11:46:54.93681+00:00",
+        "createdByUserId": "0ab0dc94-616c-4b86-a074-250e76b5e63c",
+        "createdWith": "WebApp"
+      }
+    },
+    {
+      "id": "e63e221b-fe36-438a-9def-b9909fd8938d",
+      "offset": "00000000-3699-2055-0000-000008ac36c9",
+      "type": "change",
+      "changeData": {
+        "type": "patch",
+        "old": {
+          "id": "e047339c-cd31-4c13-ba4b-455e3fcd60d4",
+          "name": "отчество имя фамилия",
+          "login": "test2@mail.ru",
+          "status": "inactive",
+          "groupId": "00000000-0000-0000-0000-000000000000",
+          "isAdmin": false,
+          "isHidden": false,
+          "lastName": "отчество",
+          "settings": {
+            "regionCode": "02"
+          },
+          "firstName": "имя",
+          "middleName": "фамилия",
+          "accessRights": [],
+          "customFields": {},
+          "isAuthorized": false
+        },
+        "new": {
+          "id": "e047339c-cd31-4c13-ba4b-455e3fcd60d4",
+          "name": "Бочкин имя фамилия",
+          "login": "test2@mail.ru",
+          "status": "inactive",
+          "groupId": "00000000-0000-0000-0000-000000000000",
+          "isAdmin": false,
+          "isHidden": false,
+          "lastName": "Бочкин",
+          "settings": {
+            "regionCode": "74"
+          },
+          "firstName": "имя",
+          "middleName": "фамилия",
+          "accessRights": [],
+          "customFields": {},
+          "isAuthorized": false
+        }
+      },
+      "entityIds": {
+        "userId": "e047339c-cd31-4c13-ba4b-455e3fcd60d4"
+      },
+      "createInfo": {
+        "createdAt": "2022-06-28T12:02:58.317662+00:00",
+        "createdByUserId": "0ab0dc94-616c-4b86-a074-250e76b5e63c",
+        "createdWith": "WebApp"
+      }
     }
+  ],
+  "firstOffset": "00000000-3699-1b36-0000-000008ac36c1",
+  "lastOffset": "00000000-3699-2055-0000-000008ac36c9",
+  "hasMore": true
+}
 
 hasMore в ответе указывает, что существуют еще события после события по смещению lastOffset.
 Для их получения нужно сформировать запрос, в котором в качестве offset передать lastOffset:
@@ -148,7 +126,7 @@ hasMore в ответе указывает, что существуют еще �
 .. code-block:: 
 
     curl -X 'GET' \
-        'https://crm.kontur.ru/api/v1/testswaggerspace/events?offset=00000000-20ac-176a-0000-0000060f5e87&limit=2' \
+        'https://xcom.kontur.ru/api/v1/testswaggerspace/events?offset=00000000-3699-2055-0000-000008ac36c9&limit=2' \
         -H 'accept: application/json' \
         -H 'Authorization: Bearer xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx'
 
@@ -156,160 +134,43 @@ hasMore в ответе указывает, что существуют еще �
 
 .. code-block:: 
 
+{
+  "count": 1,
+  "items": [
     {
-    "count":2,
-    "items":[
-        {
-            "id":"3c75d291-09c3-4c3b-8f9b-65cd80ef8580",
-            "offset":"00000000-20ac-176a-0000-0000060f5e88",
-            "type":"change",
-            "changeData":{
-                "type":"create",
-                "new":{
-                "id":"a9a2f13c-218f-4f17-8176-8c96b273eb18",
-                "name":"Руководитель группы",
-                "accessRights":[
-                    {
-                        "id":"system.deals.create",
-                        "level":1
-                    },
-                    {
-                        "id":"system.deals.edit",
-                        "level":1
-                    },
-                    {
-                        "id":"system.deals.delete",
-                        "level":1
-                    },
-                    {
-                        "id":"system.tasks.create",
-                        "level":1
-                    },
-                    {
-                        "id":"system.tasks.edit",
-                        "level":1
-                    },
-                    {
-                        "id":"system.tasks.delete",
-                        "level":1
-                    },
-                    {
-                        "id":"system.analytics.view",
-                        "level":1
-                    },
-                    {
-                        "id":"system.plans.edit",
-                        "level":1
-                    },
-                    {
-                        "id":"system.communications.canSendCorporateEmail",
-                        "level":1
-                    },
-                    {
-                        "id":"system.canImport",
-                        "level":1
-                    },
-                    {
-                        "id":"system.canExport",
-                        "level":1
-                    },
-                    {
-                        "id":"system.settings.edit",
-                        "level":1
-                    },
-                    {
-                        "id":"system.communications.view",
-                        "level":1
-                    }
-                ]
-                }
-            },
-            "entityIds":{
-                "roleId":"a9a2f13c-218f-4f17-8176-8c96b273eb18"
-            },
-            "createInfo":{
-                "createdAt":"2021-09-28T11:08:26.903198+00:00",
-                "createdWith":"xcom"
-            }
-        },
-        {
-            "id":"075b12d5-fba2-4248-b407-f3bcdac576d8",
-            "offset":"00000000-20ac-176a-0000-0000060f5e89",
-            "type":"change",
-            "changeData":{
-                "type":"create",
-                "new":{
-                "id":"d490af0f-d7d2-40e1-8654-955b863cacd7",
-                "name":"Руководитель организации",
-                "accessRights":[
-                    {
-                        "id":"system.deals.create",
-                        "level":2
-                    },
-                    {
-                        "id":"system.deals.edit",
-                        "level":2
-                    },
-                    {
-                        "id":"system.deals.delete",
-                        "level":2
-                    },
-                    {
-                        "id":"system.tasks.create",
-                        "level":2
-                    },
-                    {
-                        "id":"system.tasks.edit",
-                        "level":2
-                    },
-                    {
-                        "id":"system.tasks.delete",
-                        "level":2
-                    },
-                    {
-                        "id":"system.analytics.view",
-                        "level":2
-                    },
-                    {
-                        "id":"system.plans.edit",
-                        "level":2
-                    },
-                    {
-                        "id":"system.communications.canSendCorporateEmail",
-                        "level":2
-                    },
-                    {
-                        "id":"system.canImport",
-                        "level":2
-                    },
-                    {
-                        "id":"system.canExport",
-                        "level":2
-                    },
-                    {
-                        "id":"system.settings.edit",
-                        "level":2
-                    },
-                    {
-                        "id":"system.communications.view",
-                        "level":2
-                    }
-                ]
-                }
-            },
-            "entityIds":{
-                "roleId":"d490af0f-d7d2-40e1-8654-955b863cacd7"
-            },
-            "createInfo":{
-                "createdAt":"2021-09-28T11:08:26.903198+00:00",
-                "createdWith":"xcom"
-            }
+      "id": "1bbbdaad-b5d5-42a2-b492-45dd9629b840",
+      "offset": "00000000-36a1-7ea5-0000-000008ac9865",
+      "type": "change",
+      "changeData": {
+        "type": "create",
+        "new": {
+          "id": "27f9a6ef-a248-4afc-bd7b-e61725ba8ca3",
+          "date": "2022-06-30T21:59:59.999+03:00",
+          "text": "Задача",
+          "typeId": "00000000-0000-0000-0000-000000000000",
+          "contactIds": [],
+          "isCompleted": false,
+          "supervisors": [],
+          "assignedToUserId": "0ab0dc94-616c-4b86-a074-250e76b5e63c",
+          "assignedToGroupId": "00000000-0000-0000-0000-000000000000",
+          "attachmentFileIds": [],
+          "sendToExternalChannels": true
         }
-    ],
-    "firstOffset":"00000000-20ac-176a-0000-0000060f5e88",
-    "lastOffset":"00000000-20ac-176a-0000-0000060f5e89",
-    "hasMore":true
+      },
+      "entityIds": {
+        "taskId": "27f9a6ef-a248-4afc-bd7b-e61725ba8ca3"
+      },
+      "createInfo": {
+        "createdAt": "2022-06-30T10:37:23.203317+00:00",
+        "createdByUserId": "0ab0dc94-616c-4b86-a074-250e76b5e63c",
+        "createdWith": "WebApp"
+      }
     }
+  ],
+  "firstOffset": "00000000-36a1-7ea5-0000-000008ac9865",
+  "lastOffset": "00000000-36a1-7ea5-0000-000008ac9865",
+  "hasMore": false
+}
 
 Когда в ответе будет получен hasMore = false — все события на текущий момент были прочитаны.
 
@@ -346,19 +207,15 @@ hasMore в ответе указывает, что существуют еще �
     // идентификаторы объектов м/у которыми изменилась связь, например companyId-dealId.
     // идентификаторы сущностей представлены в виде строк-GUID, в ответе будут представлены только id по которым
     // были изменения 
-    "dealId" : "",
-    "companyId" : "",
-    "workflowId" : "",
     "taskId" : "", 
     "notificationId" : "", 
-    "contactId" : "",
     "userId" : "",
     "groupId" : "",
     "integrationId" : "", 
     "roleId" : "",
     "communicationId" : "",
-    "analyticsSettingId" : "",
-    "templateId" : "",
+    "documentId" : "",
+    "routeId" : "",
     "catalogItemId" : ""
     },
     "changeData" : { //описание изменения сущности, которое произошло
@@ -373,17 +230,17 @@ hasMore в ответе указывает, что существуют еще �
 Алгоритм синхронизации
 ----------------------
 
-Допустим, нужно синхронизировать из Контур КЭДО изменения по объектам Company.
+Допустим, нужно синхронизировать из Контур КЭДО изменения по объектам User.
 
 
 #. Если syncedOffset не проинициализирован, то syncedOffset:= '00000000-0000-0000-0000-000000000000'.
 #. Формируем запрос за событиям на получение сущностей с offset = syncedOffset и limit равным 50.
-#. Фильтруем полученные события. Eсли entityIds/companyId != null, то это событие описывает либо изменение какого-то объекта Company, либо связей этого объекта.
+#. Фильтруем полученные события. Eсли entityIds/userId != null, то это событие описывает либо изменение какого-то объекта User, либо связей этого объекта.
 #. На основании отфильтрованные событий. По eventType и changeDatas обновляем соответствующие сущности во внешней системе.
 #. Сохраняем в syncedOffset = lastOffset из ответа.
 #. Если в ответе hasMore = false, то засыпаем на какое-то время (например, 1 минута).
 #. Переходим на шаг 1.
 
 
-При получении изменения через ленту событий гарантируется. что будут получены все изменения.
+При получении изменения через ленту событий гарантируется, что будут получены все изменения.
 

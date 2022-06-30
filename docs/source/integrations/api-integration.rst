@@ -14,7 +14,7 @@ API интеграции
 
 Метод: `POST IntegrationsSetup`_
 
-Интеграция после установки находится в статусе ``NotConfigured``, метод активирует публичную интеграцию. В теле запроса нужно указать необходимые аргументы со стороны телефонии. Не относится к приватной интеграции.
+Интеграция после установки находится в статусе ``NotConfigured``, метод активирует интеграцию. В теле запроса нужно указать необходимые аргументы со стороны интеграции.
 
 **Параметры**
 
@@ -23,7 +23,7 @@ API интеграции
 
 **Тело запроса**
 
-* ``object`` — Значение аргумента телефонии.
+* ``object`` — Значение аргумента интеграции.
 
 **Пример**
 ::
@@ -47,146 +47,6 @@ API интеграции
     "message": "Integration not found"
     }
 
-.. _rst-markup-IntegrationsInstances:
-
-Включение системных вызовов
-----------------------------
-
-Метод: `PATCH IntegrationsInstances`_
-
-Метод позволит включить функциональность ``call`` и ``hangup`` для приема вызовов со стороны Контур КЭДО, при отправке запроса нужно указать объект патча.
-
-**Параметры**
-
-* ``Id`` — Идентификатор интеграции;
-* ``ws`` — Уникальное название рабочего пространства. 
-
-**Тело запроса**
-
-* ``op`` — Название операции;
-* ``path`` — Элемент массива;
-* ``value`` — Новое значение объекта;
-* ``call`` — Определяет статус системного вызова CALL;
-* ``hangup`` — Определяет статус системного вызова HANGUP.
-
-
-**Пример**
-::
-
-    {
-    "operations":[
-    {
-    "op":"replace",
-    "path":"/features",
-    "value":{"call":true,"hangup":true}}
-    ]
-    }
-
-**Ответы**
-
-**200** :: 
-
-    {
-    "isSuccessful": true,
-    "responseCode": "ok",
-    "result": {
-    "updateInfo": {
-      "updatedAt": "2022-04-05T16:09:39.759507+00:00",
-      "updatedWith": "SystemFromTest",
-      "createdAt": "2022-04-01T13:07:52.566751+00:00",
-      "createdByUserId": "54d...121",
-      "createdWith": "WebApp"
-    },
-    "baseUrl": "https://crm-integrations.testkontur.ru/telephony/v1",
-    "features": {
-      "call": false,
-      "hangup": false,
-      "sendSms": false
-    },
-    "status": "failed",
-    "secrets": [
-      {
-        "id": "telephony.apiKey",
-        "value": "723..00a",
-        "values": [
-          "723..00a"
-        ]
-      },
-      {
-        "id": "token",
-        "value": "12",
-        "values": [
-          "12"
-        ]
-      },
-      {
-        "id": "url",
-        "value": "12",
-        "values": [
-          "12"
-        ]
-      }
-    ],
-    "settings": [
-      {
-        "id": "autoRedirect",
-        "value": "False"
-      },
-      {
-        "id": "version",
-        "value": "0.0.1-alpha2"
-      }
-    ],
-    "webHooks": [
-      {
-        "id": "25d...222",
-        "relativeUrl": "setup/upgrade",
-        "triggerType": "schedule",
-        "filter": {
-          "items": []
-        },
-        "schedule": {
-          "period": "00:05:00"
-        },
-        "disabled": false
-      },
-      {
-        "id": "81c...b02",
-        "relativeUrl": "communications/sync",
-        "triggerType": "schedule",
-        "filter": {
-          "items": []
-        },
-        "schedule": {
-          "period": "00:05:00"
-        },
-        "disabled": false
-      }
-    ],
-    "id": "103...a396"
-    }
-    }
-
-**409** ::
-
-    {
-    "errorInfo": {
-    "invalidPaths": [
-      {
-        "op": "replace",
-        "path": "/id",
-        "value": "00000000-0000-0000-0000-000000000000"
-      }
-    ],
-    "invalidValueTypes": [],
-    "invalidDatas": [],
-    "invalidConstraints": {},
-    "status": "invalidArgs",
-    "message": "Patch contains invalid operations"
-    },
-    "isSuccessful": false,
-    "responseCode": "conflict"
-    }
 
 .. _rst-markup-PatchIntegrationInstances:
 
@@ -196,12 +56,7 @@ API интеграции
 
 Метод регистрирует Webhook в модель ``IntegrationInstance``. Если интеграция некорректно отвечает на вызовы, то со временем Контур КЭДО перестанет их отправлять.
 
-Контур КЭДО позволяет подписаться на события через Webhook. Для телефонии используются 2 типа:
-
-``Upgrade`` — Для всех интеграций. Если изменится версия интеграции, то вызывается setup для обновления конфигурации интеграции.
-
-``Sync`` — для синхронизации истории в определенный период время, обычно раз в 5 минут.
-
+Контур КЭДО позволяет подписаться на события через Webhook.
 **Параметры**
 
 * ``Id`` — Идентификатор интеграции;
@@ -231,7 +86,7 @@ API интеграции
 ::
 
     curl -X 'PATCH' \
-    'https://crm.kontur.ru/api/v1/my-integration/integrations/instances/e01...7d9' \
+    'https://xcom.kontur.ru/api/v1/my-integration/integrations/instances/e01...7d9' \
     -H 'accept: application/json' \
     -H 'Authorization: Bearer 1r3...ed8' \
     -H 'Content-Type: application/json-patch+json' \
@@ -251,7 +106,7 @@ API интеграции
 
 Метод: `GET IntegrationsInstances`_
 
-Метод возвращает информацию об интеграции с телефонией. В полученном ответе строка status определяет состояние интеграции. 
+Метод возвращает информацию об интеграции. В полученном ответе строка status определяет состояние интеграции. 
 
 Существуют следующие статусы:
 
@@ -332,54 +187,4 @@ API интеграции
     {
     "status": "notFound",
     "message": "IntegrationInstance 838...ed82 not found"
-    }
-
-.. _rst-markup-UiSettings:
-
-Выбор основной телефонии
--------------------------
-Метод: `GET UiSettings`_
-
-Метод позволяет выбрать основную интеграцию для исходящих звонков.
-
-Может возникнуть ситуация, что для пространства нужно несколько интеграций: для входящих и исходящих звонков. Дополнительно это может потребоваться, если нужно протестировать переход с одной телефонии на другую. 
-
-**Параметры**
-
-* ``main-telephony-settings`` — Настройки основной телефонии;
-* ``ws`` — Уникальное название рабочего пространства;
-* ``Id`` — Идентификатор интеграции.
-
-**Пример**
-::
-
-    GET /api/v1/ws/ui-settings?key=@main-telephony-settings=er1...gf1
-    X-XCOM-AccessKey: dda...d67
-
-**Ответы**
-
-**200** ::
-
-    {
-    "userId": "3fa...fa6",
-    "groupId": "3fa...fa6",
-    "key": "string",
-    "value": "string",
-    "canEditAll": true,
-    "updateInfo": {
-        "updatedAt": "2022-03-30T12:55:06.096Z",
-        "updatedByUserId": "3fa...fa6",
-        "updatedWith": "string",
-        "createdAt": "2022-03-30T12:55:06.096Z",
-        "createdByUserId": "3fa...fa6",
-        "createdWith": "string"
-    },
-    "id": "3fa...fa6"
-    }
-
-**409** ::
-
-    {
-    "status": "notFound",
-    "message": "Telephony 838...ed82 not found"
     }
