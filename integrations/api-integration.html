@@ -124,7 +124,7 @@
 <div class="section" id="rst-markup-integrationsinstances">
 <span id="id3"></span><h2>Включение системных вызовов<a class="headerlink" href="#rst-markup-integrationsinstances" title="Ссылка на этот заголовок">¶</a></h2>
 <p>Метод: <a class="reference external" href="https://developer.kontur.ru/doc/crm/method?type=patch&amp;path=%2Fapi%2Fv1%2F%7Bws%7D%2Fintegrations%2Finstances%2F%7Bid%7D">PATCH IntegrationsInstances</a></p>
-<p>Метод позволит включить функциональность <code class="docutils literal notranslate"><span class="pre">call</span></code> и <code class="docutils literal notranslate"><span class="pre">hangup</span></code> для приема вызовов со стороны Контур.CRM, при отправке запроса нужно указать объект патча.</p>
+<p>Метод позволит включить функциональность <code class="docutils literal notranslate"><span class="pre">call</span></code> и <code class="docutils literal notranslate"><span class="pre">hangup</span></code> для приема вызовов со стороны Контур КЭДО, при отправке запроса нужно указать объект патча.</p>
 <p><strong>Параметры</strong></p>
 <ul class="simple">
 <li><p><code class="docutils literal notranslate"><span class="pre">Id</span></code> — Идентификатор интеграции;</p></li>
@@ -258,8 +258,8 @@
 <div class="section" id="webhook">
 <span id="rst-markup-patchintegrationinstances"></span><h2>Настройка webhook<a class="headerlink" href="#webhook" title="Ссылка на этот заголовок">¶</a></h2>
 <p>Метод: <a class="reference external" href="https://developer.kontur.ru/doc/crm/method?type=patch&amp;path=%2Fapi%2Fv1%2F%7Bws%7D%2Fintegrations%2Finstances%2F%7Bid%7D">PATCH IntegrationsInstances</a></p>
-<p>Метод регистрирует Webhook в модель <code class="docutils literal notranslate"><span class="pre">IntegrationInstance</span></code>. Если интеграция некорректно отвечает на вызовы, то со временем Контур.CRM перестанет их отправлять.</p>
-<p>Контур.CRM позволяет подписаться на события через Webhook. Для телефонии используются 2 типа:</p>
+<p>Метод регистрирует Webhook в модель <code class="docutils literal notranslate"><span class="pre">IntegrationInstance</span></code>. Если интеграция некорректно отвечает на вызовы, то со временем Контур КЭДО перестанет их отправлять.</p>
+<p>Контур КЭДО позволяет подписаться на события через Webhook. Для телефонии используются 2 типа:</p>
 <p><code class="docutils literal notranslate"><span class="pre">Upgrade</span></code> — Для всех интеграций. Если изменится версия интеграции, то вызывается setup для обновления конфигурации интеграции.</p>
 <p><code class="docutils literal notranslate"><span class="pre">Sync</span></code> — для синхронизации истории в определенный период время, обычно раз в 5 минут.</p>
 <p><strong>Параметры</strong></p>
