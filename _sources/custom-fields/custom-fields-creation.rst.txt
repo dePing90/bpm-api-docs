@@ -14,7 +14,7 @@
 
 .. code-block:: 
 
-    PATCH https://crm.kontur.ru/api/v1/{ws}/settings
+    PATCH https://xcom.kontur.ru/api/v1/{ws}/settings
 
 
 В модели Settings есть поле CustomFields, в котом описываются пользовательские поля.
