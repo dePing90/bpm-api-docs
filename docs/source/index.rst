@@ -17,10 +17,8 @@ API Контур КЭДО
    custom-fields/index
    integrations/index
 
-.. В текущей версии собрана документация по КЭДО. Разделы, касаемые crm, скрыты:
-.. crm/models-crm/index
-.. crm/entities-push-crm/index
-.. crm/entities-get-crm/index
-.. crm/phone-integration/index
-.. поэтому при сборке будет 6 предупреждений, что страницы не объявлены — это норм
+.. В текущей версии собрана документация по КЭДО. Раздел, касаемый crm, скрыт. 
+.. Поэтому при сборке в норме будет 1 предупреждение:
+.. crm/index.rst: WARNING: document isn't included in any toctree
+
    
