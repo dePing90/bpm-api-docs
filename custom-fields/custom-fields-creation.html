@@ -3,7 +3,7 @@
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Создание пользовательских полей &mdash; документация Контур КЭДО 1.1</title><link rel="stylesheet" href="../_static/css/theme.css" type="text/css" />
+  <title>Создание через API &mdash; документация Контур КЭДО 1.1</title><link rel="stylesheet" href="../_static/css/theme.css" type="text/css" />
     <link rel="stylesheet" href="../_static/pygments.css" type="text/css" /><link rel="shortcut icon" href="../_static/favicon.ico"/>
   <!--[if lt IE 9]>
     <script src="../_static/js/html5shiv.min.js"></script>
@@ -40,14 +40,11 @@
 </div>
         </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
               <ul class="current">
-<li class="toctree-l1"><a class="reference internal" href="../entities-kedo/index.html">Описание сущностей</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../entities-kedo/index.html">Основные сущности</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../entities-push-kedo/index.html">Создание и изменение сущностей</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../entities-get-kedo/index.html">Получение информации о сущностях</a></li>
 <li class="toctree-l1 current"><a class="reference internal" href="index.html">Работа с пользовательскими полями</a><ul class="current">
-<li class="toctree-l2 current"><a class="current reference internal" href="#">Создание пользовательских полей</a><ul>
-<li class="toctree-l3"><a class="reference internal" href="#api">Создание пользовательских через API</a></li>
-</ul>
-</li>
+<li class="toctree-l2 current"><a class="current reference internal" href="#">Создание через API</a></li>
 <li class="toctree-l2"><a class="reference internal" href="custom-fields-type.html">Типы пользовательских полей</a></li>
 </ul>
 </li>
@@ -69,7 +66,7 @@
   <ul class="wy-breadcrumbs">
       <li><a href="../index.html" class="icon icon-home"></a> &raquo;</li>
           <li><a href="index.html">Работа с пользовательскими полями</a> &raquo;</li>
-      <li>Создание пользовательских полей</li>
+      <li>Создание через API</li>
       <li class="wy-breadcrumbs-aside">
             <a href="../_sources/custom-fields/custom-fields-creation.rst.txt" rel="nofollow"> View page source</a>
       </li>
@@ -79,22 +76,20 @@
           <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
            <div itemprop="articleBody">
              
-  <div class="section" id="id1">
-<h1>Создание пользовательских полей<a class="headerlink" href="#id1" title="Ссылка на этот заголовок">¶</a></h1>
+  <div class="section" id="api">
+<h1>Создание через API<a class="headerlink" href="#api" title="Ссылка на этот заголовок">¶</a></h1>
 <p>Контур КЭДО позволяет добавлять пользовательские поля в основные сущности системы:</p>
 <ul class="simple">
 <li><p>Пользователя (User)</p></li>
 <li><p>Документы (Documents)</p></li>
 </ul>
-<div class="section" id="api">
-<h2>Создание пользовательских через API<a class="headerlink" href="#api" title="Ссылка на этот заголовок">¶</a></h2>
-<p>Для того, чтобы добавить пользовательское поле в сущность, необходимо объявить его в настройках (Settings) рабочего пространства (Workspace).</p>
+<p>Для того, чтобы добавить пользовательское поле в сущность, необходимо объявить
+его в настройках (Settings) рабочего пространства (Workspace).</p>
 <p>Метод API:</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">PATCH</span> <span class="n">https</span><span class="p">:</span><span class="o">//</span><span class="n">crm</span><span class="o">.</span><span class="n">kontur</span><span class="o">.</span><span class="n">ru</span><span class="o">/</span><span class="n">api</span><span class="o">/</span><span class="n">v1</span><span class="o">/</span><span class="p">{</span><span class="n">ws</span><span class="p">}</span><span class="o">/</span><span class="n">settings</span>
 </pre></div>
 </div>
 <p>В модели Settings есть поле CustomFields, в котом описываются пользовательские поля.</p>
-<p><em>Примеры надо заменить</em></p>
 <p>Для пользователя (User) требуется добавить:</p>
 <ul class="simple">
 <li><p>поле типа «список» с названием «Тип» и значениями «Хороший», «Плохой».</p></li>
@@ -159,9 +154,9 @@
     <span class="p">}</span>
   <span class="p">}</span>
 <span class="p">]</span>
+  <span class="p">}</span><span class="s1">&#39;</span>
 </pre></div>
 </div>
-<p>}“</p>
 <p>В ответ получаем 200 Ok и актуальные настройки пространства, модель Settings.</p>
 <p>Описание модели CustomFieldSettings из Settings.CustomFields.</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span>  <span class="p">{</span>
@@ -190,35 +185,28 @@
 <span class="p">}</span>
 </pre></div>
 </div>
-<p>Для добавления или изменения полей в документе необходимо внести правки в соответствующей схеме документа.</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>
+<p>Для добавления или изменения полей в документе необходимо
+внести правки в соответствующей схеме документа.</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>  <span class="n">curl</span> <span class="o">-</span><span class="n">X</span> <span class="s1">&#39;PATCH&#39;</span> \
+  <span class="s1">&#39;https://xcom.kontur.ru/api/v1/testswaggerspace/document-schemes/{scheme-id}&#39;</span> \
+  <span class="o">-</span><span class="n">H</span> <span class="s1">&#39;accept: application/json&#39;</span> \
+  <span class="o">-</span><span class="n">H</span> <span class="s1">&#39;Authorization: Bearer xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx&#39;</span> \
+  <span class="o">-</span><span class="n">H</span> <span class="s1">&#39;Content-Type: application/json-patch+json&#39;</span> \
+  <span class="o">-</span><span class="n">d</span> <span class="s1">&#39;{</span>
+<span class="s2">&quot;operations&quot;</span><span class="p">:</span> <span class="p">[</span>
+  <span class="p">{</span>
+    <span class="s2">&quot;op&quot;</span><span class="p">:</span> <span class="s2">&quot;add&quot;</span><span class="p">,</span>
+    <span class="s2">&quot;path&quot;</span><span class="p">:</span> <span class="s2">&quot;/customFields&quot;</span><span class="p">,</span>
+    <span class="s2">&quot;value&quot;</span><span class="p">:</span> <span class="p">{</span>
+      <span class="s2">&quot;id&quot;</span><span class="p">:</span> <span class="s2">&quot;socialLink&quot;</span><span class="p">,</span>
+      <span class="s2">&quot;name&quot;</span><span class="p">:</span> <span class="s2">&quot;Соц. сеть&quot;</span><span class="p">,</span>
+      <span class="s2">&quot;description&quot;</span><span class="p">:</span> <span class="s2">&quot;Ссылка на социальную сеть&quot;</span><span class="p">,</span>
+      <span class="s2">&quot;type&quot;</span><span class="p">:</span> <span class="s2">&quot;url&quot;</span>
+      <span class="p">}</span>
+  <span class="p">}</span>
+<span class="p">]</span>
+<span class="p">}</span><span class="s1">&#39;</span>
 </pre></div>
-</div>
-<dl>
-<dt>curl -X „PATCH“ </dt><dd><blockquote>
-<div><p>„<a class="reference external" href="https://xcom.kontur.ru/api/v1/testswaggerspace/document-schemes">https://xcom.kontur.ru/api/v1/testswaggerspace/document-schemes</a>/{scheme-id}“ -H „accept: application/json“ -H „Authorization: Bearer xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx“ -H „Content-Type: application/json-patch+json“ -d „{</p>
-</div></blockquote>
-<dl>
-<dt>«operations»: [</dt><dd><dl>
-<dt>{</dt><dd><p>«op»: «add»,
-«path»: «/customFields»,
-«value»: {</p>
-<blockquote>
-<div><p>«id»: «socialLink»,
-«name»: «Соц. сеть»,
-«description»: «Ссылка на социальную сеть»,
-«type»: «url»</p>
-</div></blockquote>
-<p>}</p>
-</dd>
-</dl>
-<p>}</p>
-</dd>
-</dl>
-<p>]
-}“</p>
-</dd>
-</dl>
 </div>
 </div>
 

@@ -40,7 +40,7 @@
 </div>
         </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
               <ul class="current">
-<li class="toctree-l1"><a class="reference internal" href="../entities-kedo/index.html">Описание сущностей</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../entities-kedo/index.html">Основные сущности</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../entities-push-kedo/index.html">Создание и изменение сущностей</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../entities-get-kedo/index.html">Получение информации о сущностях</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../custom-fields/index.html">Работа с пользовательскими полями</a></li>
@@ -144,7 +144,7 @@
 <h2>Авторизация публичной интеграции<a class="headerlink" href="#id2" title="Ссылка на этот заголовок">¶</a></h2>
 <p>Метод: <a class="reference external" href="https://developer.kontur.ru/doc/crm/method?type=post&amp;path=%2Fapi%2Fv1%2Fauthorization%2Fauthorize-integration">POST AuthorizeIntegration</a></p>
 <p>Метод авторизует публичную интеграцию и возвращает <code class="docutils literal notranslate"><span class="pre">AccessKey</span></code>. При отправке заголовка нужно указать <code class="docutils literal notranslate"><span class="pre">Integration-Secret</span></code> — ключ доступа со стороны телефонии. В последующих запросах к API Контур КЭДО нужно передавать <code class="docutils literal notranslate"><span class="pre">AccessKey</span></code>.</p>
-<p><code class="docutils literal notranslate"><span class="pre">Integration-Secret</span></code> можно задать во время <a class="reference internal" href="api-integration.html#rst-markup-integrationsetup"><span class="std std-ref">активации интеграции</span></a> или <span class="xref std std-ref">включения системных вызовов</span>. Полученный <code class="docutils literal notranslate"><span class="pre">AccessKey</span></code> нельзя хранить в долгосрочном хранилище, он выдается на короткий срок и действует 20 минут.</p>
+<p><code class="docutils literal notranslate"><span class="pre">Integration-Secret</span></code> можно задать во время активации интеграции или включения системных вызовов. Полученный <code class="docutils literal notranslate"><span class="pre">AccessKey</span></code> нельзя хранить в долгосрочном хранилище, он выдается на короткий срок и действует 20 минут.</p>
 <p><strong>Пример</strong></p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">POST</span> <span class="n">api</span><span class="o">/</span><span class="n">v1</span><span class="o">/</span><span class="n">authorization</span><span class="o">/</span><span class="n">authorize</span><span class="o">-</span><span class="n">integration</span>
 <span class="n">X</span><span class="o">-</span><span class="n">XCOM</span><span class="o">-</span><span class="n">Integration</span><span class="o">-</span><span class="n">ApiKey</span><span class="p">:</span> <span class="mi">8</span><span class="n">d4</span><span class="o">...</span><span class="mi">8</span><span class="n">a0</span>

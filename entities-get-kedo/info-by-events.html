@@ -40,7 +40,7 @@
 </div>
         </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
               <ul class="current">
-<li class="toctree-l1"><a class="reference internal" href="../entities-kedo/index.html">Описание сущностей</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../entities-kedo/index.html">Основные сущности</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../entities-push-kedo/index.html">Создание и изменение сущностей</a></li>
 <li class="toctree-l1 current"><a class="reference internal" href="index.html">Получение информации о сущностях</a><ul class="current">
 <li class="toctree-l2 current"><a class="current reference internal" href="#">Чтение ленты событий</a><ul>
@@ -97,135 +97,102 @@
 </pre></div>
 </div>
 <p>Ответ 200 Ok и модель ObjectEventsList:</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="p">{</span>
+<span class="s2">&quot;count&quot;</span><span class="p">:</span> <span class="mi">2</span><span class="p">,</span>
+<span class="s2">&quot;items&quot;</span><span class="p">:</span> <span class="p">[</span>
+  <span class="p">{</span>
+    <span class="s2">&quot;id&quot;</span><span class="p">:</span> <span class="s2">&quot;ce8e3443-66f4-40cb-bb7b-a683cb3ec944&quot;</span><span class="p">,</span>
+    <span class="s2">&quot;offset&quot;</span><span class="p">:</span> <span class="s2">&quot;00000000-3699-1b36-0000-000008ac36c1&quot;</span><span class="p">,</span>
+    <span class="s2">&quot;type&quot;</span><span class="p">:</span> <span class="s2">&quot;change&quot;</span><span class="p">,</span>
+    <span class="s2">&quot;changeData&quot;</span><span class="p">:</span> <span class="p">{</span>
+      <span class="s2">&quot;type&quot;</span><span class="p">:</span> <span class="s2">&quot;create&quot;</span><span class="p">,</span>
+      <span class="s2">&quot;new&quot;</span><span class="p">:</span> <span class="p">{</span>
+        <span class="s2">&quot;id&quot;</span><span class="p">:</span> <span class="s2">&quot;72e3809c-1ad7-4761-bc3e-50cff06d1f83&quot;</span><span class="p">,</span>
+        <span class="s2">&quot;name&quot;</span><span class="p">:</span> <span class="s2">&quot;отчество имя фамилия&quot;</span><span class="p">,</span>
+        <span class="s2">&quot;login&quot;</span><span class="p">:</span> <span class="s2">&quot;test3@mail.ru&quot;</span><span class="p">,</span>
+        <span class="s2">&quot;status&quot;</span><span class="p">:</span> <span class="s2">&quot;inactive&quot;</span><span class="p">,</span>
+        <span class="s2">&quot;groupId&quot;</span><span class="p">:</span> <span class="s2">&quot;00000000-0000-0000-0000-000000000000&quot;</span><span class="p">,</span>
+        <span class="s2">&quot;isAdmin&quot;</span><span class="p">:</span> <span class="n">false</span><span class="p">,</span>
+        <span class="s2">&quot;isHidden&quot;</span><span class="p">:</span> <span class="n">false</span><span class="p">,</span>
+        <span class="s2">&quot;lastName&quot;</span><span class="p">:</span> <span class="s2">&quot;отчество&quot;</span><span class="p">,</span>
+        <span class="s2">&quot;settings&quot;</span><span class="p">:</span> <span class="p">{</span>
+          <span class="s2">&quot;regionCode&quot;</span><span class="p">:</span> <span class="s2">&quot;02&quot;</span>
+        <span class="p">},</span>
+        <span class="s2">&quot;firstName&quot;</span><span class="p">:</span> <span class="s2">&quot;имя&quot;</span><span class="p">,</span>
+        <span class="s2">&quot;middleName&quot;</span><span class="p">:</span> <span class="s2">&quot;фамилия&quot;</span><span class="p">,</span>
+        <span class="s2">&quot;accessRights&quot;</span><span class="p">:</span> <span class="p">[],</span>
+        <span class="s2">&quot;customFields&quot;</span><span class="p">:</span> <span class="p">{},</span>
+        <span class="s2">&quot;isAuthorized&quot;</span><span class="p">:</span> <span class="n">false</span>
+      <span class="p">}</span>
+    <span class="p">},</span>
+    <span class="s2">&quot;entityIds&quot;</span><span class="p">:</span> <span class="p">{</span>
+      <span class="s2">&quot;userId&quot;</span><span class="p">:</span> <span class="s2">&quot;72e3809c-1ad7-4761-bc3e-50cff06d1f83&quot;</span>
+    <span class="p">},</span>
+    <span class="s2">&quot;createInfo&quot;</span><span class="p">:</span> <span class="p">{</span>
+      <span class="s2">&quot;createdAt&quot;</span><span class="p">:</span> <span class="s2">&quot;2022-06-28T11:46:54.93681+00:00&quot;</span><span class="p">,</span>
+      <span class="s2">&quot;createdByUserId&quot;</span><span class="p">:</span> <span class="s2">&quot;0ab0dc94-616c-4b86-a074-250e76b5e63c&quot;</span><span class="p">,</span>
+      <span class="s2">&quot;createdWith&quot;</span><span class="p">:</span> <span class="s2">&quot;WebApp&quot;</span>
+    <span class="p">}</span>
+  <span class="p">},</span>
+  <span class="p">{</span>
+    <span class="s2">&quot;id&quot;</span><span class="p">:</span> <span class="s2">&quot;e63e221b-fe36-438a-9def-b9909fd8938d&quot;</span><span class="p">,</span>
+    <span class="s2">&quot;offset&quot;</span><span class="p">:</span> <span class="s2">&quot;00000000-3699-2055-0000-000008ac36c9&quot;</span><span class="p">,</span>
+    <span class="s2">&quot;type&quot;</span><span class="p">:</span> <span class="s2">&quot;change&quot;</span><span class="p">,</span>
+    <span class="s2">&quot;changeData&quot;</span><span class="p">:</span> <span class="p">{</span>
+      <span class="s2">&quot;type&quot;</span><span class="p">:</span> <span class="s2">&quot;patch&quot;</span><span class="p">,</span>
+      <span class="s2">&quot;old&quot;</span><span class="p">:</span> <span class="p">{</span>
+        <span class="s2">&quot;id&quot;</span><span class="p">:</span> <span class="s2">&quot;e047339c-cd31-4c13-ba4b-455e3fcd60d4&quot;</span><span class="p">,</span>
+        <span class="s2">&quot;name&quot;</span><span class="p">:</span> <span class="s2">&quot;отчество имя фамилия&quot;</span><span class="p">,</span>
+        <span class="s2">&quot;login&quot;</span><span class="p">:</span> <span class="s2">&quot;test2@mail.ru&quot;</span><span class="p">,</span>
+        <span class="s2">&quot;status&quot;</span><span class="p">:</span> <span class="s2">&quot;inactive&quot;</span><span class="p">,</span>
+        <span class="s2">&quot;groupId&quot;</span><span class="p">:</span> <span class="s2">&quot;00000000-0000-0000-0000-000000000000&quot;</span><span class="p">,</span>
+        <span class="s2">&quot;isAdmin&quot;</span><span class="p">:</span> <span class="n">false</span><span class="p">,</span>
+        <span class="s2">&quot;isHidden&quot;</span><span class="p">:</span> <span class="n">false</span><span class="p">,</span>
+        <span class="s2">&quot;lastName&quot;</span><span class="p">:</span> <span class="s2">&quot;отчество&quot;</span><span class="p">,</span>
+        <span class="s2">&quot;settings&quot;</span><span class="p">:</span> <span class="p">{</span>
+          <span class="s2">&quot;regionCode&quot;</span><span class="p">:</span> <span class="s2">&quot;02&quot;</span>
+        <span class="p">},</span>
+        <span class="s2">&quot;firstName&quot;</span><span class="p">:</span> <span class="s2">&quot;имя&quot;</span><span class="p">,</span>
+        <span class="s2">&quot;middleName&quot;</span><span class="p">:</span> <span class="s2">&quot;фамилия&quot;</span><span class="p">,</span>
+        <span class="s2">&quot;accessRights&quot;</span><span class="p">:</span> <span class="p">[],</span>
+        <span class="s2">&quot;customFields&quot;</span><span class="p">:</span> <span class="p">{},</span>
+        <span class="s2">&quot;isAuthorized&quot;</span><span class="p">:</span> <span class="n">false</span>
+      <span class="p">},</span>
+      <span class="s2">&quot;new&quot;</span><span class="p">:</span> <span class="p">{</span>
+        <span class="s2">&quot;id&quot;</span><span class="p">:</span> <span class="s2">&quot;e047339c-cd31-4c13-ba4b-455e3fcd60d4&quot;</span><span class="p">,</span>
+        <span class="s2">&quot;name&quot;</span><span class="p">:</span> <span class="s2">&quot;Бочкин имя фамилия&quot;</span><span class="p">,</span>
+        <span class="s2">&quot;login&quot;</span><span class="p">:</span> <span class="s2">&quot;test2@mail.ru&quot;</span><span class="p">,</span>
+        <span class="s2">&quot;status&quot;</span><span class="p">:</span> <span class="s2">&quot;inactive&quot;</span><span class="p">,</span>
+        <span class="s2">&quot;groupId&quot;</span><span class="p">:</span> <span class="s2">&quot;00000000-0000-0000-0000-000000000000&quot;</span><span class="p">,</span>
+        <span class="s2">&quot;isAdmin&quot;</span><span class="p">:</span> <span class="n">false</span><span class="p">,</span>
+        <span class="s2">&quot;isHidden&quot;</span><span class="p">:</span> <span class="n">false</span><span class="p">,</span>
+        <span class="s2">&quot;lastName&quot;</span><span class="p">:</span> <span class="s2">&quot;Бочкин&quot;</span><span class="p">,</span>
+        <span class="s2">&quot;settings&quot;</span><span class="p">:</span> <span class="p">{</span>
+          <span class="s2">&quot;regionCode&quot;</span><span class="p">:</span> <span class="s2">&quot;74&quot;</span>
+        <span class="p">},</span>
+        <span class="s2">&quot;firstName&quot;</span><span class="p">:</span> <span class="s2">&quot;имя&quot;</span><span class="p">,</span>
+        <span class="s2">&quot;middleName&quot;</span><span class="p">:</span> <span class="s2">&quot;фамилия&quot;</span><span class="p">,</span>
+        <span class="s2">&quot;accessRights&quot;</span><span class="p">:</span> <span class="p">[],</span>
+        <span class="s2">&quot;customFields&quot;</span><span class="p">:</span> <span class="p">{},</span>
+        <span class="s2">&quot;isAuthorized&quot;</span><span class="p">:</span> <span class="n">false</span>
+      <span class="p">}</span>
+    <span class="p">},</span>
+    <span class="s2">&quot;entityIds&quot;</span><span class="p">:</span> <span class="p">{</span>
+      <span class="s2">&quot;userId&quot;</span><span class="p">:</span> <span class="s2">&quot;e047339c-cd31-4c13-ba4b-455e3fcd60d4&quot;</span>
+    <span class="p">},</span>
+    <span class="s2">&quot;createInfo&quot;</span><span class="p">:</span> <span class="p">{</span>
+      <span class="s2">&quot;createdAt&quot;</span><span class="p">:</span> <span class="s2">&quot;2022-06-28T12:02:58.317662+00:00&quot;</span><span class="p">,</span>
+      <span class="s2">&quot;createdByUserId&quot;</span><span class="p">:</span> <span class="s2">&quot;0ab0dc94-616c-4b86-a074-250e76b5e63c&quot;</span><span class="p">,</span>
+      <span class="s2">&quot;createdWith&quot;</span><span class="p">:</span> <span class="s2">&quot;WebApp&quot;</span>
+    <span class="p">}</span>
+  <span class="p">}</span>
+<span class="p">],</span>
+<span class="s2">&quot;firstOffset&quot;</span><span class="p">:</span> <span class="s2">&quot;00000000-3699-1b36-0000-000008ac36c1&quot;</span><span class="p">,</span>
+<span class="s2">&quot;lastOffset&quot;</span><span class="p">:</span> <span class="s2">&quot;00000000-3699-2055-0000-000008ac36c9&quot;</span><span class="p">,</span>
+<span class="s2">&quot;hasMore&quot;</span><span class="p">:</span> <span class="n">true</span>
+<span class="p">}</span>
 </pre></div>
 </div>
-<dl>
-<dt>{</dt><dd><p>«count»: 2,
-«items»: [</p>
-<blockquote>
-<div><dl>
-<dt>{</dt><dd><p>«id»: «ce8e3443-66f4-40cb-bb7b-a683cb3ec944»,
-«offset»: «00000000-3699-1b36-0000-000008ac36c1»,
-«type»: «change»,
-«changeData»: {</p>
-<blockquote>
-<div><p>«type»: «create»,
-«new»: {</p>
-<blockquote>
-<div><p>«id»: «72e3809c-1ad7-4761-bc3e-50cff06d1f83»,
-«name»: «отчество имя фамилия»,
-«login»: «<a class="reference external" href="mailto:test3&#37;&#52;&#48;mail&#46;ru">test3<span>&#64;</span>mail<span>&#46;</span>ru</a>»,
-«status»: «inactive»,
-«groupId»: «00000000-0000-0000-0000-000000000000»,
-«isAdmin»: false,
-«isHidden»: false,
-«lastName»: «отчество»,
-«settings»: {</p>
-<blockquote>
-<div><p>«regionCode»: «02»</p>
-</div></blockquote>
-<p>},
-«firstName»: «имя»,
-«middleName»: «фамилия»,
-«accessRights»: [],
-«customFields»: {},
-«isAuthorized»: false</p>
-</div></blockquote>
-<p>}</p>
-</div></blockquote>
-<p>},
-«entityIds»: {</p>
-<blockquote>
-<div><p>«userId»: «72e3809c-1ad7-4761-bc3e-50cff06d1f83»</p>
-</div></blockquote>
-<p>},
-«createInfo»: {</p>
-<blockquote>
-<div><p>«createdAt»: «2022-06-28T11:46:54.93681+00:00»,
-«createdByUserId»: «0ab0dc94-616c-4b86-a074-250e76b5e63c»,
-«createdWith»: «WebApp»</p>
-</div></blockquote>
-<p>}</p>
-</dd>
-</dl>
-<p>},
-{</p>
-<blockquote>
-<div><p>«id»: «e63e221b-fe36-438a-9def-b9909fd8938d»,
-«offset»: «00000000-3699-2055-0000-000008ac36c9»,
-«type»: «change»,
-«changeData»: {</p>
-<blockquote>
-<div><p>«type»: «patch»,
-«old»: {</p>
-<blockquote>
-<div><p>«id»: «e047339c-cd31-4c13-ba4b-455e3fcd60d4»,
-«name»: «отчество имя фамилия»,
-«login»: «<a class="reference external" href="mailto:test2&#37;&#52;&#48;mail&#46;ru">test2<span>&#64;</span>mail<span>&#46;</span>ru</a>»,
-«status»: «inactive»,
-«groupId»: «00000000-0000-0000-0000-000000000000»,
-«isAdmin»: false,
-«isHidden»: false,
-«lastName»: «отчество»,
-«settings»: {</p>
-<blockquote>
-<div><p>«regionCode»: «02»</p>
-</div></blockquote>
-<p>},
-«firstName»: «имя»,
-«middleName»: «фамилия»,
-«accessRights»: [],
-«customFields»: {},
-«isAuthorized»: false</p>
-</div></blockquote>
-<p>},
-«new»: {</p>
-<blockquote>
-<div><p>«id»: «e047339c-cd31-4c13-ba4b-455e3fcd60d4»,
-«name»: «Бочкин имя фамилия»,
-«login»: «<a class="reference external" href="mailto:test2&#37;&#52;&#48;mail&#46;ru">test2<span>&#64;</span>mail<span>&#46;</span>ru</a>»,
-«status»: «inactive»,
-«groupId»: «00000000-0000-0000-0000-000000000000»,
-«isAdmin»: false,
-«isHidden»: false,
-«lastName»: «Бочкин»,
-«settings»: {</p>
-<blockquote>
-<div><p>«regionCode»: «74»</p>
-</div></blockquote>
-<p>},
-«firstName»: «имя»,
-«middleName»: «фамилия»,
-«accessRights»: [],
-«customFields»: {},
-«isAuthorized»: false</p>
-</div></blockquote>
-<p>}</p>
-</div></blockquote>
-<p>},
-«entityIds»: {</p>
-<blockquote>
-<div><p>«userId»: «e047339c-cd31-4c13-ba4b-455e3fcd60d4»</p>
-</div></blockquote>
-<p>},
-«createInfo»: {</p>
-<blockquote>
-<div><p>«createdAt»: «2022-06-28T12:02:58.317662+00:00»,
-«createdByUserId»: «0ab0dc94-616c-4b86-a074-250e76b5e63c»,
-«createdWith»: «WebApp»</p>
-</div></blockquote>
-<p>}</p>
-</div></blockquote>
-<p>}</p>
-</div></blockquote>
-<p>],
-«firstOffset»: «00000000-3699-1b36-0000-000008ac36c1»,
-«lastOffset»: «00000000-3699-2055-0000-000008ac36c9»,
-«hasMore»: true</p>
-</dd>
-</dl>
-<p>}</p>
 <p>hasMore в ответе указывает, что существуют еще события после события по смещению lastOffset.
 Для их получения нужно сформировать запрос, в котором в качестве offset передать lastOffset:</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">curl</span> <span class="o">-</span><span class="n">X</span> <span class="s1">&#39;GET&#39;</span> \
@@ -235,60 +202,45 @@
 </pre></div>
 </div>
 <p>Ответ 200 Ok и модель ObjectEventsList:</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="p">{</span>
+<span class="s2">&quot;count&quot;</span><span class="p">:</span> <span class="mi">1</span><span class="p">,</span>
+<span class="s2">&quot;items&quot;</span><span class="p">:</span> <span class="p">[</span>
+  <span class="p">{</span>
+    <span class="s2">&quot;id&quot;</span><span class="p">:</span> <span class="s2">&quot;1bbbdaad-b5d5-42a2-b492-45dd9629b840&quot;</span><span class="p">,</span>
+    <span class="s2">&quot;offset&quot;</span><span class="p">:</span> <span class="s2">&quot;00000000-36a1-7ea5-0000-000008ac9865&quot;</span><span class="p">,</span>
+    <span class="s2">&quot;type&quot;</span><span class="p">:</span> <span class="s2">&quot;change&quot;</span><span class="p">,</span>
+    <span class="s2">&quot;changeData&quot;</span><span class="p">:</span> <span class="p">{</span>
+      <span class="s2">&quot;type&quot;</span><span class="p">:</span> <span class="s2">&quot;create&quot;</span><span class="p">,</span>
+      <span class="s2">&quot;new&quot;</span><span class="p">:</span> <span class="p">{</span>
+        <span class="s2">&quot;id&quot;</span><span class="p">:</span> <span class="s2">&quot;27f9a6ef-a248-4afc-bd7b-e61725ba8ca3&quot;</span><span class="p">,</span>
+        <span class="s2">&quot;date&quot;</span><span class="p">:</span> <span class="s2">&quot;2022-06-30T21:59:59.999+03:00&quot;</span><span class="p">,</span>
+        <span class="s2">&quot;text&quot;</span><span class="p">:</span> <span class="s2">&quot;Задача&quot;</span><span class="p">,</span>
+        <span class="s2">&quot;typeId&quot;</span><span class="p">:</span> <span class="s2">&quot;00000000-0000-0000-0000-000000000000&quot;</span><span class="p">,</span>
+        <span class="s2">&quot;contactIds&quot;</span><span class="p">:</span> <span class="p">[],</span>
+        <span class="s2">&quot;isCompleted&quot;</span><span class="p">:</span> <span class="n">false</span><span class="p">,</span>
+        <span class="s2">&quot;supervisors&quot;</span><span class="p">:</span> <span class="p">[],</span>
+        <span class="s2">&quot;assignedToUserId&quot;</span><span class="p">:</span> <span class="s2">&quot;0ab0dc94-616c-4b86-a074-250e76b5e63c&quot;</span><span class="p">,</span>
+        <span class="s2">&quot;assignedToGroupId&quot;</span><span class="p">:</span> <span class="s2">&quot;00000000-0000-0000-0000-000000000000&quot;</span><span class="p">,</span>
+        <span class="s2">&quot;attachmentFileIds&quot;</span><span class="p">:</span> <span class="p">[],</span>
+        <span class="s2">&quot;sendToExternalChannels&quot;</span><span class="p">:</span> <span class="n">true</span>
+      <span class="p">}</span>
+    <span class="p">},</span>
+    <span class="s2">&quot;entityIds&quot;</span><span class="p">:</span> <span class="p">{</span>
+      <span class="s2">&quot;taskId&quot;</span><span class="p">:</span> <span class="s2">&quot;27f9a6ef-a248-4afc-bd7b-e61725ba8ca3&quot;</span>
+    <span class="p">},</span>
+    <span class="s2">&quot;createInfo&quot;</span><span class="p">:</span> <span class="p">{</span>
+      <span class="s2">&quot;createdAt&quot;</span><span class="p">:</span> <span class="s2">&quot;2022-06-30T10:37:23.203317+00:00&quot;</span><span class="p">,</span>
+      <span class="s2">&quot;createdByUserId&quot;</span><span class="p">:</span> <span class="s2">&quot;0ab0dc94-616c-4b86-a074-250e76b5e63c&quot;</span><span class="p">,</span>
+      <span class="s2">&quot;createdWith&quot;</span><span class="p">:</span> <span class="s2">&quot;WebApp&quot;</span>
+    <span class="p">}</span>
+  <span class="p">}</span>
+<span class="p">],</span>
+<span class="s2">&quot;firstOffset&quot;</span><span class="p">:</span> <span class="s2">&quot;00000000-36a1-7ea5-0000-000008ac9865&quot;</span><span class="p">,</span>
+<span class="s2">&quot;lastOffset&quot;</span><span class="p">:</span> <span class="s2">&quot;00000000-36a1-7ea5-0000-000008ac9865&quot;</span><span class="p">,</span>
+<span class="s2">&quot;hasMore&quot;</span><span class="p">:</span> <span class="n">false</span>
+<span class="p">}</span>
 </pre></div>
 </div>
-<dl>
-<dt>{</dt><dd><p>«count»: 1,
-«items»: [</p>
-<blockquote>
-<div><dl>
-<dt>{</dt><dd><p>«id»: «1bbbdaad-b5d5-42a2-b492-45dd9629b840»,
-«offset»: «00000000-36a1-7ea5-0000-000008ac9865»,
-«type»: «change»,
-«changeData»: {</p>
-<blockquote>
-<div><p>«type»: «create»,
-«new»: {</p>
-<blockquote>
-<div><p>«id»: «27f9a6ef-a248-4afc-bd7b-e61725ba8ca3»,
-«date»: «2022-06-30T21:59:59.999+03:00»,
-«text»: «Задача»,
-«typeId»: «00000000-0000-0000-0000-000000000000»,
-«contactIds»: [],
-«isCompleted»: false,
-«supervisors»: [],
-«assignedToUserId»: «0ab0dc94-616c-4b86-a074-250e76b5e63c»,
-«assignedToGroupId»: «00000000-0000-0000-0000-000000000000»,
-«attachmentFileIds»: [],
-«sendToExternalChannels»: true</p>
-</div></blockquote>
-<p>}</p>
-</div></blockquote>
-<p>},
-«entityIds»: {</p>
-<blockquote>
-<div><p>«taskId»: «27f9a6ef-a248-4afc-bd7b-e61725ba8ca3»</p>
-</div></blockquote>
-<p>},
-«createInfo»: {</p>
-<blockquote>
-<div><p>«createdAt»: «2022-06-30T10:37:23.203317+00:00»,
-«createdByUserId»: «0ab0dc94-616c-4b86-a074-250e76b5e63c»,
-«createdWith»: «WebApp»</p>
-</div></blockquote>
-<p>}</p>
-</dd>
-</dl>
-<p>}</p>
-</div></blockquote>
-<p>],
-«firstOffset»: «00000000-36a1-7ea5-0000-000008ac9865»,
-«lastOffset»: «00000000-36a1-7ea5-0000-000008ac9865»,
-«hasMore»: false</p>
-</dd>
-</dl>
-<p>}</p>
 <p>Когда в ответе будет получен hasMore = false — все события на текущий момент были прочитаны.</p>
 </div>
 <div class="section" id="id3">

@@ -1,0 +1,167 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="ru" >
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>CRM &mdash; документация Контур КЭДО 1.1</title><link rel="stylesheet" href="../_static/css/theme.css" type="text/css" />
+    <link rel="stylesheet" href="../_static/pygments.css" type="text/css" /><link rel="shortcut icon" href="../_static/favicon.ico"/>
+  <!--[if lt IE 9]>
+    <script src="../_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  <script id="documentation_options" data-url_root="../" src="../_static/documentation_options.js"></script>
+        <script src="../_static/jquery.js"></script>
+        <script src="../_static/underscore.js"></script>
+        <script src="../_static/doctools.js"></script>
+        <script src="../_static/language_data.js"></script>
+        <script src="../_static/translations.js"></script>
+    <script src="../_static/js/theme.js"></script>
+    <link rel="index" title="Алфавитный указатель" href="../genindex.html" />
+    <link rel="search" title="Поиск" href="../search.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+            <a href="../index.html" class="icon icon-home"> Контур КЭДО
+          </a>
+              <div class="version">
+                1.1
+              </div>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <ul>
+<li class="toctree-l1"><a class="reference internal" href="../entities-kedo/index.html">Основные сущности</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../entities-push-kedo/index.html">Создание и изменение сущностей</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../entities-get-kedo/index.html">Получение информации о сущностях</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../custom-fields/index.html">Работа с пользовательскими полями</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../integrations/index.html">Интеграции и взаимодействие с API</a></li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../index.html">Контур КЭДО</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="../index.html" class="icon icon-home"></a> &raquo;</li>
+      <li>CRM</li>
+      <li class="wy-breadcrumbs-aside">
+            <a href="../_sources/crm/index.rst.txt" rel="nofollow"> View page source</a>
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <div class="section" id="crm">
+<h1>CRM<a class="headerlink" href="#crm" title="Ссылка на этот заголовок">¶</a></h1>
+<div class="toctree-wrapper compound">
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="entities-crm/index.html">Описание моделей</a></li>
+<li class="toctree-l1"><a class="reference internal" href="entities-get-crm/index.html">Получение информации об измененных сущностях</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="entities-get-crm/info-by-events.html">Чтение ленты событий</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="entities-get-crm/info-by-events.html#id2">Получение событий</a></li>
+<li class="toctree-l3"><a class="reference internal" href="entities-get-crm/info-by-events.html#id3">Описание модели ответа</a></li>
+<li class="toctree-l3"><a class="reference internal" href="entities-get-crm/info-by-events.html#id4">Алгоритм синхронизации</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="entities-get-crm/webhooks.html">Подписка на события об изменениях — WebHook</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="entities-push-crm/index.html">Создание и модификация сущностей</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="entities-push-crm/company-creation.html">Пример создания Клиента</a></li>
+<li class="toctree-l2"><a class="reference internal" href="entities-push-crm/batch-create.html">Пример создания нескольких контактов</a></li>
+<li class="toctree-l2"><a class="reference internal" href="entities-push-crm/contact-modification.html">Пример модицикации контакта</a></li>
+<li class="toctree-l2"><a class="reference internal" href="entities-push-crm/patch-requests.html">Формирование PATCH запросов</a></li>
+<li class="toctree-l2"><a class="reference internal" href="entities-push-crm/patch-operations.html">Операции, доступные в PATCH запросах</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="entities-push-crm/patch-operations.html#add">Add</a></li>
+<li class="toctree-l3"><a class="reference internal" href="entities-push-crm/patch-operations.html#remove">Remove</a></li>
+<li class="toctree-l3"><a class="reference internal" href="entities-push-crm/patch-operations.html#replace">Replace</a></li>
+<li class="toctree-l3"><a class="reference internal" href="entities-push-crm/patch-operations.html#id1">Работа с массивами</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="entities-push-crm/path-operations.html">Формирование пути в операциях</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="phone-integration/index.html">Телефонии</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="phone-integration/about-telephony.html">Как работает интерграция с телефонией</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="phone-integration/about-telephony.html#id2">Пример звонка</a></li>
+<li class="toctree-l3"><a class="reference internal" href="phone-integration/about-telephony.html#rst-markup-createintegration">Создание интеграции</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="phone-integration/about-telephony.html#id4">Особенности интеграции</a></li>
+<li class="toctree-l4"><a class="reference internal" href="phone-integration/about-telephony.html#id5">Алгоритм работы с методами</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="phone-integration/api-telephony.html">API телефонии</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="phone-integration/api-telephony.html#id1">Системные вызовы</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="phone-integration/api-telephony.html#call">Системный вызов CALL</a></li>
+<li class="toctree-l4"><a class="reference internal" href="phone-integration/api-telephony.html#hangup">Системный вызов HANGUP</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="phone-integration/api-telephony.html#id2">События реального времени</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="phone-integration/api-telephony.html#rst-markup-telephonycallstarted">Сообщение о начале звонка</a></li>
+<li class="toctree-l4"><a class="reference internal" href="phone-integration/api-telephony.html#rst-markup-telephonycallevent">Сообщение о событии звонка</a></li>
+<li class="toctree-l4"><a class="reference internal" href="phone-integration/api-telephony.html#rst-markup-telephonycallfinished">Сообщение о завершении звонка</a></li>
+<li class="toctree-l4"><a class="reference internal" href="phone-integration/api-telephony.html#rst-markup-telephonycallfailed">Сообщение о неудачной попытке позвонить</a></li>
+<li class="toctree-l4"><a class="reference internal" href="phone-integration/api-telephony.html#rst-markup-telephonycallrecording">Сообщение о появлении записи разговора</a></li>
+<li class="toctree-l4"><a class="reference internal" href="phone-integration/api-telephony.html#rst-markup-telephonyregistercall">Регистрация завершенных звонков</a></li>
+<li class="toctree-l4"><a class="reference internal" href="phone-integration/api-telephony.html#rst-markup-telephonycallredirect">Переадресация звонка на ответственного</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="phone-integration/create-public-integration.html">Создание публичной интеграции</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="phone-integration/create-public-integration.html#id2">Вход в настройки</a></li>
+<li class="toctree-l3"><a class="reference internal" href="phone-integration/create-public-integration.html#id3">Создание интеграции</a></li>
+<li class="toctree-l3"><a class="reference internal" href="phone-integration/create-public-integration.html#id4">Установка интеграции</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</div>
+</div>
+
+
+           </div>
+          </div>
+          <footer>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p></p>
+  </div>
+
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>
