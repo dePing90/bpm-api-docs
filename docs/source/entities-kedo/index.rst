@@ -9,4 +9,4 @@
     routes
     document-schemes
     documents
-    org-structure
+    org-structure/index

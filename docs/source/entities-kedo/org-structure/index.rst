@@ -1,0 +1,7 @@
+Оргструктура
+============
+
+.. toctree::
+    
+    departments
+    positions
