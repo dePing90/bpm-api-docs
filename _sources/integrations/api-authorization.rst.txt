@@ -1,14 +1,8 @@
-.. _`POST AuthorizePrivateIntegration`: https://developer.kontur.ru/doc/crm/method?type=post&path=%2Fapi%2Fv1%2Fauthorization%2Fauthorize-private-integration
-.. _`POST AuthorizeIntegration`: https://developer.kontur.ru/doc/crm/method?type=post&path=%2Fapi%2Fv1%2Fauthorization%2Fauthorize-integration
-
-
 API авторизации
 ================
 
 Авторизация приватной интеграции
 ---------------------------------
-
-Метод: `POST AuthorizePrivateIntegration`_
 
 Метод авторизует публичную интеграцию и возвращает ``AccessKey``. В последующих запросах к API Контур КЭДО нужно передавать ``AccessKey``. 
 
@@ -68,7 +62,6 @@ API авторизации
 
 Авторизация публичной интеграции
 ---------------------------------
-Метод: `POST AuthorizeIntegration`_
 
 Метод авторизует публичную интеграцию и возвращает ``AccessKey``. При отправке заголовка нужно указать ``Integration-Secret`` — ключ доступа со стороны телефонии. В последующих запросах к API Контур КЭДО нужно передавать ``AccessKey``. 
 

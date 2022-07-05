@@ -85,7 +85,6 @@
 <h1>API авторизации<a class="headerlink" href="#api" title="Ссылка на этот заголовок">¶</a></h1>
 <div class="section" id="id1">
 <h2>Авторизация приватной интеграции<a class="headerlink" href="#id1" title="Ссылка на этот заголовок">¶</a></h2>
-<p>Метод: <a class="reference external" href="https://developer.kontur.ru/doc/crm/method?type=post&amp;path=%2Fapi%2Fv1%2Fauthorization%2Fauthorize-private-integration">POST AuthorizePrivateIntegration</a></p>
 <p>Метод авторизует публичную интеграцию и возвращает <code class="docutils literal notranslate"><span class="pre">AccessKey</span></code>. В последующих запросах к API Контур КЭДО нужно передавать <code class="docutils literal notranslate"><span class="pre">AccessKey</span></code>.</p>
 <p>Для получения нужен ApiKey, который отображается по нажатию кнопки <code class="docutils literal notranslate"><span class="pre">«Secrets»</span></code> в пространстве интеграций по API. Полученный <code class="docutils literal notranslate"><span class="pre">AccessKey</span></code> нельзя хранить в долгосрочном хранилище, он выдается на короткий срок и действует 20 минут.</p>
 <p><strong>Пример</strong></p>
@@ -141,7 +140,6 @@
 </div>
 <div class="section" id="id2">
 <h2>Авторизация публичной интеграции<a class="headerlink" href="#id2" title="Ссылка на этот заголовок">¶</a></h2>
-<p>Метод: <a class="reference external" href="https://developer.kontur.ru/doc/crm/method?type=post&amp;path=%2Fapi%2Fv1%2Fauthorization%2Fauthorize-integration">POST AuthorizeIntegration</a></p>
 <p>Метод авторизует публичную интеграцию и возвращает <code class="docutils literal notranslate"><span class="pre">AccessKey</span></code>. При отправке заголовка нужно указать <code class="docutils literal notranslate"><span class="pre">Integration-Secret</span></code> — ключ доступа со стороны телефонии. В последующих запросах к API Контур КЭДО нужно передавать <code class="docutils literal notranslate"><span class="pre">AccessKey</span></code>.</p>
 <p><code class="docutils literal notranslate"><span class="pre">Integration-Secret</span></code> можно задать во время активации интеграции или включения системных вызовов. Полученный <code class="docutils literal notranslate"><span class="pre">AccessKey</span></code> нельзя хранить в долгосрочном хранилище, он выдается на короткий срок и действует 20 минут.</p>
 <p><strong>Пример</strong></p>
