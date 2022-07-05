@@ -6,3 +6,4 @@ CRM
     entities-get-crm/index
     entities-push-crm/index
     phone-integration/index
+    create-private-integration

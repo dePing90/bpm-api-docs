@@ -14,7 +14,7 @@
 
 .. code-block:: 
 
-    PATCH https://xcom.kontur.ru/api/v1/{ws}/settings
+    PATCH https://somesite.ru/api/v1/{ws}/settings
 
 
 В модели Settings есть поле CustomFields, в котом описываются пользовательские поля.
@@ -28,7 +28,7 @@
 .. code-block:: 
 
     curl -X 'PATCH' \
-    'https://xcom.kontur.ru/api/v1/testswaggerspace/settings' \
+    'https://somesite.ru/api/v1/testswaggerspace/settings' \
     -H 'accept: application/json' \
     -H 'Authorization: Bearer xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx' \
     -H 'Content-Type: application/json-patch+json' \
@@ -126,7 +126,7 @@
 .. code-block::
 
     curl -X 'PATCH' \
-    'https://xcom.kontur.ru/api/v1/testswaggerspace/document-schemes/{scheme-id}' \
+    'https://somesite.ru/api/v1/testswaggerspace/document-schemes/{scheme-id}' \
     -H 'accept: application/json' \
     -H 'Authorization: Bearer xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx' \
     -H 'Content-Type: application/json-patch+json' \

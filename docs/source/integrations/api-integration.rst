@@ -86,7 +86,7 @@ API интеграции
 ::
 
     curl -X 'PATCH' \
-    'https://xcom.kontur.ru/api/v1/my-integration/integrations/instances/e01...7d9' \
+    'https://somesite.ru/api/v1/my-integration/integrations/instances/e01...7d9' \
     -H 'accept: application/json' \
     -H 'Authorization: Bearer 1r3...ed8' \
     -H 'Content-Type: application/json-patch+json' \
