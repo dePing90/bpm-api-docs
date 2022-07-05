@@ -17,7 +17,7 @@
 .. code-block::
 
     curl -X 'GET' \
-    'https://xcom.kontur.ru/api/v1/testswaggerspace/events?limit=2' \
+    'https://somesite.ru/api/v1/testswaggerspace/events?limit=2' \
     -H 'accept: application/json' \
     -H 'Authorization: Bearer xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx'
 
@@ -126,7 +126,7 @@ hasMore в ответе указывает, что существуют еще �
 .. code-block:: 
 
     curl -X 'GET' \
-        'https://xcom.kontur.ru/api/v1/testswaggerspace/events?offset=00000000-3699-2055-0000-000008ac36c9&limit=2' \
+        'https://somesite.ru/api/v1/testswaggerspace/events?offset=00000000-3699-2055-0000-000008ac36c9&limit=2' \
         -H 'accept: application/json' \
         -H 'Authorization: Bearer xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx'
 

@@ -18,7 +18,7 @@
     <link rel="index" title="Алфавитный указатель" href="../../genindex.html" />
     <link rel="search" title="Поиск" href="../../search.html" />
     <link rel="next" title="Создание и изменение сущностей" href="../../entities-push-kedo/index.html" />
-    <link rel="prev" title="Отдел" href="departments.html" /> 
+    <link rel="prev" title="Подразделение" href="departments.html" /> 
 </head>
 
 <body class="wy-body-for-nav"> 
@@ -46,7 +46,7 @@
 <li class="toctree-l2"><a class="reference internal" href="../document-schemes.html">Документ-схема</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../documents.html">Документ</a></li>
 <li class="toctree-l2 current"><a class="reference internal" href="index.html">Оргструктура</a><ul class="current">
-<li class="toctree-l3"><a class="reference internal" href="departments.html">Отдел</a></li>
+<li class="toctree-l3"><a class="reference internal" href="departments.html">Подразделение</a></li>
 <li class="toctree-l3 current"><a class="current reference internal" href="#">Должность</a></li>
 </ul>
 </li>
@@ -86,13 +86,31 @@
              
   <div class="section" id="id1">
 <h1>Должность<a class="headerlink" href="#id1" title="Ссылка на этот заголовок">¶</a></h1>
+<p>Должность соединяет сотрудника и подразделение, в котором он работает. Сотрудник может состоять в нескольких подразделениях, для каждой связки {сотрудник, подразделение} используется отдельный экземпляр должности. Даже если называются должности одинаково.</p>
+<p>Аргументы должности:</p>
+<ul class="simple">
+<li><p>Идентификатор</p></li>
+<li><p>Наименование</p></li>
+<li><p>Тип</p></li>
+<li><p>Статус</p></li>
+</ul>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="p">{</span>
+  <span class="s2">&quot;name&quot;</span><span class="p">:</span> <span class="s2">&quot;string&quot;</span><span class="p">,</span>
+  <span class="s2">&quot;externalId&quot;</span><span class="p">:</span> <span class="s2">&quot;string&quot;</span><span class="p">,</span>
+  <span class="s2">&quot;tipe&quot;</span><span class="p">:</span> <span class="s2">&quot;main&quot;</span><span class="p">,</span>
+  <span class="s2">&quot;status&quot;</span><span class="p">:</span> <span class="s2">&quot;active&quot;</span><span class="p">,</span>
+  <span class="s2">&quot;parentId&quot;</span><span class="p">:</span> <span class="s2">&quot;3fa85f64-5717-4562-b3fc-2c963f66afa6&quot;</span><span class="p">,</span>
+  <span class="s2">&quot;batchItemKey&quot;</span><span class="p">:</span> <span class="s2">&quot;string&quot;</span>
+<span class="p">}</span>
+</pre></div>
+</div>
 </div>
 
 
            </div>
           </div>
           <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
-        <a href="departments.html" class="btn btn-neutral float-left" title="Отдел" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="departments.html" class="btn btn-neutral float-left" title="Подразделение" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
         <a href="../../entities-push-kedo/index.html" class="btn btn-neutral float-right" title="Создание и изменение сущностей" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
     </div>
 

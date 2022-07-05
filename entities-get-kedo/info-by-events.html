@@ -91,7 +91,7 @@
 <h2>Получение событий<a class="headerlink" href="#id2" title="Ссылка на этот заголовок">¶</a></h2>
 <p>Например:</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">curl</span> <span class="o">-</span><span class="n">X</span> <span class="s1">&#39;GET&#39;</span> \
-<span class="s1">&#39;https://xcom.kontur.ru/api/v1/testswaggerspace/events?limit=2&#39;</span> \
+<span class="s1">&#39;https://somesite.ru/api/v1/testswaggerspace/events?limit=2&#39;</span> \
 <span class="o">-</span><span class="n">H</span> <span class="s1">&#39;accept: application/json&#39;</span> \
 <span class="o">-</span><span class="n">H</span> <span class="s1">&#39;Authorization: Bearer xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx&#39;</span>
 </pre></div>
@@ -196,7 +196,7 @@
 <p>hasMore в ответе указывает, что существуют еще события после события по смещению lastOffset.
 Для их получения нужно сформировать запрос, в котором в качестве offset передать lastOffset:</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">curl</span> <span class="o">-</span><span class="n">X</span> <span class="s1">&#39;GET&#39;</span> \
-    <span class="s1">&#39;https://xcom.kontur.ru/api/v1/testswaggerspace/events?offset=00000000-3699-2055-0000-000008ac36c9&amp;limit=2&#39;</span> \
+    <span class="s1">&#39;https://somesite.ru/api/v1/testswaggerspace/events?offset=00000000-3699-2055-0000-000008ac36c9&amp;limit=2&#39;</span> \
     <span class="o">-</span><span class="n">H</span> <span class="s1">&#39;accept: application/json&#39;</span> \
     <span class="o">-</span><span class="n">H</span> <span class="s1">&#39;Authorization: Bearer xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx&#39;</span>
 </pre></div>

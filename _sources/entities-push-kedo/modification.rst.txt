@@ -41,7 +41,7 @@
 .. code-block::
 
     curl -X 'PATCH' \
-   'https://xcom.kontur.ru/api/v1/testswaggerspace/users/e047339c-cd31-4c13-ba4b-455e3fcd60d4' \
+   'https://somesite.ru/api/v1/testswaggerspace/users/e047339c-cd31-4c13-ba4b-455e3fcd60d4' \
    -H 'accept: application/json' \
    -H 'Authorization: Bearer xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx' \
    -H 'Content-Type: application/json-patch+json' \

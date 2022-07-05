@@ -3,7 +3,7 @@
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Отдел &mdash; документация Контур КЭДО 1.1</title><link rel="stylesheet" href="../../_static/css/theme.css" type="text/css" />
+  <title>Подразделение &mdash; документация Контур КЭДО 1.1</title><link rel="stylesheet" href="../../_static/css/theme.css" type="text/css" />
     <link rel="stylesheet" href="../../_static/pygments.css" type="text/css" /><link rel="shortcut icon" href="../../_static/favicon.ico"/>
   <!--[if lt IE 9]>
     <script src="../../_static/js/html5shiv.min.js"></script>
@@ -46,7 +46,7 @@
 <li class="toctree-l2"><a class="reference internal" href="../document-schemes.html">Документ-схема</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../documents.html">Документ</a></li>
 <li class="toctree-l2 current"><a class="reference internal" href="index.html">Оргструктура</a><ul class="current">
-<li class="toctree-l3 current"><a class="current reference internal" href="#">Отдел</a></li>
+<li class="toctree-l3 current"><a class="current reference internal" href="#">Подразделение</a></li>
 <li class="toctree-l3"><a class="reference internal" href="positions.html">Должность</a></li>
 </ul>
 </li>
@@ -74,7 +74,7 @@
       <li><a href="../../index.html" class="icon icon-home"></a> &raquo;</li>
           <li><a href="../index.html">Основные сущности</a> &raquo;</li>
           <li><a href="index.html">Оргструктура</a> &raquo;</li>
-      <li>Отдел</li>
+      <li>Подразделение</li>
       <li class="wy-breadcrumbs-aside">
             <a href="../../_sources/entities-kedo/org-structure/departments.rst.txt" rel="nofollow"> View page source</a>
       </li>
@@ -85,7 +85,36 @@
            <div itemprop="articleBody">
              
   <div class="section" id="id1">
-<h1>Отдел<a class="headerlink" href="#id1" title="Ссылка на этот заголовок">¶</a></h1>
+<h1>Подразделение<a class="headerlink" href="#id1" title="Ссылка на этот заголовок">¶</a></h1>
+<p>Подразделение (Department) - это любой структурный элемент компании: холдинг, организация (юр.лицо), филиал, отдел и т.д.</p>
+<p>Аргументы подразделения:</p>
+<ul class="simple">
+<li><p>Идентификатор</p></li>
+<li><p>Краткое наименование</p></li>
+<li><p>Полное наименование</p></li>
+<li><p>Тип</p></li>
+<li><p>Родительское подразделение</p></li>
+<li><p>Руководитель</p></li>
+<li><p>Статус</p></li>
+<li><p>Кастомные поля</p></li>
+</ul>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="p">{</span>
+  <span class="s2">&quot;name&quot;</span><span class="p">:</span> <span class="s2">&quot;string&quot;</span><span class="p">,</span>
+  <span class="s2">&quot;externalId&quot;</span><span class="p">:</span> <span class="s2">&quot;string&quot;</span><span class="p">,</span>
+  <span class="s2">&quot;title&quot;</span><span class="p">:</span> <span class="s2">&quot;string&quot;</span><span class="p">,</span>
+  <span class="s2">&quot;tipe&quot;</span><span class="p">:</span> <span class="s2">&quot;departments&quot;</span><span class="p">,</span>
+  <span class="s2">&quot;status&quot;</span><span class="p">:</span> <span class="s2">&quot;active&quot;</span><span class="p">,</span>
+  <span class="s2">&quot;parentId&quot;</span><span class="p">:</span> <span class="s2">&quot;3fa85f64-5717-4562-b3fc-2c963f66afa6&quot;</span><span class="p">,</span>
+  <span class="s2">&quot;headManger&quot;</span><span class="p">:</span> <span class="s2">&quot;3fa85f64-5717-4562-b3fc-2c963f66afa6&quot;</span><span class="p">,</span>
+  <span class="s2">&quot;customFields&quot;</span><span class="p">:</span> <span class="p">{</span>
+    <span class="s2">&quot;additionalProp1&quot;</span><span class="p">:</span> <span class="s2">&quot;string&quot;</span><span class="p">,</span>
+    <span class="s2">&quot;additionalProp2&quot;</span><span class="p">:</span> <span class="s2">&quot;string&quot;</span><span class="p">,</span>
+    <span class="s2">&quot;additionalProp3&quot;</span><span class="p">:</span> <span class="s2">&quot;string&quot;</span>
+  <span class="p">},</span>
+  <span class="s2">&quot;batchItemKey&quot;</span><span class="p">:</span> <span class="s2">&quot;string&quot;</span>
+<span class="p">}</span>
+</pre></div>
+</div>
 </div>
 
 

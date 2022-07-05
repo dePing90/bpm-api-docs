@@ -10,7 +10,7 @@
 .. code-block::
 
     curl -X 'POST' \
-   'https://xcom.kontur.ru/api/v1/testswaggerspace/users' \
+   'https://somesite.ru/api/v1/testswaggerspace/users' \
    -H 'accept: application/json' \
    -H 'Authorization: Bearer xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx' \
    -H 'Content-Type: application/json-patch+json' \

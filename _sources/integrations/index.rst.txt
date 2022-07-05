@@ -6,5 +6,3 @@
     api-integration
     api-authorization
     api-files
-    create-private-integration
-    
