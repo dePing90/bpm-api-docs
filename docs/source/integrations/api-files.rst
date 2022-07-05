@@ -1,9 +1,3 @@
-.. _`POST UploadFile`: https://developer.kontur.ru/doc/crm/method?type=post&path=%2Fapi%2Fv1%2F%7Bws%7D%2Ffiles
-.. _`GET FileById`: https://developer.kontur.ru/doc/crm/method?type=get&path=%2Fapi%2Fv1%2F%7Bws%7D%2Ffiles%2F%7Bid%7D
-.. _`GET FileMetaById`: https://developer.kontur.ru/doc/crm/method?type=get&path=%2Fapi%2Fv1%2F%7Bws%7D%2Ffiles%2F%7Bid%7D%2Fmeta
-.. _`HEAD Files`: https://developer.kontur.ru/doc/crm/method?type=get&path=%2Fapi%2Fv1%2F%7Bws%7D%2Ffiles%2F%7Bid%7D%2Fmeta
-
-
 .. _rst-markup-UploadFile:
 
 API files
@@ -12,7 +6,6 @@ API files
 Загрузка файла
 ---------------
 
-Метод: `POST UploadFile`_
 Метод загружает файл на сервер Контур КЭДО.
 
 В ответ возвращается метаинформация о загруженном файле. Максимальный размер загружаемого файла — 100 мегабайт. Загруженный файл в Контур КЭДО попадает во временное хранилище и находится там 1 день, ему присваивается временный идентификатор.
@@ -62,8 +55,6 @@ API files
 Скачивание файла
 -----------------
 
-Метод: `GET FileById`_
-
 Метод скачивает файл с сервера Контур КЭДО.
 
 **Параметры**
@@ -108,8 +99,6 @@ API files
 
 Получение метаинформации
 -------------------------
-
-Метод: `GET FileMetaById`_
 
 Метод возвращает метаинформацию о файле.
 

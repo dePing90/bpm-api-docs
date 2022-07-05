@@ -1,9 +1,3 @@
-.. _`POST IntegrationsSetup`: https://developer.kontur.ru/doc/crm/method?type=post&path=%2Fapi%2Fv1%2F%7Bws%7D%2Fintegrations%2F%7Bid%7D%2Fsetup
-.. _`PATCH IntegrationsInstances`: https://developer.kontur.ru/doc/crm/method?type=patch&path=%2Fapi%2Fv1%2F%7Bws%7D%2Fintegrations%2Finstances%2F%7Bid%7D
-.. _`PATCH IntegrationsInstances`: https://developer.kontur.ru/doc/crm/method?type=patch&path=%2Fapi%2Fv1%2F%7Bws%7D%2Fintegrations%2Finstances%2F%7Bid%7D
-.. _`GET IntegrationsInstances`: https://developer.kontur.ru/doc/crm/method?type=get&path=%2Fapi%2Fv1%2F%7Bws%7D%2Fintegrations%2Finstances%2F%7Bid%7D
-.. _`GET UiSettings`: https://developer.kontur.ru/doc/crm/method?type=get&path=%2Fapi%2Fv1%2F%7Bws%7D%2Fui-settings%2F%7Bid%7D
-
 API интеграции
 ===============
 
@@ -11,8 +5,6 @@ API интеграции
 
 Активация интеграции
 ---------------------
-
-Метод: `POST IntegrationsSetup`_
 
 Интеграция после установки находится в статусе ``NotConfigured``, метод активирует интеграцию. В теле запроса нужно указать необходимые аргументы со стороны интеграции.
 
@@ -52,7 +44,6 @@ API интеграции
 
 Настройка webhook
 ------------------
-Метод: `PATCH IntegrationsInstances`_
 
 Метод регистрирует Webhook в модель ``IntegrationInstance``. Если интеграция некорректно отвечает на вызовы, то со временем Контур КЭДО перестанет их отправлять.
 
@@ -103,8 +94,6 @@ API интеграции
 
 Проверка статуса
 -----------------
-
-Метод: `GET IntegrationsInstances`_
 
 Метод возвращает информацию об интеграции. В полученном ответе строка status определяет состояние интеграции. 
 
