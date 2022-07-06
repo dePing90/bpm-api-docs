@@ -25,9 +25,9 @@ API авторизации
     "title": "Мое рабочее пространство",
     "updateInfo": {
       "updatedAt": "2022-03-17T05:14:14.541084+00:00",
-      "updatedWith": "xcom",
+      "updatedWith": "WebApp",
       "createdAt": "2022-03-17T05:14:14.541084+00:00",
-      "createdWith": "xcom"
+      "createdWith": "WebApp"
     }
     },
     "integrationInstance": {

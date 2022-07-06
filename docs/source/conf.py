@@ -12,7 +12,7 @@
 import sys
 import os
 import shlex
-import sphinx_rtd_theme
+# import sphinx_rtd_theme
 
 # If extensions (or modules to document with autodoc) are in another directory,
 # add these directories to sys.path here. If the directory is relative to the
@@ -126,7 +126,7 @@ todo_include_todos = False
 #html_theme = 'nature'
 #html_theme = 'haiku'
 #html_theme = 'pyramid'
-html_theme = "sphinx_rtd_theme"
+html_theme = "furo"
 html_favicon = '_static/favicon.ico'
 
 # Theme options are theme-specific and customize the look and feel of a theme
