@@ -15,7 +15,7 @@
 
 .. code-block::
   {
-    "id": "string"
+    "id": "string",
     "userId": "string",
     "departmentId": "string",
     "departmentStructureId": "string",
