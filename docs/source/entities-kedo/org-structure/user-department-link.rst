@@ -22,4 +22,5 @@
     "positionInfo": {
       "positionId": "string",
       "isMain": true
+    }
   }
