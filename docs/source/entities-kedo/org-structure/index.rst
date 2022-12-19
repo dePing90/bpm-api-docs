@@ -7,3 +7,4 @@
     
     departments
     positions
+    user-department-link
