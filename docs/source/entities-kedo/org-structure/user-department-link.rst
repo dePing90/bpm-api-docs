@@ -14,14 +14,14 @@
 * Основная
 
 .. code-block::
-  
+
   {
-    "id": "string",
-    "userId": "string",
-    "departmentId": "string",
-    "departmentStructureId": "string",
+    "id": "3fa85f64-5717-4562-b3fc-2c963f66afa6",
+    "userId": "3fa85f64-5717-4562-b3fc-2c963f66afa6",
+    "departmentId": "3fa85f64-5717-4562-b3fc-2c963f66afa6",
+    "departmentStructureId": "3fa85f64-5717-4562-b3fc-2c963f66afa6",
     "positionInfo": {
-      "positionId": "string",
+      "positionId": "3fa85f64-5717-4562-b3fc-2c963f66afa6",
       "isMain": true
     }
   }
